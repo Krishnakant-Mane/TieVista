@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/logo.png';
 
 export const Navbar = () => {
     const goldColor = '#D4AF37'; // A solid premium gold color
@@ -91,12 +92,12 @@ export const Navbar = () => {
                     <div className="flex justify-between items-center h-20 space-x-6">
                         {/* Logo Section */}
                         <div className="flex items-center gap-3">
-                            <div className="bg-black w-10 h-10 flex items-center justify-center">
-                                <div className="w-5 h-5">
-                                    <img src="" alt="" />
+                            <div className=" w-27 h-27 flex items-center justify-center">
+                                <div className="w-27 h-27 flex items-center justify-center">
+                                    <img src={logo} alt="" />
                                 </div>
                             </div>
-                            <span className="text-2xl font-medium text-[#1a1a1a]">TieVista</span>
+                            {/* <span className="text-2xl font-medium text-[#1a1a1a]">TieVista</span> */}
                         </div>
 
                         {/* Desktop Navigation */}
