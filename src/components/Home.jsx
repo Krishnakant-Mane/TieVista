@@ -249,66 +249,8 @@ export const Home = () => {
                     </div>
                 </div>
 
-                {/* Section 3: Testimonials & Stats */}
-                <div className="py-20 bg-white overflow-hidden">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        {/* Header */}
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl font-medium text-gray-900 mb-6">
-                                Trusted by Discerning Clients
-                            </h2>
-                            <p className="text-lg text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
-                                High-net-worth families and entrepreneurs trust us with their wealth
-                            </p>
-                        </div>
-
-                        {/* Testimonial Slider */}
-                        <div
-                            ref={scrollContainerRef}
-                            className="flex overflow-x-auto space-x-6 pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar"
-                            style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
-                        >
-                            <style>{`.scrollbar-hide::-webkit-scrollbar { display: none; }`}</style>
-                            {testimonials.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="min-w-full md:min-w-[50%] lg:min-w-[33.333%] snap-start px-2"
-                                >
-                                    <div className="bg-[#fcfdff] p-10 border-l-4 border-[#D4AF37] h-full flex flex-col justify-between">
-                                        <div>
-                                            <div className="flex gap-1 mb-6">
-                                                {[...Array(5)].map((_, i) => (
-                                                    <Star key={i} size={16} fill={goldColor} color={goldColor} />
-                                                ))}
-                                            </div>
-                                            <p className="text-gray-600 italic text-lg leading-relaxed mb-10 font-light">
-                                                "{item.quote}"
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h4 className="text-gray-900 font-medium text-base mb-1">{item.author}</h4>
-                                            <p className="text-gray-400 text-sm font-light">{item.role}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Stats Section (Flexbox) */}
-                        <div className="mt-20 pt-20 border-t border-gray-100 flex flex-wrap justify-center gap-12 md:gap-24">
-                            {stats.map((stat, index) => (
-                                <div key={index} className="text-center">
-                                    <div className="text-4xl md:text-5xl font-light text-gray-400 mb-2">
-                                        {stat.prefix}<Counter to={stat.value} duration={2.5} decimals={stat.value % 1 !== 0 ? 1 : 0} />{stat.suffix}
-                                    </div>
-                                    <p className="text-gray-400 text-xs tracking-widest uppercase font-light">
-                                        {stat.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                
+                
             </div>
         </>
     )
