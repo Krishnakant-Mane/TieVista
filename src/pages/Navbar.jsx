@@ -120,7 +120,7 @@ export const Navbar = () => {
                                                 <a
                                                     key={dIndex}
                                                     href={dropItem.href}
-                                                    className={`block px-6 py-3 text-sm text-gray-600 hover:text-[${goldColor}] hover:bg-gray-50`}
+                                                    className={`block px-6 py-3 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-50`}
                                                 >
                                                     {dropItem.label}
                                                 </a>
@@ -156,7 +156,7 @@ export const Navbar = () => {
                                             key={idx}
                                             href={item.href}
                                             target={item.target}
-                                            className={`block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[${goldColor}] transition-colors`}
+                                            className={`block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#D4AF37] transition-colors`}
                                         >
                                             {item.label}
                                         </a>

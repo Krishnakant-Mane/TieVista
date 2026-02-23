@@ -23,7 +23,6 @@ const Counter = ({ to, duration = 2, decimals = 0 }) => {
 };
 
 export const Home = () => {
-    const goldColor = '#D4AF37';
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollContainerRef = useRef(null);
