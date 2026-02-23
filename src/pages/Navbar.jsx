@@ -30,11 +30,10 @@ export const Navbar = () => {
             href: '#',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'How We Work', href: '#' },
-                { label: 'Investment Universe', href: '#' },
-                { label: 'Reporting', href: '#' },
-                { label: 'Risk Management', href: '#' },
-                { label: 'Portfolio Review CTA', href: '#' },
+                { label: 'Growth Assets', href: '#' },
+                { label: 'Income & Capital Preservation', href: '#' },
+                { label: 'Private & Alternative Investments', href: '#' },
+                { label: 'Global & GIFT City Solutions', href: '#' },
             ]
         },
         {
