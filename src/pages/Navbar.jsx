@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
+    const goldColor = '#D4AF37'; // A solid premium gold color
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -12,7 +14,7 @@ export const Navbar = () => {
         // { label: 'Review Your Portfolio', href: '#' },
 
         {
-            label: 'About',
+            label: 'About Us',
             href: '#',
             hasDropdown: true,
             dropdownItems: [
@@ -24,7 +26,7 @@ export const Navbar = () => {
         },
 
         {
-            label: 'Wealth Advisory',
+            label: 'Investment Universe',
             href: '#',
             hasDropdown: true,
             dropdownItems: [
@@ -36,7 +38,7 @@ export const Navbar = () => {
             ]
         },
         {
-            label: 'Family Office',
+            label: 'Services',
             href: '#',
             hasDropdown: true,
             dropdownItems: [
@@ -58,18 +60,6 @@ export const Navbar = () => {
                 { label: 'Global Investment Advisory', href: '#' },
             ]
         },
-
-        {
-            label: 'Entrepreneur Services',
-            href: '#',
-            hasDropdown: true,
-            dropdownItems: [
-                { label: 'Investment Banking', href: '#' },
-                { label: 'Corporate Advisory', href: '#' },
-                { label: 'Treasury Management', href: '#' },
-                { label: 'Cross-Border Business Setup', href: '#' },
-            ]
-        },
         {
             label: 'Insights',
             href: '#', hasDropdown: true,
@@ -82,7 +72,7 @@ export const Navbar = () => {
         },
 
         {
-            label: 'Contact',
+            label: 'Contact Us',
             href: '#',
             hasDropdown: true,
             dropdownItems: [
@@ -92,8 +82,6 @@ export const Navbar = () => {
             ]
         },
     ];
-
-    const goldColor = '#D4AF37'; // A solid premium gold color
 
     return (
         <div className="w-full sticky top-0 z-50 shadow-sm">
@@ -228,6 +216,11 @@ export const Navbar = () => {
         </div>
     );
 };
-{/* <Eplyoee></Eplyoee>
-client
-patner login */}
+{/* 
+    Home
+    About us
+    Investment Universe
+    Services
+    Insights -> [Videos/blogs]
+    Contact
+*/}
