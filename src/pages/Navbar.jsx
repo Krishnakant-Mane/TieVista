@@ -135,12 +135,12 @@ export const Navbar = () => {
 
                         {/* Login Button with Dropdown */}
                         <div
-                            className="relative group flex justify-center items-center"
+                            className="hidden xl:flex relative group justify-center items-center"
                             onMouseEnter={() => setActiveDropdown('Login')}
                             onMouseLeave={() => setActiveDropdown(null)}
                         >
                             <button
-                                className="px-8 py-2 border text-sm font-medium transition-all duration-300 hover:bg-[#D4AF37] hover:text-white hover:cursor-pointer"
+                                className="px-8 py-2 border text-sm font-medium transition-all duration-300 hover:bg-[#D4AF37] hover:text-white hover:cursor-pointer "
                                 style={{
                                     borderColor: goldColor,
                                     color: activeDropdown === 'Login' ? 'white' : goldColor,
