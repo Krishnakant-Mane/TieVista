@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
     const goldColor = '#D4AF37'; // A solid premium gold color
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [activeMobileDropdown, setActiveMobileDropdown] = useState(null);
 
     const loginOptions = [{ label: 'Client Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }, { label: 'Employee Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }, { label: 'Partner Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }]
 
@@ -178,39 +180,102 @@ export const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                {isMobileMenuOpen && (
-                    <div className="xl:hidden bg-white border-t border-gray-100 py-4 px-4 space-y-1 shadow-lg">
-                        {navItems.map((item, index) => (
-                            <div key={index}>
-                                <button className="flex items-center justify-between w-full py-3 text-sm text-gray-700 hover:text-black hover:bg-gray-50 px-2 rounded-md">
-                                    {item.label}
-                                    {item.hasDropdown && <ChevronDown size={14} />}
-                                </button>
-                                {item.hasDropdown && item.dropdownItems && (
-                                    <div className="pl-6 space-y-1 mt-1 border-l-2 ml-2" style={{ borderColor: goldColor }}>
-                                        {item.dropdownItems.map((dropItem, dIndex) => (
-                                            <a
-                                                key={dIndex}
-                                                href={dropItem.href}
-                                                className="block py-2 text-xs text-gray-500 hover:text-black"
-                                            >
-                                                {dropItem.label}
-                                            </a>
-                                        ))}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="xl:hidden bg-white border-t border-gray-100 overflow-hidden"
+                        >
+                            <div className="max-h-[calc(100vh-80px)] overflow-y-auto py-4 px-4 space-y-1">
+                                {navItems.map((item, index) => (
+                                    <div key={index} className="border-b border-gray-50 last:border-none">
+                                        <button
+                                            onClick={() => item.hasDropdown ? setActiveMobileDropdown(activeMobileDropdown === item.label ? null : item.label) : null}
+                                            className="flex items-center justify-between w-full py-4 text-[15px] font-medium text-gray-700 hover:text-black hover:bg-gray-50 px-2 rounded-md transition-all"
+                                        >
+                                            {item.label}
+                                            {item.hasDropdown && (
+                                                <motion.div
+                                                    animate={{ rotate: activeMobileDropdown === item.label ? 180 : 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                >
+                                                    <ChevronDown size={16} />
+                                                </motion.div>
+                                            )}
+                                        </button>
+
+                                        <AnimatePresence>
+                                            {item.hasDropdown && activeMobileDropdown === item.label && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="pl-6 pb-4 space-y-1 mt-1 border-l-2 ml-2" style={{ borderColor: goldColor }}>
+                                                        {item.dropdownItems.map((dropItem, dIndex) => (
+                                                            <a
+                                                                key={dIndex}
+                                                                href={dropItem.href}
+                                                                className="block py-3 text-sm text-gray-500 hover:text-[#D4AF37] transition-colors"
+                                                            >
+                                                                {dropItem.label}
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
-                                )}
+                                ))}
+
+                                {/* Mobile Login Button Container */}
+                                <div className="pt-6 pb-4 border-t border-gray-100 mt-4">
+                                    <button
+                                        onClick={() => setActiveMobileDropdown(activeMobileDropdown === 'Login' ? null : 'Login')}
+                                        className="w-full py-4 border text-[15px] font-medium rounded-sm flex justify-between items-center px-4"
+                                        style={{ borderColor: goldColor, color: goldColor }}
+                                    >
+                                        Login
+                                        <motion.div
+                                            animate={{ rotate: activeMobileDropdown === 'Login' ? 180 : 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <ChevronDown size={16} />
+                                        </motion.div>
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {activeMobileDropdown === 'Login' && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.2 }}
+                                                className="overflow-hidden bg-gray-50/50 mt-2 rounded-sm"
+                                            >
+                                                {loginOptions.map((option, idx) => (
+                                                    <a
+                                                        key={idx}
+                                                        href={option.href}
+                                                        target={option.target}
+                                                        className="block px-6 py-4 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors"
+                                                    >
+                                                        {option.label}
+                                                    </a>
+                                                ))}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </div>
-                        ))}
-                        <div className="pt-4 border-t border-gray-100 mt-4">
-                            <button
-                                className="w-full py-3 border text-sm font-medium rounded-sm"
-                                style={{ borderColor: goldColor, color: goldColor }}
-                            >
-                                Login
-                            </button>
-                        </div>
-                    </div>
-                )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
         </div>
     );
