@@ -37,13 +37,13 @@ export const Home = () => {
             href: '#'
         },
         {
-            title: 'Wealth Advisory',
+            title: 'Investment Universe',
             description: 'Personalized, research-backed investment advisory.',
             icon: TrendingUp,
             href: '#'
         },
         {
-            title: 'Family Office',
+            title: 'Services',
             description: 'Structuring, legacy planning, and governance.',
             icon: Users,
             href: '#'
@@ -52,12 +52,6 @@ export const Home = () => {
             title: 'NRI Solutions',
             description: 'FDs, remittances, global reporting, and investment guidance.',
             icon: Globe,
-            href: '#'
-        },
-        {
-            title: 'Entrepreneur Services',
-            description: 'Investment banking, corporate advisory, treasury & cross-border setup.',
-            icon: Briefcase,
             href: '#'
         },
         {
