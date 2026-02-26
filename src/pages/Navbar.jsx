@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
     const goldColor = '#D4AF37'; // A solid premium gold color
@@ -13,92 +14,101 @@ export const Navbar = () => {
     const loginOptions = [{ label: 'Client Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }, { label: 'Employee Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }, { label: 'Partner Login', target: '_blank', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' }]
 
     const navItems = [
-        { label: 'Home', href: '#' },
+        { label: 'Home', href: '/' },
         // { label: 'Review Your Portfolio', href: '#' },
 
         {
             label: 'About Us',
-            href: '#',
+            href: '/aboutus',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Mission', href: '#' },
-                { label: 'Differentiators', href: '#' },
-                { label: 'Leadership', href: '#' },
-                { label: 'Presence', href: '#' },
+                { label: 'Mission', href: '/' },
+                { label: 'Differentiators', href: '/' },
+                { label: 'Leadership', href: '/' },
+                { label: 'Presence', href: '/' },
             ]
         },
 
         {
             label: 'Investment Universe',
-            href: '#',
+            href: '/',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Growth Assets', href: '#' },
-                { label: 'Income & Capital Preservation', href: '#' },
-                { label: 'Private & Alternative Investments', href: '#' },
-                { label: 'Global & GIFT City Solutions', href: '#' },
+                { label: 'Growth Assets', href: '/' },
+                { label: 'Income & Capital Preservation', href: '/' },
+                { label: 'Private & Alternative Investments', href: '/' },
+                { label: 'Global & GIFT City Solutions', href: '/' },
             ]
         },
         {
             label: 'Services',
-            href: '#',
+            href: '/',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Family Office Structuring', href: '#' },
-                { label: 'Succession & Estate Planning', href: '#' },
-                { label: 'Governance', href: '#' },
-                { label: 'Tax & Repatriation', href: '#' },
+                { label: 'Family Office Structuring', href: '/' },
+                { label: 'Succession & Estate Planning', href: '/' },
+                { label: 'Governance', href: '/' },
+                { label: 'Tax & Repatriation', href: '/' },
             ]
         },
 
         {
             label: 'NRI Solutions',
-            href: '#',
+            href: '/',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'NRI Fixed Deposits', href: '#' },
-                { label: 'Remittance Solutions', href: '#' },
-                { label: 'Global Multi-Currency Reporting', href: '#' },
-                { label: 'Global Investment Advisory', href: '#' },
+                { label: 'NRI Fixed Deposits', href: '/' },
+                { label: 'Remittance Solutions', href: '/' },
+                { label: 'Global Multi-Currency Reporting', href: '/' },
+                { label: 'Global Investment', href: '/' },
             ]
         },
         {
             label: 'Insights',
-            href: '#', hasDropdown: true,
+            href: '/', hasDropdown: true,
             dropdownItems: [
-                { label: 'Family Office Structuring', href: '#' },
-                { label: 'Succession & Estate Planning', href: '#' },
-                { label: 'Governance', href: '#' },
-                { label: 'Tax & Repatriation', href: '#' },
+                { label: 'Family Office Structuring', href: '/' },
+                { label: 'Succession & Estate Planning', href: '/' },
+                { label: 'Governance', href: '/' },
+                { label: 'Tax & Repatriation', href: '/' },
             ]
         },
 
         {
             label: 'Contact Us',
-            href: '#',
+            href: '/',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Enquiry Form', href: '#' },
-                { label: 'Offices', href: '#' },
-                { label: 'Social Links', href: '#', isHighlighted: true },
+                { label: 'Enquiry Form', href: '/' },
+                { label: 'Offices', href: '/' },
+                { label: 'Social Links', href: '/'},
+            ]
+        },
+        {
+            label: 'Invest Now!',
+            href: '/',
+            hasDropdown: true,
+            dropdownItems: [
+                { label: 'Mutual Funds', href: '/' },
+                { label: 'Stocks', href: '/' },
+                { label: 'International Investments', href: 'https://portal.kristal.ai/login', target: '_blank' },
             ]
         },
     ];
 
     return (
-        <div className="w-full sticky top-0 z-50 shadow-sm">
+        <div className="w-full sticky top-0 z-100 shadow-sm">
             <nav className="bg-white border-b w-full border-gray-100 px-4 sm:px-8 lg:px-12 xl:px-20">
                 <div className="max-w-[1600px] mx-auto">
                     <div className="flex justify-between items-center h-20 space-x-6">
                         {/* Logo Section */}
-                        <div className="flex items-center gap-3">
+                        <Link to="/" ><div className="flex items-center gap-3">
                             <div className=" w-27 h-27 flex items-center justify-center">
                                 <div className="w-27 h-27 flex items-center justify-center">
                                     <img src={logo} alt="" />
                                 </div>
                             </div>
-                            {/* <span className="text-2xl font-medium text-[#1a1a1a]">TieVista</span> */}
-                        </div>
+                        </div></Link>
 
                         {/* Desktop Navigation */}
                         <div className="hidden xl:flex items-center space-x-6">
@@ -109,24 +119,26 @@ export const Navbar = () => {
                                     onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
                                     onMouseLeave={() => setActiveDropdown(null)}
                                 >
-                                    <button className="flex items-center gap-1 text-[15px] font-normal text-gray-700 hover:text-black transition-colors hover:cursor-pointer">
-                                        {item.label}
-                                        {item.hasDropdown && (
-                                            <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
-                                        )}
-                                    </button>
+                                    <Link to={item.href}>
+                                        <button className="flex items-center gap-1 text-[15px] font-normal text-gray-700 hover:text-black transition-colors hover:cursor-pointer">
+                                            {item.label}
+                                            {item.hasDropdown && (
+                                                <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
+                                            )}
+                                        </button>
+                                    </Link>
 
                                     {/* Dropdown Menu */}
                                     {item.hasDropdown && item.dropdownItems && activeDropdown === item.label && (
                                         <div className="absolute left-0 mt-0 w-64 bg-white shadow-xl border border-gray-100 rounded-sm z-50">
                                             {item.dropdownItems.map((dropItem, dIndex) => (
-                                                <a
+                                                <Link
                                                     key={dIndex}
-                                                    href={dropItem.href}
+                                                    to={dropItem.href}
                                                     className={`block px-6 py-3 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-50`}
                                                 >
                                                     {dropItem.label}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     )}

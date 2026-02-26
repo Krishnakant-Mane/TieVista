@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.gold-letter {
+    color: black;
+    text-shadow:
+        2px 2px 0 #D4AF37,
+        4px 4px 8px rgba(212, 175, 55, 0.4);
+}
