@@ -31,7 +31,7 @@ export const Navbar = () => {
 
         {
             label: 'Investment Universe',
-            href: '/',
+            href: '/investmentuniverse',
             hasDropdown: true,
             dropdownItems: [
                 { label: 'Growth Assets', href: '/' },
@@ -89,7 +89,7 @@ export const Navbar = () => {
             href: '/',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Mutual Funds', href: '/' },
+                { label: 'Mutual Funds', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' },
                 { label: 'Stocks', href: '/' },
                 { label: 'International Investments', href: 'https://portal.kristal.ai/login', target: '_blank' },
             ]

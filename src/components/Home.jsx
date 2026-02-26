@@ -215,7 +215,7 @@ export const Home = () => {
                         >
                             <span className="gold-letter mr-1">T</span>
                             <span className="mr-1">I</span>
-                            <span className="mr-1">E</span>
+                            <span className="">E</span>
                             <span className="gold-letter pb-10 text-9xl">V</span>
                             <span className="mr-1">I</span>
                             <span className="mr-1">S</span>
