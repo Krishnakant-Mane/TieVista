@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.png';
+import logo from '/NavLogo.jpg';
 import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
@@ -20,7 +20,7 @@ export const Navbar = () => {
         {
             label: 'About Us',
             href: '/aboutus',
-            hasDropdown: true,
+            hasDropdown: false,
             dropdownItems: [
                 { label: 'Mission', href: '/aboutus/mission' },
                 { label: 'Differentiators', href: '/aboutus/differentiators' },
@@ -34,10 +34,10 @@ export const Navbar = () => {
             href: '/investmentuniverse',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Growth Assets', href: '/investmentuniverse/growth-assets' },
-                { label: 'Income & Capital Preservation', href: '/investmentuniverse/income-capital-preservation' },
-                { label: 'Private & Alternative Investments', href: '/investmentuniverse/private-alternative-investments' },
-                { label: 'Global & GIFT City Solutions', href: '/investmentuniverse/global-gift-city-solutions' },
+                { label: 'Growth Assets', href: '/investmentuniverse#Growth' },
+                { label: 'Income & Capital Preservation', href: '/investmentuniverse#Income' },
+                { label: 'Private & Alternative Investments', href: '/investmentuniverse#Private' },
+                { label: 'Global & GIFT City Solutions', href: '/investmentuniverse#Global' },
             ]
         },
         {
@@ -83,7 +83,7 @@ export const Navbar = () => {
             ]
         },
         {
-            label: 'Invest Now!',
+            label: 'Invest Now',
             href: '/invest-now',
             hasDropdown: true,
             dropdownItems: [
@@ -102,8 +102,8 @@ export const Navbar = () => {
                         {/* Logo Section */}
                         <Link to="/" onClick={() => setIsMobileMenuOpen(false)}><div className="flex items-center gap-3">
                             <div className=" w-27 h-27 flex items-center justify-center">
-                                <div className="w-27 h-27 flex items-center justify-center">
-                                    <img src={logo} alt="" />
+                                <div className="w-20 h-20 flex items-center justify-center">
+                                    <img className='h-full w-full object-contain' src={logo} alt="" />
                                 </div>
                             </div>
                         </div></Link>
@@ -118,7 +118,7 @@ export const Navbar = () => {
                                     onMouseLeave={() => setActiveDropdown(null)}
                                 >
                                     <Link to={item.href}>
-                                        <button className="flex items-center gap-1 text-[15px] font-normal text-gray-700 hover:text-black transition-colors hover:cursor-pointer">
+                                        <button className="flex items-center gap-1 text-[18px] font-normal text-gray-700 hover:text-[#D4AF37] transition-colors hover:cursor-pointer">
                                             {item.label}
                                             {item.hasDropdown && (
                                                 <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />

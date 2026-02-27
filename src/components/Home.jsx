@@ -181,7 +181,7 @@ export const Home = () => {
 
     return (
         <>
-            <div className=''>
+            <div className='selection:bg-[#D4AF37] selection:text-white'>
                 {/* Hero Snap Scroll Section */}
                 <div className="h-[70vh] w-full snap-start relative flex items-center justify-center overflow-hidden border-b border-gray-100">
 
@@ -217,7 +217,7 @@ export const Home = () => {
                             <span className="mr-1">I</span>
                             <span className="">E</span>
                             <span className="gold-letter pb-10 text-9xl">V</span>
-                            <span className="mr-1">I</span>
+                            <span className="relative mr-1">I</span>
                             <span className="mr-1">S</span>
                             <span className="mr-1">T</span>
                             <span className="mr-1">A</span>
@@ -245,7 +245,7 @@ export const Home = () => {
                         variants={containerVariants}
                         className="max-w-4xl w-full"
                     >
-                        <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl font-bold mb-6 text-black tracking-tighter">
+                        <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl font-bold mb-6 text-black tracking-tighter" style={{ fontFamily: 'PT Serif, sans-serif' }} >
                             Trust <span className="font-light italic text-[#D4AF37] ">first</span>
                         </motion.h1>
                         <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed font-light">
@@ -282,7 +282,7 @@ export const Home = () => {
                         variants={containerVariants}
                         className="max-w-4xl w-full z-0"
                     >
-                        <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl font-bold mb-6 text-black tracking-tighter">
+                        <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl font-bold mb-6 text-black tracking-tighter" style={{ fontFamily: 'PT Serif, sans-serif' }}>
                             Transparency <span className="font-light italic text-[#D4AF37]">always</span>
                         </motion.h1>
                         <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed font-light">
@@ -321,7 +321,7 @@ export const Home = () => {
                 </div>
 
                 {/* Section 3: Transformation */}
-                <div className="h-screen w-full snap-start flex items-center justify-center p-6 md:p-12 border-b border-gray-100">
+                <div className="h-screen w-full snap-start flex items-center justify-center p-6 md:p-12 border-b border-gray-100" style={{ fontFamily: 'PT Serif, sans-serif' }}>
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
