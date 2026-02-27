@@ -22,10 +22,10 @@ export const Navbar = () => {
             href: '/aboutus',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Mission', href: '/' },
-                { label: 'Differentiators', href: '/' },
-                { label: 'Leadership', href: '/' },
-                { label: 'Presence', href: '/' },
+                { label: 'Mission', href: '/aboutus/mission' },
+                { label: 'Differentiators', href: '/aboutus/differentiators' },
+                { label: 'Leadership', href: '/aboutus/leadership' },
+                { label: 'Presence', href: '/aboutus/presence' },
             ]
         },
 
@@ -34,75 +34,73 @@ export const Navbar = () => {
             href: '/investmentuniverse',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Growth Assets', href: '/' },
-                { label: 'Income & Capital Preservation', href: '/' },
-                { label: 'Private & Alternative Investments', href: '/' },
-                { label: 'Global & GIFT City Solutions', href: '/' },
+                { label: 'Growth Assets', href: '/investmentuniverse/growth-assets' },
+                { label: 'Income & Capital Preservation', href: '/investmentuniverse/income-capital-preservation' },
+                { label: 'Private & Alternative Investments', href: '/investmentuniverse/private-alternative-investments' },
+                { label: 'Global & GIFT City Solutions', href: '/investmentuniverse/global-gift-city-solutions' },
             ]
         },
         {
             label: 'Services',
-            href: '/',
+            href: '/services',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Family Office Structuring', href: '/' },
-                { label: 'Succession & Estate Planning', href: '/' },
-                { label: 'Governance', href: '/' },
-                { label: 'Tax & Repatriation', href: '/' },
+                { label: 'Family Office Structuring', href: '/services/family-office-structuring' },
+                { label: 'Succession & Estate Planning', href: '/services/succession-estate-planning' },
+                { label: 'Governance', href: '/services/governance' },
+                { label: 'Tax & Repatriation', href: '/services/tax-repatriation' },
             ]
         },
 
         {
             label: 'NRI Solutions',
-            href: '/',
+            href: '/nri-solutions',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'NRI Fixed Deposits', href: '/' },
-                { label: 'Remittance Solutions', href: '/' },
-                { label: 'Global Multi-Currency Reporting', href: '/' },
-                { label: 'Global Investment', href: '/' },
+                { label: 'NRI Fixed Deposits', href: '/nri-solutions/nri-fixed-deposits' },
+                { label: 'Remittance Solutions', href: '/nri-solutions/remittance-solutions' },
+                { label: 'Global Multi-Currency Reporting', href: '/nri-solutions/global-multi-currency-reporting' },
+                { label: 'Global Investment', href: '/nri-solutions/global-investment' },
             ]
         },
         {
             label: 'Insights',
-            href: '/', hasDropdown: true,
+            href: '/insights', hasDropdown: true,
             dropdownItems: [
-                { label: 'Family Office Structuring', href: '/' },
-                { label: 'Succession & Estate Planning', href: '/' },
-                { label: 'Governance', href: '/' },
-                { label: 'Tax & Repatriation', href: '/' },
+                { label: 'Videos', href: '/insights/videos' },
+                { label: 'Blogs', href: '/insights/blogs' },
             ]
         },
 
         {
             label: 'Contact Us',
-            href: '/',
+            href: '/contact',
             hasDropdown: true,
             dropdownItems: [
-                { label: 'Enquiry Form', href: '/' },
-                { label: 'Offices', href: '/' },
-                { label: 'Social Links', href: '/'},
+                { label: 'Enquiry Form', href: '/contact/enquiry' },
+                { label: 'Offices', href: '/contact/offices' },
+                { label: 'Social Links', href: '/contact/social' },
             ]
         },
         {
             label: 'Invest Now!',
-            href: '/',
+            href: '/invest-now',
             hasDropdown: true,
             dropdownItems: [
                 { label: 'Mutual Funds', href: 'https://app.tievista.com/wealthspectrum/portal/sign-in' },
-                { label: 'Stocks', href: '/' },
+                { label: 'Stocks', href: '/invest-now/stocks' },
                 { label: 'International Investments', href: 'https://portal.kristal.ai/login', target: '_blank' },
             ]
         },
     ];
 
     return (
-        <div className="w-full sticky top-0 z-100 shadow-sm">
+        <div className="w-full sticky top-0 z-[100] shadow-sm">
             <nav className="bg-white border-b w-full border-gray-100 px-4 sm:px-8 lg:px-12 xl:px-20">
                 <div className="max-w-[1600px] mx-auto">
                     <div className="flex justify-between items-center h-20 space-x-6">
                         {/* Logo Section */}
-                        <Link to="/" ><div className="flex items-center gap-3">
+                        <Link to="/" onClick={() => setIsMobileMenuOpen(false)}><div className="flex items-center gap-3">
                             <div className=" w-27 h-27 flex items-center justify-center">
                                 <div className="w-27 h-27 flex items-center justify-center">
                                     <img src={logo} alt="" />
@@ -135,6 +133,7 @@ export const Navbar = () => {
                                                 <Link
                                                     key={dIndex}
                                                     to={dropItem.href}
+                                                    {...(dropItem.target ? { target: dropItem.target } : {})}
                                                     className={`block px-6 py-3 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-50`}
                                                 >
                                                     {dropItem.label}
@@ -202,23 +201,31 @@ export const Navbar = () => {
                             transition={{ duration: 0.3, ease: 'easeInOut' }}
                             className="xl:hidden bg-white border-t border-gray-100 overflow-hidden"
                         >
-                            <div className="max-h-[calc(100vh-80px)] overflow-y-auto py-4 px-4 space-y-1">
+                            <div className="max-h-[70vh] overflow-y-auto py-4 px-4 space-y-1">
                                 {navItems.map((item, index) => (
                                     <div key={index} className="border-b border-gray-50 last:border-none">
-                                        <button
-                                            onClick={() => item.hasDropdown ? setActiveMobileDropdown(activeMobileDropdown === item.label ? null : item.label) : null}
-                                            className="flex items-center justify-between w-full py-4 text-[15px] font-medium text-gray-700 hover:text-black hover:bg-gray-50 px-2 rounded-md transition-all"
-                                        >
-                                            {item.label}
+                                        <div className="flex items-center justify-between w-full">
+                                            <Link
+                                                to={item.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="flex-grow py-4 text-[15px] font-medium text-gray-700 hover:text-black hover:bg-gray-50 px-2 rounded-md transition-all"
+                                            >
+                                                {item.label}
+                                            </Link>
                                             {item.hasDropdown && (
-                                                <motion.div
-                                                    animate={{ rotate: activeMobileDropdown === item.label ? 180 : 0 }}
-                                                    transition={{ duration: 0.2 }}
+                                                <button
+                                                    onClick={() => setActiveMobileDropdown(activeMobileDropdown === item.label ? null : item.label)}
+                                                    className="p-4 text-gray-400 hover:text-black transition-colors"
                                                 >
-                                                    <ChevronDown size={16} />
-                                                </motion.div>
+                                                    <motion.div
+                                                        animate={{ rotate: activeMobileDropdown === item.label ? 180 : 0 }}
+                                                        transition={{ duration: 0.2 }}
+                                                    >
+                                                        <ChevronDown size={18} />
+                                                    </motion.div>
+                                                </button>
                                             )}
-                                        </button>
+                                        </div>
 
                                         <AnimatePresence>
                                             {item.hasDropdown && activeMobileDropdown === item.label && (
@@ -231,13 +238,15 @@ export const Navbar = () => {
                                                 >
                                                     <div className="pl-6 pb-4 space-y-1 mt-1 border-l-2 ml-2" style={{ borderColor: goldColor }}>
                                                         {item.dropdownItems.map((dropItem, dIndex) => (
-                                                            <a
+                                                            <Link
                                                                 key={dIndex}
-                                                                href={dropItem.href}
+                                                                to={dropItem.href}
+                                                                {...(dropItem.target ? { target: dropItem.target } : {})}
+                                                                onClick={() => setIsMobileMenuOpen(false)}
                                                                 className="block py-3 text-sm text-gray-500 hover:text-[#D4AF37] transition-colors"
                                                             >
                                                                 {dropItem.label}
-                                                            </a>
+                                                            </Link>
                                                         ))}
                                                     </div>
                                                 </motion.div>
@@ -247,7 +256,7 @@ export const Navbar = () => {
                                 ))}
 
                                 {/* Mobile Login Button Container */}
-                                <div className="pt-6 pb-4 border-t border-gray-100 mt-4">
+                                <div className="pt-6 pb-20 border-t border-gray-100 mt-4">
                                     <button
                                         onClick={() => setActiveMobileDropdown(activeMobileDropdown === 'Login' ? null : 'Login')}
                                         className="w-full py-4 border text-[15px] font-medium rounded-sm flex justify-between items-center px-4"
@@ -276,6 +285,7 @@ export const Navbar = () => {
                                                         key={idx}
                                                         href={option.href}
                                                         target={option.target}
+                                                        onClick={() => setIsMobileMenuOpen(false)}
                                                         className="block px-6 py-4 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors"
                                                     >
                                                         {option.label}
