@@ -9,11 +9,11 @@ export const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0D0D0D] text-white py-20 border-t border-gray-800">
-      <div className=" sm:h-[90vh] lg:h-[80vh]  py-15 mx-auto px-6 lg:px-16">
+    <footer className="bg-[#0D0D0D] text-white py-5 lg:py-10 border-t border-gray-800">
+      <div className=" sm:h-[90vh] lg:h-[80vh]  py-5 mx-auto px-6 lg:px-16">
 
         {/* Main Content Area */}
-        <div className=" flex flex-wrap gap-12 lg:gap-20 mb-16">
+        <div className=" flex flex-wrap gap-10 lg:gap-20 mb-16">
 
           {/* Brand Section */}
           <div className="flex-1 min-w-[280px]">
