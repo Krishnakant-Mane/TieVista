@@ -58,7 +58,7 @@ export const Home = () => {
             title: 'Services',
             description: 'Structuring, legacy planning, and governance.',
             icon: Users,
-            href: '#'
+            href: '/services'
         },
         {
             title: 'NRI Solutions',

@@ -4,19 +4,37 @@ export default function SmoothFollower() {
   const mousePosition = useRef({ x: 0, y: 0 });
   const dotPosition = useRef({ x: 0, y: 0 });
   const borderDotPosition = useRef({ x: 0, y: 0 });
+  const animationId = useRef(null);
+
   const [renderPos, setRenderPos] = useState({
     dot: { x: 0, y: 0 },
     border: { x: 0, y: 0 },
   });
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // hidden until first mouse move
+  const [hasPointer, setHasPointer] = useState(false); // only true on pointer devices
 
-  const DOT_SMOOTHNESS = 1.0;          // instant — dot sits exactly on cursor
-  const BORDER_DOT_SMOOTHNESS = 0.12;  // low = smooth, laggy outer ring
+  const DOT_SMOOTHNESS = 1.0;
+  const BORDER_DOT_SMOOTHNESS = 0.12;
 
   useEffect(() => {
+    // Detect if device has a fine pointer (mouse), not touch
+    const mq = window.matchMedia('(pointer: fine)');
+    setHasPointer(mq.matches);
+
+    const handlePointerChange = (e) => setHasPointer(e.matches);
+    mq.addEventListener('change', handlePointerChange);
+    return () => mq.removeEventListener('change', handlePointerChange);
+  }, []);
+
+  useEffect(() => {
+    if (!hasPointer) return;
+
     const handleMouseMove = (e) => {
       mousePosition.current = { x: e.clientX, y: e.clientY };
+      if (!isVisible) setIsVisible(true);
     };
+
     const handleMouseEnter = () => setIsHovering(true);
     const handleMouseLeave = () => setIsHovering(false);
 
@@ -25,9 +43,9 @@ export default function SmoothFollower() {
     const interactiveElements = document.querySelectorAll(
       'a, button, img, input, textarea, select, .hover-effect'
     );
-    interactiveElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+    interactiveElements.forEach((el) => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
     });
 
     const animate = () => {
@@ -57,25 +75,31 @@ export default function SmoothFollower() {
         },
       });
 
-      requestAnimationFrame(animate);
+      animationId.current = requestAnimationFrame(animate);
     };
 
-    const animationId = requestAnimationFrame(animate);
+    animationId.current = requestAnimationFrame(animate);
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      interactiveElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+      interactiveElements.forEach((el) => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
       });
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationId.current);
     };
-  }, []);
+  }, [hasPointer, isVisible]);
 
+  // Don't render at all on touch/mobile devices
+  if (!hasPointer) return null;
   if (typeof window === 'undefined') return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-999">
-      {/* Inner dot — snappy, always visible */}
+    <div
+      className="pointer-events-none fixed inset-0"
+      style={{ zIndex: 9999, opacity: isVisible ? 1 : 0, transition: 'opacity 0.3s ease' }}
+    >
+      {/* Inner dot */}
       <div
         className="absolute rounded-full dark:bg-white bg-[#D4AF37]"
         style={{
@@ -85,26 +109,23 @@ export default function SmoothFollower() {
           left: `${renderPos.dot.x}px`,
           top: `${renderPos.dot.y}px`,
           transition: 'width 0.3s ease, height 0.3s ease',
-          zIndex: 1,
         }}
       />
 
-      {/* Outer ring — always transparent background */}
+      {/* Outer ring */}
       <div
         className="absolute rounded-full"
         style={{
           width: isHovering ? '60px' : '32px',
           height: isHovering ? '60px' : '32px',
-          transform: `translate(-50%, -50%) rotate(${renderPos.border.angle}deg) scale(${renderPos.border.scaleX}, ${renderPos.border.scaleY})`,
+          transform: `translate(-50%, -50%) rotate(${renderPos.border.angle}deg) scale(${renderPos.border.scaleX ?? 1}, ${renderPos.border.scaleY ?? 1})`,
           left: `${renderPos.border.x}px`,
           top: `${renderPos.border.y}px`,
           transition: 'width 0.6s cubic-bezier(0.23, 1, 0.32, 1), height 0.6s cubic-bezier(0.23, 1, 0.32, 1)',
           background: 'transparent',
           border: isHovering
-            ? '1.5px solid rgb(212,175,55, 0.7)'
-            : '1px solid rgba(212, 175, 55, 0.5)',
-          backdropFilter: 'blur(0px) saturate(150%)',
-          WebkitBackdropFilter: 'blur(0px) saturate(150%)',
+            ? '1.5px solid rgba(212,175,55,0.7)'
+            : '1px solid rgba(212,175,55,0.5)',
           boxShadow: isHovering
             ? '0 0 0 0.5px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.4)'
             : '0 0 0 0.5px rgba(212,175,55,0.1)',
