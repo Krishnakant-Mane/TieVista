@@ -21,8 +21,8 @@ const NAV_ITEMS = [
     { label: 'Coordination', icon: Network, href: '#coord' },
     { label: 'Reporting', icon: LayoutDashboard, href: '#report' },
     { label: 'Entrepreneurs', icon: Lightbulb, href: '#entre' },
-    { label: 'Family', icon: Users, href: '#family' },
-    { label: 'Relationship', icon: Handshake, href: '#relation' },
+    { label: 'Family Alignment & Continuity', icon: Users, href: '#family' },
+    { label: 'Relationship-Led Service Model', icon: Handshake, href: '#relation' },
 ]
 
 /* ─── Service sections ─── */
@@ -180,7 +180,7 @@ function ServiceSection({ svc, index }) {
                                 style={{ fontFamily: 'PT Serif, serif' }}
                             >
                                 {heading}{' '}
-                                <span className="" >{accent}</span> {/*style={{ color: GOLD }} italic*/}
+                                <span className="" style={{ color: GOLD }} >{accent}</span> {/*style={{ color: GOLD }} italic*/}
                             </h2>
 
                             {/* Gold divider */}
@@ -275,7 +275,7 @@ export const Service = () => {
                         style={{ fontFamily: 'PT Serif, serif' }}
                     >
                         Our{' '}
-                        <span className="font-light" >Services</span> {/*style={{ color: GOLD }} italic*/}
+                        <span className="font-light" style={{ color: GOLD }}>Services</span> {/*style={{ color: GOLD }} italic*/}
                     </motion.h1>
 
                     <motion.p

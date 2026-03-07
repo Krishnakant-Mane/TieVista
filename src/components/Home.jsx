@@ -154,9 +154,9 @@ export const Home = () => {
 
                 <div className='h-[20vh] md:h-[20vh] w-full flex overflow-x-hidden overflow-y-hidden justify-center items-center'>
                     <div className='flex text-5xl md:text-5xl lg:text-7xl gap-10 md:gap-20 lg:gap-40' id='text' style={{ fontFamily: 'PT Serif, sans-serif' }}>
-                        <span className="whitespace-nowrap gold-letter">Trust</span><span className='text-[#D4AF37]'>• </span>
-                        <span className="whitespace-nowrap gold-letter">Transparency</span><span className='text-[#D4AF37]'>• </span>
-                        <span className="whitespace-nowrap gold-letter">Transformation</span>
+                        <span className="whitespace-nowrap ">Trust</span><span className='text-[#D4AF37]'>• </span>
+                        <span className="whitespace-nowrap ">Transparency</span><span className='text-[#D4AF37]'>• </span>
+                        <span className="whitespace-nowrap ">Transformation</span>
                     </div>
                 </div>
 

@@ -161,7 +161,7 @@ function ServiceSection({ svc, index }) {
                                 style={{ fontFamily: 'PT Serif, serif' }}
                             >
                                 {heading}{' '}
-                                <span className="italic" style={{ color: GOLD }}>{accent}</span>
+                                <span className="" style={{ color: GOLD }}>{accent}</span>
                             </h2>
 
                             {/* Gold divider */}
@@ -261,7 +261,7 @@ export const NriSolutions = () => {
                         style={{ fontFamily: 'PT Serif, serif' }}
                     >
                         NRI{' '}
-                        <span className="font-light italic" style={{ color: GOLD }}>Solutions</span>
+                        <span className="font-light " style={{ color: GOLD }}>Solutions</span>
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -293,12 +293,12 @@ export const NriSolutions = () => {
 
                                 {/* Index + icon */}
                                 <div className="flex items-center gap-2 mb-1.5">
-                                    <span
+                                    {/* <span
                                         className="text-[10px] font-bold tabular-nums leading-none"
                                         style={{ color: GOLD, fontFamily: 'PT Serif, serif' }}
                                     >
                                         {String(i + 1).padStart(2, '0')}
-                                    </span>
+                                    </span> */}
                                     <Icon size={13} className="text-gray-400 group-hover:text-[#D4AF37] transition-colors duration-300" />
                                 </div>
 
@@ -332,7 +332,7 @@ export const NriSolutions = () => {
                                 className="text-3xl md:text-4xl tracking-tighter leading-tight mb-5"
                                 style={{ fontFamily: 'PT Serif, serif' }}
                             >
-                                Capital without <span className="italic" style={{ color: GOLD }}>borders.</span>
+                                Capital without <span className="" style={{ color: GOLD }}>borders.</span>
                             </h3>
                             <p className="text-lg text-gray-600 font-light leading-relaxed mb-4">
                                 Wealth decisions are no longer confined to a single geography. Assets, incomes, responsibilities, and aspirations often span India, the Middle East, Southeast Asia, Europe, and beyond.

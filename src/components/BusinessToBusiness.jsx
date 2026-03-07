@@ -94,7 +94,7 @@ function PartnershipSection({ p, index }) {
                                 style={{ fontFamily: 'PT Serif, serif' }}
                             >
                                 {heading}{' '}
-                                <span className="" >{accent}</span> {/*style={{ color: GOLD }} italic*/}
+                                <span className="" style={{ color: GOLD }}>{accent}</span>
                             </h2>
 
                             {/* Gold divider */}
@@ -195,11 +195,11 @@ export const BusinessToBusiness = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
-                        className="text-7xl md:text-[9rem] text-white tracking-tighter leading-[0.9] mb-8"
+                        className="text-6xl md:text-[7rem] text-white tracking-tighter leading-[0.9] mb-8"
                         style={{ fontFamily: 'PT Serif, serif' }}
                     >
                         TieVista{' '}
-                        <span className="font-light italic" >Partners</span> {/*style={{ color: GOLD }} italic*/}
+                        <span className="font-light" style={{ color: GOLD }} >Partners</span> {/*style={{ color: GOLD }} italic*/}
                     </motion.h1>
 
                     <motion.p

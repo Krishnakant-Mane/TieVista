@@ -130,7 +130,7 @@ const CategorySection = ({ cat, index }) => {
                                 style={{ fontFamily: 'PT Serif, serif' }}
                             >
                                 {cat.title}{' '}
-                                <span className="" >{cat.italicTitle}</span> {/* italicTitle style={{ color: GOLD }}*/}
+                                <span className="" style={{ color: GOLD }} >{cat.italicTitle}</span> {/* italicTitle style={{ color: GOLD }}*/}
                             </h2>
 
                             {/* Gold divider */}
@@ -212,7 +212,7 @@ export const InvestmentUniverse = () => {
                         <span className="text-[#D4AF37] text-xs font-bold tracking-[0.3em] uppercase">We don’t just manage wealth, We future-proof it.</span>
                     </div>
                     <motion.h1 variants={animationSettings.item} className="text-6xl md:text-9xl mb-8 text-white tracking-tighter leading-[0.95]" style={{ fontFamily: "PT Serif" }}>
-                        Investment <span className="text-[#D4AF37] italic">Universe</span>
+                        Investment <span className="text-[#D4AF37] ">Universe</span>
                     </motion.h1>
                     <motion.p variants={animationSettings.item} className="text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed mb-12">
                         Navigating the complexities of global wealth through bespoke selection, rigorous discipline, and a borderless perspective.
@@ -237,12 +237,12 @@ export const InvestmentUniverse = () => {
 
                                 {/* Row: index + icon */}
                                 <div className="flex items-center gap-2 mb-1.5">
-                                    <span
+                                    {/* <span
                                         className="text-[10px] font-bold tabular-nums leading-none"
                                         style={{ color: GOLD, fontFamily: 'PT Serif, serif' }}
                                     >
                                         {String(i + 1).padStart(2, '0')}
-                                    </span>
+                                    </span> */}
                                     <Icon
                                         size={13}
                                         className="text-gray-400 group-hover:text-[#D4AF37] transition-colors duration-300"
