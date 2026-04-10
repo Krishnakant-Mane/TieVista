@@ -16,6 +16,15 @@ const Blogs = () => {
             url: "/blogs/decluttering-the-noise-around",
             date: "March 28, 2026"
         },
+        {
+            id: 2,
+            title: "The Strait of Hormuz ",
+            goldtitle: "Crisis",
+            description: "The Strait of Hormuz is one of the world’s most critical energy chokepoints. At its narrowest, it spans just 21 miles",
+            img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
+            url: "/blogs/the-strait-of-hormuz-crisis",
+            date: "MARCH 2026"
+        },
 
     ]
 
