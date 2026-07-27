@@ -194,7 +194,7 @@ export const Navbar = () => {
             ],
         },
         {
-            label: 'Literature',
+            label: 'Knowledge Repository',
             href: '#',
             hasDropdown: true,
             dropdownItems: [
