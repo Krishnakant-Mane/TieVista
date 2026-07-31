@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { Send, CheckCircle2, ChevronDown, Download, FileText, X, Phone, Mail, Globe } from "lucide-react";
 import { Document, Page, Text, View, StyleSheet, pdf, Image, Font, Svg, Path, Circle, Rect } from "@react-pdf/renderer";
 import PoppinsRegular from "../fonts/Poppins-Regular.ttf";
 import PoppinsBold from "../fonts/Poppins-Bold.ttf";
+import PoppinsLight from "../fonts/Poppins-Light.ttf"
 import PoppinsItalic from "../fonts/Poppins-Italic.ttf";
 import PTSerifRegular from "../fonts/PTSerif-Regular.ttf";
 import PTSerifBold from "../fonts/PTSerif-Bold.ttf";
-import axios from "axios";
+import api from '../api/axiosConfig.js';
 import { useNavigate } from "react-router-dom";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailIcon from '@mui/icons-material/Email';
 import CallEndIcon from '@mui/icons-material/CallEnd';
+
 
 // Register custom fonts for PDF
 Font.register({
@@ -928,11 +932,9 @@ const AgreementPDF2 = ({ data }) => {
     );
 };
 
-const AUTH_CONFIG = {
-    headers: {
-        Authorization: "Basic " + btoa("admin:tievista@123")
-    }
-};
+// AUTH_CONFIG removed — authentication is now handled automatically by the
+// secure api instance (axiosConfig.js) via RSA+AES+HMAC dynamic sessions.
+// No credentials are ever hardcoded or stored in frontend source code.
 
 const OtpSection = ({ onResend, onFilled, onVerify, isVerified, isLoading }) => {
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -1047,6 +1049,7 @@ const OtpSection = ({ onResend, onFilled, onVerify, isVerified, isLoading }) => 
 const PatnersSignup = () => {
     const {
         register: registerReg,
+        control: controlReg,
         handleSubmit: handleSubmitReg,
         trigger: triggerReg,
         watch: watchReg,
@@ -1093,6 +1096,12 @@ const PatnersSignup = () => {
     const [isEmailVerified, setIsEmailVerified] = useState(false);
     const [isSendingOtp, setIsSendingOtp] = useState(false);
     const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+    // Phone OTP states
+    const [showPhoneOtp, setShowPhoneOtp] = useState(false);
+    const [isPhoneOtpFilled, setIsPhoneOtpFilled] = useState(false);
+    const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+    const [isSendingPhoneOtp, setIsSendingPhoneOtp] = useState(false);
+    const [isVerifyingPhoneOtp, setIsVerifyingPhoneOtp] = useState(false);
     const [isFetchingPan, setIsFetchingPan] = useState(false);
     const [kycExist, setKycExist] = useState(null);
     const [kycStatus, setKycStatus] = useState(null);
@@ -1114,7 +1123,7 @@ const PatnersSignup = () => {
     const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     const dobRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
     const arnRegex = /^\d{6}$/;
-    const euinRegex = /^[A-Z]{1}\d{6}$/;
+    const euinRegex = /^[A-Z]{1}/;
     const aprnRegex = /^\d{5}$/;
 
     useEffect(() => {
@@ -1148,25 +1157,48 @@ const PatnersSignup = () => {
         }
         setIsSendingOtp(true);
         try {
-            // ── Pre-check: block if registration is already complete ────────────────
-            // Uses a read-only GET endpoint — creates NO DB records.
-            const statusRes = await axios.get(
-                `https://partners.tievista.com/api/partners/check-status?email=${encodeURIComponent(emailValue)}`,
-                AUTH_CONFIG
-            );
-            if (statusRes.data.registrationComplete) {
-                alert(statusRes.data.message ||
-                    "Registration already complete. Please mail to connect@tievista.com for any changes.");
-                setIsSendingOtp(false);
-                return; // ← Hard stop — do NOT send OTP
+            // ── Step 1: Check registration_complete in DB (read-only, no DB writes) ──
+            // Three possible outcomes:
+            //   A. New user        (exists=false)              → proceed normally
+            //   B. Incomplete      (exists=true, complete=false) → allow resume, inform user
+            //   C. Complete        (exists=true, complete=true)  → hard block, do NOT send OTP
+            let statusRes;
+            try {
+                statusRes = await api.get(
+                    `/api/partners/check-status?email=${encodeURIComponent(emailValue)}`
+                );
+            } catch (statusErr) {
+                // Cannot confirm status — fail safe: block OTP
+                alert("Unable to verify registration status. Please try again.");
+                return;
             }
 
-            await axios.post("https://partners.tievista.com/api/send-otp", { email: emailValue, entityName: entityNameValue }, AUTH_CONFIG);
+            // ── Case C: registration_complete = 1 → hard block ──────────────────────
+            if (statusRes.data.registrationComplete) {
+                alert(
+                    statusRes.data.message ||
+                    "Registration already complete. Please mail to connect@tievista.com for any changes."
+                );
+                return;
+            }
+
+            // ── Case B: exists but registration_complete = 0 → resume ───────────────
+            if (statusRes.data.exists) {
+                alert(
+                    "Welcome back! An incomplete registration was found for this email.\n" +
+                    "After OTP verification, your previous details will be restored so you can continue from where you left off."
+                );
+                // falls through to send OTP
+            }
+
+            // ── Case A + B: Send OTP ─────────────────────────────────────────────────
+            await api.post('/api/send-otp', { email: emailValue, entityName: entityNameValue });
             alert("OTP sent to " + emailValue);
-            setShowEmailOtp(true);
+            setShowEmailOtp(true); // only shown after successful OTP send
+
         } catch (error) {
+            // send-otp call itself failed — do NOT show OTP field
             alert("Failed to send OTP. Please try again.");
-            setShowEmailOtp(true);
         } finally {
             setIsSendingOtp(false);
         }
@@ -1177,10 +1209,10 @@ const PatnersSignup = () => {
     const handleVerifyEmailOtp = async (otp) => {
         setIsVerifyingOtp(true);
         try {
-            const response = await axios.post("https://partners.tievista.com/api/verify-otp", {
+            const response = await api.post('/api/verify-otp', {
                 email: emailValue,
                 otp: otp
-            }, AUTH_CONFIG);
+            });
             if (response.data.success) {
                 setIsEmailVerified(true);
                 alert("Email verified successfully!");
@@ -1198,8 +1230,59 @@ const PatnersSignup = () => {
         await triggerReg("email");
     };
 
+    // Phone OTP — Send
+    const sendPhoneOtp = async () => {
+        const phone = phoneValue;
+        if (!phone || phone.replace(/\D/g, "").length < 10) {
+            alert("Please enter a valid phone number before sending OTP.");
+            return;
+        }
+        setIsSendingPhoneOtp(true);
+        try {
+            const response = await api.post(
+                '/api/gupshup/send-otp',
+                { phone }
+            );
+            if (response.data.status === "success") {
+                alert("We've sent a 6-digit OTP to your WhatsApp. Please check your WhatsApp messages to complete verification." + phone);
+                setShowPhoneOtp(true);
+            } else {
+                alert("Failed to send OTP. Please try again.");
+            }
+        } catch (error) {
+            alert(error.response?.data?.error || "Failed to send OTP. Please try again.");
+        } finally {
+            setIsSendingPhoneOtp(false);
+        }
+    };
+
+    // Phone OTP — Verify
+    const handleVerifyPhoneOtp = async (otp) => {
+        setIsVerifyingPhoneOtp(true);
+        try {
+            const response = await api.post(
+                '/api/gupshup/verify-otp',
+                { phone: phoneValue, otp }
+            );
+            if (response.data.success) {
+                setIsPhoneVerified(true);
+                alert("Phone verified successfully!");
+            } else {
+                alert(response.data.message || "Invalid OTP. Please try again.");
+            }
+        } catch (error) {
+            alert(error.response?.data?.message || "Verification failed.");
+        } finally {
+            setIsVerifyingPhoneOtp(false);
+        }
+    };
+
     // Submission Handlers
     const getUserRegister = async (data) => {
+        if (!isPhoneVerified) {
+            alert("Please verify your phone number with OTP before proceeding.");
+            return;
+        }
         if (!isEmailVerified) {
             alert("Please verify your email with OTP before proceeding.");
             return;
@@ -1213,7 +1296,7 @@ const PatnersSignup = () => {
                 email: data.email,
                 password: 0
             };
-            const response = await axios.post("https://partners.tievista.com/api/partners/register", payload, AUTH_CONFIG);
+            const response = await api.post('/api/partners/register', payload);
             if (response.status === 201 || response.status === 200) {
                 setMasterData(prev => ({ ...prev, ...data }));
                 setShowIdentity(true);
@@ -1266,7 +1349,7 @@ const PatnersSignup = () => {
                 mobile: masterData.phone || identifier
             };
 
-            const response = await axios.post(`https://partners.tievista.com/api/check-pan`, payload, AUTH_CONFIG);
+            const response = await api.post('/api/check-pan', payload);
 
             // ❌ API-level or Digio error — block UI, show message, do NOT advance
             if (!response.data.success) {
@@ -1310,7 +1393,7 @@ const PatnersSignup = () => {
                 aprn: data.aprn || null,
                 euin_aprn: data.euinAprn || null
             };
-            await axios.put(`https://partners.tievista.com/api/partners/update/${identifier}`, payload, AUTH_CONFIG);
+            await api.put(`/api/partners/update/${identifier}`, payload);
             setMasterData(prev => ({ ...prev, ...data }));
             setShowBankDetails(true);
         } catch (error) {
@@ -1346,7 +1429,7 @@ const PatnersSignup = () => {
                 bank_name: finalBankData.bankName,
             };
             try {
-                await axios.put(`https://partners.tievista.com/api/partners/update/${identifier}`, savePayload, AUTH_CONFIG);
+                await api.put(`/api/partners/update/${identifier}`, savePayload);
             } catch (saveErr) {
                 const errMsg = saveErr.response?.data?.message || "Failed to save bank details. Please try again.";
                 alert(errMsg);
@@ -1364,7 +1447,7 @@ const PatnersSignup = () => {
 
             let verifyResponse;
             try {
-                verifyResponse = await axios.post(`https://partners.tievista.com/api/verify-bank`, verifyPayload, AUTH_CONFIG);
+                verifyResponse = await api.post('/api/verify-bank', verifyPayload);
             } catch (verifyErr) {
                 const errMsg = verifyErr.response?.data?.message || "Bank verification failed. Please check your account number and IFSC code.";
                 alert(errMsg);
@@ -1421,13 +1504,12 @@ const PatnersSignup = () => {
 
             if (identifier) {
                 // Send identifier and entityName in body
-                await axios.post(
-                    `https://partners.tievista.com/api/partners/confirm`,
+                await api.post(
+                    '/api/partners/confirm',
                     {
                         identifier: identifier,
                         entityName: watchReg("entityName") || "Partner"
-                    },
-                    AUTH_CONFIG
+                    }
                 );
 
                 alert("Registration confirmed! A welcome email has been sent to your registered email address.");
@@ -2273,7 +2355,7 @@ const PatnersSignup = () => {
                                     disabled={!isAgreed || isGeneratingPdf}
                                     onClick={() => handleDownloadPdf()}
                                     className={`w-full sm:w-auto px-16 py-3 rounded text-xs font-bold uppercase transition-all shadow-md active:translate-y-0.5 ${isAgreed && !isGeneratingPdf
-                                        ? "bg-gradient-to-r from-[#e5bc4b] via-[#d4af37] to-[#b78628] text-white hover:shadow-lg hover:-translate-y-0.5"
+                                        ? "bg-gradient-to-r from-[#F3D34F] via-[#D59D1C] to-[#F5D958] to-[#E0B12D] text-white hover:shadow-lg hover:-translate-y-0.5"
                                         : "bg-gray-100 text-gray-400 cursor-not-allowed"
                                         }`}
                                     style={{ fontFamily: "PT Serif" }}
@@ -2310,19 +2392,16 @@ const PatnersSignup = () => {
     return (
         <div className="flex flex-col lg:flex-row min-h-screen lg:h-screen bg-white">
             {/* Left Branding Panel */}
-            <div className="hidden lg:flex lg:w-[50%] relative bg-[#0a0a0a] overflow-hidden flex-shrink-0">
+            <div className="hidden lg:flex lg:w-[40%] relative bg-[#0a0a0a] overflow-hidden flex-shrink-0">
                 <div
                     className="absolute inset-0 opacity-60 bg-cover bg-center mix-blend-screen"
                     style={{
                         backgroundImage: "url('https://res.cloudinary.com/dck5jgfix/image/upload/v1776406975/PartnersRegistration_bg_pscsqx.png')",
-                        filter: "sepia(1) saturate(2) hue-rotate(5deg) brightness(0.6)",
+                        filter: "sepia(1) saturate(2) hue-rotate(5deg) brightness(1.5)",
                     }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(212,175,55,0.1)_0%,_transparent_80%)]"></div>
-                </div>
                 <div className="relative z-10 w-full flex flex-col items-center justify-center p-12">
-                    <img className="h-65 w-400" src="https://res.cloudinary.com/dck5jgfix/image/upload/v1776428641/TieVistaLogoW_ymkx1d.png" alt="TieVista Logo" />
+                    <img className="h-54 w-400" src="https://res.cloudinary.com/dck5jgfix/image/upload/v1776428641/TieVistaLogoW_ymkx1d.png" alt="TieVista Logo" />
                     <p className="text-white text-2xl tracking-[0.1em] font-light" style={{ fontFamily: PoppinsRegular }}>
                         Trust. Transparency. Transformation.
                     </p>
@@ -2414,26 +2493,67 @@ const PatnersSignup = () => {
                                         style={{ fontFamily: PoppinsRegular }}>
                                         CONTACT NO<span className="text-red-500">*</span>
                                     </label>
-                                    <div className="flex gap-2">
-                                        <div className="relative w-24 flex-shrink-0">
-                                            <select className="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-[#d4af37] outline-none bg-white text-sm text-black"
-                                                style={{ fontFamily: PoppinsRegular }}>
-                                                <option>+91</option>
-                                            </select>
-                                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
+                                    <div className="flex gap-2 items-start">
+                                        <div className="flex-1">
+                                            <Controller
+                                                name="phone"
+                                                control={controlReg}
+                                                render={({ field: { onChange, value, onBlur } }) => (
+                                                    <PhoneInput
+                                                        defaultCountry="in"
+                                                        value={value || ""}
+                                                        onChange={(phone) => {
+                                                            onChange(phone);
+                                                            // reset verification if number changes
+                                                            if (isPhoneVerified) setIsPhoneVerified(false);
+                                                            if (showPhoneOtp) setShowPhoneOtp(false);
+                                                        }}
+                                                        onBlur={() => {
+                                                            onBlur();
+                                                            handlePhoneBlur();
+                                                        }}
+                                                        disabled={isPhoneVerified}
+                                                        className="flex gap-2 w-full"
+                                                        inputClassName={`!w-full !flex-1 !px-2 !py-3 !border !rounded !focus:border-[#d4af37] !outline-none !transition-all !placeholder:text-gray-300 !text-[16px] !text-black !h-auto ${isPhoneVerified ? "!bg-green-50 !border-green-500" : errorsReg.phone ? "!border-red-500" : "!border-gray-300"}`}
+                                                        countrySelectorStyleProps={{
+                                                            buttonClassName: `!w-24 !px-3 !py-3 !border !rounded !bg-white !h-auto !flex !items-center !justify-between !text-sm !text-black ${isPhoneVerified ? "!border-green-500" : "!border-gray-300"}`
+                                                        }}
+                                                    />
+                                                )}
+                                            />
                                         </div>
-                                        <input
-                                            {...registerReg("phone", {
-                                                required: "Mobile number is required",
-                                                pattern: { value: phoneRegex, message: "Invalid 10-digit number" },
-                                            })}
-                                            onBlur={handlePhoneBlur}
-                                            className={`flex-1 px-2 py-3 border rounded focus:border-[#d4af37] outline-none transition-all placeholder:text-gray-300 text-[16px] text-black ${errorsReg.phone ? "border-red-500" : "border-gray-300"}`}
-                                            maxLength={10}
-                                        />
+                                        {(!isPhoneVerified && phoneValue && phoneValue.replace(/\D/g, "").length >= 10) && (
+                                            <button
+                                                type="button"
+                                                onClick={sendPhoneOtp}
+                                                disabled={isSendingPhoneOtp || showPhoneOtp}
+                                                className={`px-4 py-3 rounded text-xs font-bold transition-all uppercase tracking-wider whitespace-nowrap ${
+                                                    (isSendingPhoneOtp || showPhoneOtp)
+                                                        ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                                                        : "bg-gradient-to-r from-[#e5bc4b] via-[#d4af37] to-[#b78628] text-white"
+                                                }`}
+                                            >
+                                                {isSendingPhoneOtp ? "..." : (showPhoneOtp ? "OTP Sent" : "Send OTP")}
+                                            </button>
+                                        )}
+                                        {isPhoneVerified && (
+                                            <span className="flex items-center gap-1 text-green-600 text-xs font-bold pt-3 whitespace-nowrap">
+                                                ✓ Verified
+                                            </span>
+                                        )}
                                     </div>
                                     {errorsReg.phone && <p className="text-[10px] text-red-500 mt-1 font-medium">{errorsReg.phone.message}</p>}
                                 </div>
+                                {/* Phone OTP */}
+                                {showPhoneOtp && !isPhoneVerified && (
+                                    <OtpSection
+                                        onResend={sendPhoneOtp}
+                                        onFilled={setIsPhoneOtpFilled}
+                                        onVerify={handleVerifyPhoneOtp}
+                                        isVerified={isPhoneVerified}
+                                        isLoading={isVerifyingPhoneOtp}
+                                    />
+                                )}
 
                                 <div className="space-y-1.5">
                                     <label className="text-[14px] font-medium text-black tracking-wide uppercase"
@@ -2447,7 +2567,8 @@ const PatnersSignup = () => {
                                                 pattern: { value: emailRegex, message: "Invalid email format" },
                                             })}
                                             onBlur={handleEmailBlur}
-                                            className={`flex-1 px-4 py-3 border rounded focus:border-[#d4af37] outline-none transition-all placeholder:text-gray-300 text-[16px] text-black ${errorsReg.email ? "border-red-500" : "border-gray-300"}`}
+                                            disabled={isEmailVerified}
+                                            className={`flex-1 px-4 py-3 border rounded focus:border-[#d4af37] outline-none transition-all placeholder:text-gray-300 text-[16px] text-black ${isEmailVerified ? "bg-green-50 border-green-500" : errorsReg.email ? "border-red-500" : "border-gray-300"}`}
                                         />
                                         {(!isEmailVerified && emailValue && emailRegex.test(emailValue)) && (
                                             <button
@@ -2462,11 +2583,17 @@ const PatnersSignup = () => {
                                                 {isSendingOtp ? "..." : (showEmailOtp ? "OTP Sent" : "Send OTP")}
                                             </button>
                                         )}
+                                    {isEmailVerified && (
+                                            <span className="flex items-center gap-1 text-green-600 text-xs font-bold pt-3 whitespace-nowrap">
+                                                ✓ Verified
+                                            </span>
+                                        )}
                                     </div>
                                     {errorsReg.email && <p className="text-[10px] text-red-500 mt-1 font-medium">{errorsReg.email.message}</p>}
                                 </div>
+                                
                                 {/* Email OTP */}
-                                {showEmailOtp && (
+                                {showEmailOtp && !isEmailVerified && (
                                     <OtpSection
                                         onResend={sendEmailOtp}
                                         onFilled={setIsEmailOtpFilled}
@@ -2480,7 +2607,7 @@ const PatnersSignup = () => {
                                     <div className="py-5 flex justify-center my-3.5">
                                         <button
                                             type="submit"
-                                            className="w-full max-w-xs py-3.5 rounded-lg shadow-md transition-all font-bold text-sm tracking-widest uppercase bg-gradient-to-r from-[#e5bc4b] via-[#d4af37] to-[#b78628] text-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                                            className="w-full max-w-xs py-3.5 rounded-lg shadow-md transition-all font-bold text-sm tracking-widest uppercase bg-gradient-to-r from-[#F3D34F] via-[#D59D1C] to-[#F5D958] to-[#E0B12D] text-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                                             style={{ fontFamily: "PT Serif" }}
                                         >
                                             NEXT
@@ -2540,7 +2667,7 @@ const PatnersSignup = () => {
                                                 type="submit"
                                                 disabled={!panValue || !dobValue || !isAuthorized || errorsPan.pan || errorsPan.dob}
                                                 className={`w-full max-w-[200px] py-3 rounded-lg shadow-sm font-bold text-xs tracking-widest uppercase transition-all ${panValue && dobValue && isAuthorized && !errorsPan.pan && !errorsPan.dob
-                                                    ? "bg-gradient-to-r from-[#e5bc4b] to-[#d4af37] text-white hover:shadow-md cursor-pointer"
+                                                    ? "bg-gradient-to-r from-[#F3D34F] via-[#D59D1C] to-[#F5D958] to-[#E0B12D] text-white hover:shadow-md cursor-pointer"
                                                     : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}
                                                 style={{ fontFamily: "PT Serif" }}
                                             >
@@ -2568,8 +2695,8 @@ const PatnersSignup = () => {
                                             <div className="flex gap-4 w-full">
                                                 <div className="flex-1 flex flex-col">
                                                     <input
-                                                        {...registerRegulatory("arn", { required: "ARN is required"})}
-                                                        placeholder="ARN"
+                                                        {...registerRegulatory("arn", { required: "ARN is required", pattern: arnRegex, maxLength: { value: 6, message: "ARN must be 6 digits" } })}
+                                                        placeholder="ARN (6 digits)" maxLength={6}
                                                         className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#d4af37] outline-none text-[16px] text-black"
                                                     />
                                                     {errorsRegulatory.arn && <p className="text-red-500 text-xs mt-2">{errorsRegulatory.arn.message}</p>}
@@ -2586,8 +2713,8 @@ const PatnersSignup = () => {
                                             <div className="flex gap-4 w-full">
                                                 <div className="flex-1 flex flex-col">
                                                     <input
-                                                        {...registerRegulatory("aprn", { required: "APRN is required" })}
-                                                        placeholder="APRN" 
+                                                        {...registerRegulatory("aprn", { required: "APRN is required", pattern: aprnRegex, maxLength: { value: 5, message: "APRN must be 5 digits" } })}
+                                                        placeholder="APRN (5 digits)" maxLength={5}
                                                         className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#d4af37] outline-none text-[16px] text-black"
                                                     />
                                                     {errorsRegulatory.aprn && <p className="text-red-500 text-xs mt-2">{errorsRegulatory.aprn.message}</p>}
@@ -2604,7 +2731,7 @@ const PatnersSignup = () => {
                                         </div>
                                         <div className="pt-10 flex justify-center pb-12">
                                             <button type="submit"
-                                                className="w-full max-w-xs py-3.5 bg-gradient-to-r from-[#e5bc4b] via-[#d4af37] to-[#b78628] text-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all font-bold text-sm tracking-widest uppercase"
+                                                className="w-full max-w-xs py-3.5 bg-gradient-to-r from-[#F3D34F] via-[#D59D1C] to-[#F5D958] to-[#E0B12D] text-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all font-bold text-sm tracking-widest uppercase"
                                                 style={{ fontFamily: "PT Serif" }}>
                                                 PROCEED
                                             </button>
@@ -2685,7 +2812,7 @@ const PatnersSignup = () => {
                                 </div>
                                 <div className="pt-10 flex justify-center pb-12">
                                     <button type="submit"
-                                        className="w-full max-w-xs py-4 bg-gradient-to-r from-[#e5bc4b] via-[#d4af37] to-[#b78628] text-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all font-bold text-sm tracking-widest uppercase"
+                                        className="w-full max-w-xs py-4 bg-gradient-to-r from-[#F3D34F] via-[#D59D1C] to-[#F5D958] to-[#E0B12D] text-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all font-bold text-sm tracking-widest uppercase"
                                         style={{ fontFamily: "PT Serif" }}>
                                         Submit Details
                                     </button>
