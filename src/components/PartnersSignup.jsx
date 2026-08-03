@@ -1390,8 +1390,8 @@ const PatnersSignup = () => {
             const payload = {
                 arn: data.arn || null,
                 euin_arn: data.euinARN || null,
-                aprn: data.aprn || null,
-                euin_aprn: data.euinAprn || null
+                aprn: data.aprn || 'NA',
+                euin_aprn: data.euinAprn || 'NA'
             };
             await api.put(`/api/partners/update/${identifier}`, payload);
             setMasterData(prev => ({ ...prev, ...data }));
@@ -1485,7 +1485,7 @@ const PatnersSignup = () => {
                 entityName: watchReg("entityName") || "[Sub-Distributor Name]",
                 address: watchReg("address") || "[address]",
                 arn: watchRegulatory("arn") || "[arn]",
-                aprn: watchRegulatory("aprn") || "[aprn]",
+                aprn: watchRegulatory("aprn") || "NA",
             };
             const blob = await pdf(<AgreementPDF data={data} />).toBlob();
             const url = URL.createObjectURL(blob);
@@ -1532,7 +1532,7 @@ const PatnersSignup = () => {
         const entityName = watchReg("entityName") || "[Sub-Distributor Name]";
         const address = watchReg("address") || "[address]";
         const arn = watchRegulatory("arn") || "[arn]";
-        const aprn = watchRegulatory("aprn") || "[aprn]";
+        const aprn = watchRegulatory("aprn") || "NA";
 
         return (
             <div className="fixed inset-0 z-[110] flex items-center justify-center p-0 lg:p-10 bg-black/60 shadow-2xl backdrop-blur-sm animate-in fade-in duration-300">
@@ -2713,7 +2713,7 @@ const PatnersSignup = () => {
                                             <div className="flex gap-4 w-full">
                                                 <div className="flex-1 flex flex-col">
                                                     <input
-                                                        {...registerRegulatory("aprn", { required: "APRN is required", pattern: aprnRegex, maxLength: { value: 5, message: "APRN must be 5 digits" } })}
+                                                        {...registerRegulatory("aprn", /* { required: "APRN is required", pattern: aprnRegex, maxLength: { value: 5, message: "APRN must be 5 digits" } }*/) }
                                                         placeholder="APRN (5 digits)" maxLength={5}
                                                         className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#d4af37] outline-none text-[16px] text-black"
                                                     />
@@ -2721,7 +2721,7 @@ const PatnersSignup = () => {
                                                 </div>
                                                 <div className="flex-1 flex flex-col">
                                                     <input
-                                                        {...registerRegulatory("euinAprn", { required: "EUIN is required example E123456", pattern: euinRegex, maxLength: { value: 7, message: "EUIN must be 7 characters" } })}
+                                                        {...registerRegulatory("euinAprn", /*{ required: "EUIN is required example E123456", pattern: euinRegex, maxLength: { value: 7, message: "EUIN must be 7 characters" } })*/)}
                                                         placeholder="EUIN (APRN)" maxLength={7}
                                                         className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#d4af37] outline-none text-[16px] text-black"
                                                     />
