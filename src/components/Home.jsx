@@ -93,7 +93,7 @@ const Home = () => {
                                 </h1>
                             </motion.div>
 
-                            <motion.p variants={itemVariants} className="text-white text-base sm:text-lg lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md" style={{ fontFamily: PoppinsRegular }}>
+                            <motion.p variants={itemVariants} className="text-white text-base sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md" style={{ fontFamily: PoppinsRegular }}>
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
