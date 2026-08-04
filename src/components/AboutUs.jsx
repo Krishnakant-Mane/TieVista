@@ -334,7 +334,7 @@ const AboutUs = () => {
                             <Link to={latestBlog.url} className="block">
                                 <div className="w-full border border-black rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row gap-8 md:gap-12 hover:shadow-2xl transition-shadow duration-300">
                                     {/* Image */}
-                                    <div className="w-full sm:w-[380px] md:w-hidden lg:hidden shrink-0">
+                                    <div className="w-full sm:w-[380px] md:w-[380px] lg:w-[420px] shrink-0">
                                         <div className="w-full aspect-[4/3] overflow-hidden">
                                             <img
                                                 src={latestBlog.img}
@@ -358,17 +358,6 @@ const AboutUs = () => {
                                         <div className="flex items-center gap-2 text-black font-bold text-[15px]">
                                             Read Blog
                                             <ArrowRightCircle size={20} className="text-[#D4AF37]" />
-                                        </div>
-                                    </div>
-                                    {/* Image */}
-                                    <div className="w-full sm:hidden md:w-[380px] lg:w-[420px] shrink-0">
-                                        <div className="w-full aspect-[4/3] overflow-hidden">
-                                            <img
-                                                src={latestBlog.img}
-                                                alt={latestBlog.title}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
                                         </div>
                                     </div>
                                 </div>

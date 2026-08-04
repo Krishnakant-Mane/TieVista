@@ -97,7 +97,7 @@ const Home = () => {
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
-                            <motion.div variants={itemVariants} className="flex flex-col items-center lg:flex-wrap lg:items-center lg:w-200 gap-4 sm:gap-6">
+                            <motion.div variants={itemVariants} className="flex flex-col lg:flex-row items-center lg:flex-wrap lg:justify-start lg:w-200 gap-4 sm:gap-6">
                                 <Link to="/contact">
                                     <button className="lg:w-65 bg-[#D4AF37] hover:bg-[#c29e2f] transition-all text-white px-8 py-3.5 font-light text-[16px] shadow-[0_4px_14px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)]">
                                         Schedule a Call
