@@ -36,39 +36,41 @@ const DesktopDropdown = ({ items, depth = 0 }) => {
     return (
         <div
             ref={ref}
-            className={`absolute bg-white shadow-xl border border-gray-100 rounded-sm z-50 ${
+            className={`absolute z-50 ${
                 depth === 0
-                    ? 'left-0 mt-0 w-64'
+                    ? 'top-full left-1/2 -translate-x-1/2 pt-4'
                     : flipLeft
-                        ? 'right-full top-0 w-64'
-                        : 'left-full top-0 w-64'
+                        ? 'right-full top-0 pr-2'
+                        : 'left-full top-0 pl-2'
             }`}
             onMouseLeave={() => setHoveredItem(null)}
         >
-            {items.map((item, i) => (
-                <div
-                    key={i}
-                    className="relative group/sub"
-                    onMouseEnter={() => setHoveredItem(item.hasDropdown ? item.label : null)}
-                >
-                    <Link
-                        to={item.href}
-                        {...(item.target ? { target: item.target } : {})}
-                        className="flex items-center justify-between px-6 py-3 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-50 transition-colors"
+            <div className="bg-white shadow-xl border border-gray-100 rounded-xl py-2 w-56 relative">
+                {items.map((item, i) => (
+                    <div
+                        key={i}
+                        className="relative group/sub"
+                        onMouseEnter={() => setHoveredItem(item.hasDropdown ? item.label : null)}
                     >
-                        <span>{item.label}</span>
-                        {item.hasDropdown && (
-                            <ChevronDown
-                                size={14}
-                                className="-rotate-90 text-gray-400 group-hover/sub:text-[#D4AF37]"
-                            />
+                        <Link
+                            to={item.href}
+                            {...(item.target ? { target: item.target } : {})}
+                            className="flex items-center justify-between px-5 py-2.5 text-sm font-medium text-gray-700 hover:text-[#D4AF37] hover:bg-gray-50 transition-colors"
+                        >
+                            <span>{item.label}</span>
+                            {item.hasDropdown && (
+                                <ChevronDown
+                                    size={14}
+                                    className="-rotate-90 text-gray-400 group-hover/sub:text-[#D4AF37]"
+                                />
+                            )}
+                        </Link>
+                        {item.hasDropdown && hoveredItem === item.label && (
+                            <DesktopDropdown items={item.dropdownItems} depth={depth + 1} />
                         )}
-                    </Link>
-                    {item.hasDropdown && hoveredItem === item.label && (
-                        <DesktopDropdown items={item.dropdownItems} depth={depth + 1} />
-                    )}
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
@@ -76,20 +78,20 @@ const DesktopDropdown = ({ items, depth = 0 }) => {
 // ─── Desktop Nav Item ────────────────────────────────────────────────────────
 const DesktopNavItem = ({ item, isActive, onEnter, onLeave }) => (
     <div
-        className="relative group" style={{ fontFamily: 'PT Serif, serif' }}
+        className="relative group h-full flex items-center" style={{ fontFamily: 'PT Serif, serif' }}
         onMouseEnter={() => item.hasDropdown && onEnter(item.label)}
         onMouseLeave={onLeave}
     >
-        <Link to={item.href}>
+        <Link to={item.href} className="h-full flex items-center">
             <button
-                className="flex items-center gap-1 text-[14px] font-normal text-black hover:text-[#D4AF37] transition-colors hover:cursor-pointer"
+                className="flex items-center gap-1.5 text-[16px] font-medium text-gray-800 hover:text-[#D4AF37] transition-colors hover:cursor-pointer"
                 aria-haspopup={item.hasDropdown ? 'true' : undefined}
                 aria-expanded={item.hasDropdown ? String(isActive) : undefined}
             >
                 {item.label}
                 {item.hasDropdown && (
                     <ChevronDown
-                        size={14}
+                        size={16}
                         className={`transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}
                     />
                 )}
@@ -116,14 +118,14 @@ const MobileNavItem = ({ item, isOpen, onToggle, onClose, depth = 0 }) => {
                 <Link
                     to={item.href}
                     onClick={onClose}
-                    className={`flex-grow py-4 text-gray-700 hover:text-black hover:bg-gray-50 px-2 rounded-md transition-all ${depth === 0 ? 'text-[15px] font-medium' : 'text-sm font-normal text-gray-500'}`}
+                    className={`flex-grow py-3 text-gray-800 hover:text-[#D4AF37] hover:bg-gray-50 px-3 rounded-lg transition-all ${depth === 0 ? 'text-[16px] font-medium' : 'text-[15px] font-normal text-gray-600'}`}
                 >
                     {item.label}
                 </Link>
                 {item.hasDropdown && (
                     <button
                         onClick={onToggle}
-                        className="p-4 text-gray-400 hover:text-black transition-colors"
+                        className="p-3 text-gray-500 hover:text-[#D4AF37] transition-colors"
                         aria-expanded={String(isOpen)}
                         aria-label={`Toggle ${item.label} submenu`}
                     >
@@ -143,7 +145,7 @@ const MobileNavItem = ({ item, isOpen, onToggle, onClose, depth = 0 }) => {
                         exit="exit"
                         className="overflow-hidden"
                     >
-                        <div className="pl-6 pb-2 space-y-0 mt-1 border-l-2 ml-2" style={{ borderColor: GOLD }}>
+                        <div className="pl-6 pb-2 space-y-1 mt-1 border-l-2 ml-4" style={{ borderColor: GOLD }}>
                             {item.dropdownItems.map((dropItem, i) => (
                                 <MobileNavItem
                                     key={i}
@@ -217,79 +219,79 @@ export const Navbar = () => {
     const isLoginActive = activeDropdown === 'Login';
 
     return (
-        <div className="w-full sticky top-0 z-[100] shadow-sm">
-            <nav className=" bg-white border-b w-full border-gray-100 px-4 sm:px-8 lg:px-12 xl:px-20">
-                <div className="max-w-[1600px] mx-auto">
-                    <div className="flex justify-between items-center h-15 space-x-6">
+        <div className="w-full fixed top-4 sm:top-6 left-0 z-[100] px-4 sm:px-6 lg:px-8 transition-all duration-300">
+            <nav className={`bg-white w-full max-w-[1400px] mx-auto shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 px-5 sm:px-8 lg:px-10 transition-all duration-300 ${
+                isMobileMenuOpen ? 'rounded-[2rem]' : 'rounded-3xl'
+            }`}>
+                <div className="flex justify-between items-center h-16 lg:h-[65px] relative">
 
-                        {/* Logo */}
-                        <Link to="/" onClick={closeMobileMenu}>
-                            <div className="flex items-center gap-3">
-                                <div className="w-20 h-20 flex items-center justify-center">
-                                    <img className="h-full w-full object-contain" src={logo} alt="TieVista Logo" />
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Desktop Nav */}
-                        <div className="hidden xl:flex items-center space-x-20">
-                            {navItems.map((item, i) => (
-                                <DesktopNavItem
-                                    key={i}
-                                    item={item}
-                                    isActive={activeDropdown === item.label}
-                                    onEnter={openDropdown}
-                                    onLeave={closeDropdown}
-                                />
-                            ))}
+                    {/* Logo */}
+                    <Link to="/" onClick={closeMobileMenu} className="shrink-0 z-10 flex items-center h-full">
+                        <div className="h-10 lg:h-12 w-auto flex items-center justify-center">
+                            <img className="h-full w-auto object-contain" src={logo} alt="TieVista Logo" />
                         </div>
+                    </Link>
 
-                        {/* Desktop Login */}
-                        <div
-                            className="hidden xl:flex relative group justify-center items-center"
-                            onMouseEnter={() => openDropdown('Login')}
-                            onMouseLeave={closeDropdown}
+                    {/* Desktop Nav */}
+                    <div className="hidden xl:flex flex-1 justify-center items-center space-x-30 h-full">
+                        {navItems.map((item, i) => (
+                            <DesktopNavItem
+                                key={i}
+                                item={item}
+                                isActive={activeDropdown === item.label}
+                                onEnter={openDropdown}
+                                onLeave={closeDropdown}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Desktop Login */}
+                    <div
+                        className="hidden xl:flex shrink-0 relative group justify-end items-center h-full z-10"
+                        onMouseEnter={() => openDropdown('Login')}
+                        onMouseLeave={closeDropdown}
+                    >
+                        <button
+                            className="px-7 py-2.5 border rounded-sm text-[15px] font-medium transition-all duration-300 hover:cursor-pointer"
+                            style={{
+                                borderColor: GOLD,
+                                color: isLoginActive ? 'white' : GOLD,
+                                backgroundColor: isLoginActive ? GOLD : 'transparent',
+                            }}
+                            aria-haspopup="true"
+                            aria-expanded={String(isLoginActive)}
                         >
-                            <button
-                                className="px-8 py-2 border text-sm font-medium transition-all duration-300 hover:cursor-pointer"
-                                style={{
-                                    borderColor: GOLD,
-                                    color: isLoginActive ? 'white' : GOLD,
-                                    backgroundColor: isLoginActive ? GOLD : 'transparent',
-                                }}
-                                aria-haspopup="true"
-                                aria-expanded={String(isLoginActive)}
-                            >
-                                Login
-                            </button>
+                            Login
+                        </button>
 
-                            {isLoginActive && (
-                                <div className="absolute top-full right-0 mt-0 w-48 bg-white shadow-xl border border-gray-100 rounded-sm z-50 overflow-hidden">
+                        {isLoginActive && (
+                            <div className="absolute top-full right-0 pt-4 z-50">
+                                <div className="w-56 bg-white shadow-xl border border-gray-100 rounded-xl py-2 overflow-hidden">
                                     {loginOptions.map((item, i) => (
                                         <a
                                             key={i}
                                             href={item.href}
                                             target={item.target}
-                                            className="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#D4AF37] transition-colors"
+                                            className="block px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#D4AF37] transition-colors"
                                         >
                                             {item.label}
                                         </a>
                                     ))}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
+                    </div>
 
-                        {/* Mobile Menu Toggle */}
-                        <div className="xl:hidden flex items-center">
-                            <button
-                                onClick={toggleMobileMenu}
-                                className="text-gray-600 p-2"
-                                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-                                aria-expanded={String(isMobileMenuOpen)}
-                            >
-                                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                            </button>
-                        </div>
+                    {/* Mobile Menu Toggle */}
+                    <div className="xl:hidden flex items-center shrink-0 z-10">
+                        <button
+                            onClick={toggleMobileMenu}
+                            className="text-gray-700 p-2 focus:outline-none hover:text-[#D4AF37] transition-colors"
+                            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={String(isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
                     </div>
                 </div>
 
@@ -303,7 +305,7 @@ export const Navbar = () => {
                             exit="exit"
                             className="xl:hidden bg-white border-t border-gray-100 overflow-hidden"
                         >
-                            <div className="max-h-[70vh] overflow-y-auto py-4 px-4 space-y-1">
+                            <div className="max-h-[70vh] overflow-y-auto py-4 px-2 space-y-2 pb-6">
                                 {navItems.map((item, i) => (
                                     <MobileNavItem
                                         key={i}
@@ -315,10 +317,10 @@ export const Navbar = () => {
                                 ))}
 
                                 {/* Mobile Login */}
-                                <div className="pt-6 pb-20 border-t border-gray-100 mt-4">
+                                <div className="pt-6 mt-4 px-3 border-t border-gray-100">
                                     <button
                                         onClick={() => toggleMobileDropdown('Login')}
-                                        className="w-full py-4 border text-[15px] font-medium rounded-sm flex justify-between items-center px-4"
+                                        className="w-full py-3.5 border rounded-lg text-[16px] font-medium flex justify-between items-center px-5 transition-all"
                                         style={{ borderColor: GOLD, color: GOLD }}
                                         aria-expanded={String(activeMobileDropdown === 'Login')}
                                     >
@@ -327,7 +329,7 @@ export const Navbar = () => {
                                             animate={{ rotate: activeMobileDropdown === 'Login' ? 180 : 0 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <ChevronDown size={16} />
+                                            <ChevronDown size={18} />
                                         </motion.div>
                                     </button>
 
@@ -338,7 +340,7 @@ export const Navbar = () => {
                                                 initial="hidden"
                                                 animate="visible"
                                                 exit="exit"
-                                                className="overflow-hidden bg-gray-50/50 mt-2 rounded-sm"
+                                                className="overflow-hidden bg-gray-50/50 mt-2 rounded-lg"
                                             >
                                                 {loginOptions.map((option, i) => (
                                                     <a
@@ -346,7 +348,7 @@ export const Navbar = () => {
                                                         href={option.href}
                                                         target={option.target}
                                                         onClick={closeMobileMenu}
-                                                        className="block px-6 py-4 text-sm text-gray-600 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors"
+                                                        className="block px-6 py-4 text-sm font-medium text-gray-700 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors"
                                                     >
                                                         {option.label}
                                                     </a>
