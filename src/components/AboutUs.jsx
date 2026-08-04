@@ -148,9 +148,9 @@ const AboutUs = () => {
             </div>
 
             {/* Button */}
-            <button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-black font-medium px-8 py-3.5 text-[15px] transition-all shadow-md" style={{ fontFamily: PoppinsRegular }}>
+            <Link to={"/contact"}><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-black font-medium px-8 py-3.5 text-[15px] transition-all shadow-md" style={{ fontFamily: PoppinsRegular }}>
                 Book a Private Consultation
-            </button>
+            </button></Link>
         </div>
       </div>
 
