@@ -333,6 +333,17 @@ const AboutUs = () => {
                         return (
                             <Link to={latestBlog.url} className="block">
                                 <div className="w-full border border-black rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row gap-8 md:gap-12 hover:shadow-2xl transition-shadow duration-300">
+                                    {/* Image */}
+                                    <div className="w-full sm:w-[380px] md:w-hidden lg:hidden shrink-0">
+                                        <div className="w-full aspect-[4/3] overflow-hidden">
+                                            <img
+                                                src={latestBlog.img}
+                                                alt={latestBlog.title}
+                                                className="w-full h-full object-cover"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    </div>
                                     {/* Text Content */}
                                     <div className="flex-1 flex flex-col justify-center">
                                         <h3 className="text-[26px] lg:text-[28px] font-bold text-black leading-tight mb-6" style={{ fontFamily: 'Laura, serif' }}>
@@ -350,7 +361,7 @@ const AboutUs = () => {
                                         </div>
                                     </div>
                                     {/* Image */}
-                                    <div className="w-full md:w-[380px] lg:w-[420px] shrink-0">
+                                    <div className="w-full sm:hidden md:w-[380px] lg:w-[420px] shrink-0">
                                         <div className="w-full aspect-[4/3] overflow-hidden">
                                             <img
                                                 src={latestBlog.img}
