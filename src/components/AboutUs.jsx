@@ -1,9 +1,57 @@
-import React from 'react'
-import { CandlestickChart, Globe, Rocket, FileText, Layers, Handshake, Landmark, TrendingUp, Wallet, UserPlus, PieChart, Briefcase, ArrowRightCircle } from 'lucide-react'
+import React, { useState } from 'react'
+import { CandlestickChart, Globe, Rocket, FileText, Layers, Handshake, Landmark, TrendingUp, Wallet, UserPlus, PieChart, Briefcase, ArrowRightCircle, Calendar, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
 
 const AboutUs = () => {
+
+  const [activeTab, setActiveTab] = useState('blogs'); // 'blogs' or 'publications'
+
+  const publications = [
+        {
+            id: 1,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1sBlq8NylKUpYCLFdZRVvalqO5CY2WKFi",
+            date: "March, 2026"
+        },
+        {
+            id: 2,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1THnT4o4rO41n7Z_txoYJA9uPO8JTL9Pq",
+            date: "April, 2026"
+        },
+        {
+            id: 3,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1NvBRTvJkPHLfUvO4frcJgSW7gI86qxbi",
+            date: "May, 2026"
+        },
+        {
+            id: 4,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1raBvJHiBkgZjAyb3bWMIw5pOrONKM_s4",
+            date: "June, 2026"
+        },
+  ]
+
+  const handleDownload = (url) => {
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.click();
+  };
 
   const services = [
     {
@@ -238,75 +286,130 @@ const AboutUs = () => {
             {/* Tabs and View All */}
             <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
                 <div className="flex items-center gap-3">
-                    <button className="bg-gradient-to-r from-[#e0b73c] to-[#c29b22] text-white text-[13px] font-medium px-5 py-2 transition-all">
+                    <button 
+                        onClick={() => setActiveTab('blogs')}
+                        className={`${activeTab === 'blogs' ? "bg-gradient-to-r from-[#e0b73c] to-[#c29b22] text-white" : "bg-white border border-gray-300 text-black hover:border-[#D4AF37]"} text-[13px] font-medium px-5 py-2 transition-all`}
+                    >
                         Blogs
                     </button>
-                    <button className="bg-white border border-gray-300 text-black text-[13px] font-medium px-5 py-2 hover:border-[#D4AF37] transition-all">
+                    <button 
+                        onClick={() => setActiveTab('publications')}
+                        className={`${activeTab === 'publications' ? "bg-gradient-to-r from-[#e0b73c] to-[#c29b22] text-white" : "bg-white border border-gray-300 text-black hover:border-[#D4AF37]"} text-[13px] font-medium px-5 py-2 transition-all`}
+                    >
                         Monthly Update
                     </button>
                 </div>
-                <Link to="/blogs" className="border border-[#D4AF37] text-[#D4AF37] text-[13px] font-medium px-5 py-2 hover:bg-[#D4AF37]/5 transition-all">
-                    View All Blogs→
+                <Link to={activeTab === 'blogs' ? "/blogs" : "/publications"} className="border border-[#D4AF37] text-[#D4AF37] text-[13px] font-medium px-5 py-2 hover:bg-[#D4AF37]/5 transition-all">
+                    View All {activeTab === 'blogs' ? 'Blogs' : 'Publications'}→
                 </Link>
             </div>
 
-            {/* Latest Blog Card */}
-            {(() => {
-                const blogs = [
-                    {
-                        id: 1,
-                        title: "Decluttering the Noise Around",
-                        goldtitle: "US Private Credit Crisis",
-                        description: "Private Credit expanded rapidly after 2008, when banks were forced to pull back from risky lending. It now faces a crucial test.",
-                        img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
-                        url: "/blogs/decluttering-the-noise-around",
-                        date: "March 28, 2026"
-                    },
-                    {
-                        id: 2,
-                        title: "The Rupee's Longest Fall:",
-                        goldtitle: "From ₹1 to ₹95 and Counting",
-                        description: "The Indian rupee has steadily depreciated since independence but 2026 marks a sharp acceleration in the pace of...",
-                        img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
-                        url: "/blogs/the-rupees-longest-fall",
-                        date: "May 15, 2026"
-                    },
-                ]
-                const latestBlog = blogs[blogs.length - 1]
-                return (
-                    <Link to={latestBlog.url} className="block">
-                        <div className="w-full border border-black rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row gap-8 md:gap-12 hover:shadow-2xl transition-shadow duration-300">
-                            {/* Text Content */}
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h3 className="text-[26px] lg:text-[28px] font-bold text-black leading-tight mb-6" style={{ fontFamily: 'Laura, serif' }}>
-                                    {latestBlog.title} {latestBlog.goldtitle}
-                                </h3>
-                                <p className="text-black font-bold text-[16px] mb-1">
-                                    {latestBlog.date}
-                                </p>
-                                <p className="text-[#4a4a4a] text-[16px] leading-relaxed mb-8" style={{ fontFamily: PoppinsRegular }}>
-                                    {latestBlog.description}
-                                </p>
-                                <div className="flex items-center gap-2 text-black font-bold text-[15px]">
-                                    Read Blog
-                                    <ArrowRightCircle size={20} className="text-[#D4AF37]" />
+            {/* Conditional Rendering based on activeTab */}
+            {activeTab === 'blogs' && (
+                <div className="w-full">
+                    {/* Latest Blog Card */}
+                    {(() => {
+                        const blogs = [
+                            {
+                                id: 1,
+                                title: "Decluttering the Noise Around",
+                                goldtitle: "US Private Credit Crisis",
+                                description: "Private Credit expanded rapidly after 2008, when banks were forced to pull back from risky lending. It now faces a crucial test.",
+                                img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
+                                url: "/blogs/decluttering-the-noise-around",
+                                date: "March 28, 2026"
+                            },
+                            {
+                                id: 2,
+                                title: "The Rupee's Longest Fall:",
+                                goldtitle: "From ₹1 to ₹95 and Counting",
+                                description: "The Indian rupee has steadily depreciated since independence but 2026 marks a sharp acceleration in the pace of...",
+                                img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
+                                url: "/blogs/the-rupees-longest-fall",
+                                date: "May 15, 2026"
+                            },
+                        ]
+                        const latestBlog = blogs[blogs.length - 1]
+                        return (
+                            <Link to={latestBlog.url} className="block">
+                                <div className="w-full border border-black rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row gap-8 md:gap-12 hover:shadow-2xl transition-shadow duration-300">
+                                    {/* Text Content */}
+                                    <div className="flex-1 flex flex-col justify-center">
+                                        <h3 className="text-[26px] lg:text-[28px] font-bold text-black leading-tight mb-6" style={{ fontFamily: 'Laura, serif' }}>
+                                            {latestBlog.title} {latestBlog.goldtitle}
+                                        </h3>
+                                        <p className="text-black font-bold text-[16px] mb-1">
+                                            {latestBlog.date}
+                                        </p>
+                                        <p className="text-[#4a4a4a] text-[16px] leading-relaxed mb-8" style={{ fontFamily: PoppinsRegular }}>
+                                            {latestBlog.description}
+                                        </p>
+                                        <div className="flex items-center gap-2 text-black font-bold text-[15px]">
+                                            Read Blog
+                                            <ArrowRightCircle size={20} className="text-[#D4AF37]" />
+                                        </div>
+                                    </div>
+                                    {/* Image */}
+                                    <div className="w-full md:w-[380px] lg:w-[420px] shrink-0">
+                                        <div className="w-full aspect-[4/3] overflow-hidden">
+                                            <img
+                                                src={latestBlog.img}
+                                                alt={latestBlog.title}
+                                                className="w-full h-full object-cover"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* Image */}
-                            <div className="w-full md:w-[380px] lg:w-[420px] shrink-0">
-                                <div className="w-full aspect-[4/3] overflow-hidden">
+                            </Link>
+                        )
+                    })()}
+                </div>
+            )}
+
+            {activeTab === 'publications' && (
+                <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
+                    {publications.slice(-3).map((publication, idx) => (
+                        <div key={idx} className="flex-1 group flex flex-col bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 w-full">
+                            {/* Image Container */}
+                            <div className='relative w-full overflow-hidden bg-gray-50'>
+                                <div className='relative w-full aspect-square overflow-hidden bg-gray-50'>
                                     <img
-                                        src={latestBlog.img}
-                                        alt={latestBlog.title}
-                                        className="w-full h-full object-cover"
-                                        loading="lazy"
+                                        src={'https://res.cloudinary.com/dck5jgfix/image/upload/v1775802420/Publications_mjzwlt.png'}
+                                        alt={publication.description}
+                                        className='absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-95 group-hover:opacity-100'
+                                    />
+                                    <div className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500' />
+                                    <div
+                                        className="absolute bottom-0 left-0 w-10 h-10 opacity-0 group-hover:opacity-80 transition-opacity duration-500"
+                                        style={{ background: `linear-gradient(135deg, #D4AF37 50%, transparent 50%)` }}
                                     />
                                 </div>
                             </div>
+
+                            {/* Content Area */}
+                            <div className='flex flex-col p-6 pt-4 lg:h-40 h-full'>
+                                <p className='text-black text-[16px] md:text-[18px] font-semibold mb-2 line-clamp-3 md:line-clamp-none' style={{ fontFamily: 'PT Serif, serif' }}>
+                                    {publication.description}
+                                </p>
+                                <div className='flex items-center gap-2 mb-6'>
+                                    <Calendar className='size-3 text-[#D4AF37]' />
+                                    <span className='text-[12px] font-semibold tracking-[0.25em] uppercase text-black' style={{ fontFamily: 'PT Serif, serif' }}>
+                                        {publication.date}
+                                    </span>
+                                </div>
+                                <button
+                                    onClick={() => handleDownload(publication.url)}
+                                    className='ml-auto inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-black group/link mt-auto' style={{ fontFamily: 'PT Serif, serif' }}
+                                >
+                                    Download
+                                    <ArrowRight className='size-3 transition-transform duration-300 group-hover/link:translate-x-1' />
+                                </button>
+                            </div>
                         </div>
-                    </Link>
-                )
-            })()}
+                    ))}
+                </div>
+            )}
 
         </div>
       </div>

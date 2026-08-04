@@ -123,8 +123,8 @@ const Home = () => {
                                         <item.icon className='w-5 h-5' />
                                     </div>
                                     <div>
-                                        <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>{item.titlex}</div>
-                                        <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>{item.titley}</div>
+                                        <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>{item.titlex}</div>
+                                        <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>{item.titley}</div>
                                     </div>
                                 </div>
                             );

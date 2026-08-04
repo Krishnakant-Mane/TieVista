@@ -2409,7 +2409,7 @@ const PatnersSignup = () => {
             </div>
 
             {/* Right Form Section */}
-            <div className="flex-1 bg-white overflow-hidden flex flex-col scrollbar-hide lg:pt-20">
+            <div className="flex-1 bg-white overflow-hidden flex flex-col scrollbar-hide pt-20 md:pt-20 lg:pt-20">
                 <div
                     className={`flex w-[400%] h-screen scrollbar-hide transition-transform duration-700 ease-in-out ${showBankDetails ? "-translate-x-3/4" : showRegulatory ? "-translate-x-2/4" : showIdentity ? "-translate-x-1/4" : "translate-x-0"
                         }`}
