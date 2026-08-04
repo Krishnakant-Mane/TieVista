@@ -72,11 +72,11 @@ const Home = () => {
                     </div>
 
                     {/* Dark gradient overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
 
                     {/* Content Container */}
-                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-18 lg:mt-55">
+                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-85 lg:mt-55">
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -93,11 +93,11 @@ const Home = () => {
                                 </h1>
                             </motion.div>
 
-                            <motion.p variants={itemVariants} className="text-white text-base sm:text-lg lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-light drop-shadow-md" style={{ fontFamily: PoppinsRegular }}>
+                            <motion.p variants={itemVariants} className="text-white text-base sm:text-lg lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md" style={{ fontFamily: PoppinsRegular }}>
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
-                            <motion.div variants={itemVariants} className="flex flex-wrap items-center lg:w-200 gap-4 sm:gap-6">
+                            <motion.div variants={itemVariants} className="flex flex-col items-center lg:flex-wrap lg:items-center lg:w-200 gap-4 sm:gap-6">
                                 <Link to="/contact">
                                     <button className="lg:w-65 bg-[#D4AF37] hover:bg-[#c29e2f] transition-all text-white px-8 py-3.5 font-light text-[16px] shadow-[0_4px_14px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)]">
                                         Schedule a Call
@@ -112,23 +112,94 @@ const Home = () => {
 
                     {/* Bottom Banner — hidden on mobile, flex-wrap 2-col on tablet, row on desktop */}
 
-                    {/* Tablet (md → lg): flex-wrap 2-column layout */}
-                    <div className='hidden md:flex lg:hidden relative z-10 w-full flex-wrap border-t border-white/30'>
-                        {list.map((item, idx) => {
-                            const isLeft = idx % 2 === 0;
-                            const isTopRow = idx < 2;
-                            return (
-                                <div key={idx} className={`w-1/2 flex items-center gap-3 px-6 py-4 ${isLeft ? 'border-r border-white/30' : ''} ${isTopRow ? 'border-b border-white/30' : ''}`}>
-                                    <div className='text-white shrink-0'>
-                                        <item.icon className='w-5 h-5' />
-                                    </div>
-                                    <div>
-                                        <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>{item.titlex}</div>
-                                        <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>{item.titley}</div>
-                                    </div>
+                    {/* Mobile (< md): custom layout matching design */}
+                    <div className='flex md:hidden relative z-10 w-full flex-col border-t border-white/30'>
+                        {/* Row 1: AMFI | ARN */}
+                        <div className='flex w-full border-b border-white/30'>
+                            <div className='flex-1 flex items-center gap-3 px-5 py-4 border-r border-white/30'>
+                                <div className='text-white shrink-0'>
+                                    <ShieldCheck className='w-5 h-5' />
                                 </div>
-                            );
-                        })}
+                                <div>
+                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>AMFI Registered</div>
+                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>APMI Registered</div>
+                                </div>
+                            </div>
+                            <div className='flex-1 flex items-center gap-3 px-5 py-4'>
+                                <div className='text-white shrink-0'>
+                                    <IdCard className='w-5 h-5' />
+                                </div>
+                                <div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>ARN-342010</div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>APRN-07336</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Row 2: Global Markets — centered */}
+                        <div className='flex w-full justify-center border-b border-white/30 py-4 gap-3'>
+                            <div className='text-white shrink-0'>
+                                <Globe className='w-5 h-5' />
+                            </div>
+                            <div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>Global Markets &</div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>IFSC Facilitations</div>
+                            </div>
+                        </div>
+                        {/* Row 3: NSE + BSE — full width centered */}
+                        <div className='flex w-full justify-center items-center gap-3 px-5 py-4'>
+                            <div className='text-white shrink-0'>
+                                <Landmark className='w-5 h-5' />
+                            </div>
+                            <div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>NSE AP Reg No. -AP3022007993</div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>BSE AP Reg No. - AP01668101176514</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Tablet (md → lg): same layout as mobile */}
+                    <div className='hidden md:flex lg:hidden relative z-10 w-full flex-col border-t border-white/30'>
+                        {/* Row 1: AMFI | ARN */}
+                        <div className='flex w-full border-b border-white/30'>
+                            <div className='flex-1 flex items-center gap-3 px-6 py-5 border-r border-white/30'>
+                                <div className='text-white shrink-0'>
+                                    <ShieldCheck className='w-5 h-5' />
+                                </div>
+                                <div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>AMFI Registered</div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>APMI Registered</div>
+                                </div>
+                            </div>
+                            <div className='flex-1 flex items-center gap-3 px-6 py-5'>
+                                <div className='text-white shrink-0'>
+                                    <IdCard className='w-5 h-5' />
+                                </div>
+                                <div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>ARN-342010</div>
+                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>APRN-07336</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Row 2: Global Markets — centered */}
+                        <div className='flex w-full justify-center border-b border-white/30 py-5 gap-3'>
+                            <div className='text-white shrink-0'>
+                                <Globe className='w-5 h-5' />
+                            </div>
+                            <div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>Global Markets &</div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>IFSC Facilitations</div>
+                            </div>
+                        </div>
+                        {/* Row 3: NSE + BSE — full width centered */}
+                        <div className='flex w-full justify-center items-center gap-3 px-6 py-5'>
+                            <div className='text-white shrink-0'>
+                                <Landmark className='w-5 h-5' />
+                            </div>
+                            <div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>NSE AP Reg No. -AP3022007993</div>
+                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>BSE AP Reg No. - AP01668101176514</div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Desktop (lg+): original fixed-width horizontal row */}
