@@ -68,12 +68,12 @@ const Home = () => {
                 <div className="h-[100vh] min-h-[700px] w-full snap-start relative flex flex-col justify-center overflow-hidden border-b border-gray-100 pt-20 bg-white">
 
                     <div className='absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-700 rounded-br-4xl rounded-bl-4xl bg-white'>
-                        <img className='absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 rounded-br-4xl rounded-bl-4xl' src="https://res.cloudinary.com/dck5jgfix/image/upload/v1785849587/TieVistaLandingBG_z6v61n.png" alt="LandingPage" loading='lazy' />
+                        <img className='absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 rounded-br-4xl rounded-bl-4xl' src="https://res.cloudinary.com/dck5jgfix/image/upload/v1785909156/TieVistaLandingBG2_t6voxo.png" alt="LandingPage" loading='lazy' />
                     </div>
 
                     {/* Dark gradient overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div> */}
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div> */}
 
                     {/* Content Container */}
                     <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-60 lg:mt-55">
