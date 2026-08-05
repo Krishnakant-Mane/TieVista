@@ -2695,8 +2695,8 @@ const PatnersSignup = () => {
                                             <div className="flex gap-4 w-full">
                                                 <div className="flex-1 flex flex-col">
                                                     <input
-                                                        {...registerRegulatory("arn", { required: "ARN is required", pattern: arnRegex, maxLength: { value: 6, message: "ARN must be 6 digits" } })}
-                                                        placeholder="ARN (6 digits)" maxLength={6}
+                                                        {...registerRegulatory("arn", { required: "ARN is required" })} 
+                                                        placeholder="ARN" maxLength={6}
                                                         className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#d4af37] outline-none text-[16px] text-black"
                                                     />
                                                     {errorsRegulatory.arn && <p className="text-red-500 text-xs mt-2">{errorsRegulatory.arn.message}</p>}
