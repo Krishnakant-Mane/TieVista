@@ -196,15 +196,6 @@ export const Navbar = () => {
             ],
         },
         {
-            label: 'Knowledge Repository',
-            href: '#',
-            hasDropdown: true,
-            dropdownItems: [
-                { label: 'Blogs', href: '/blogs' },
-                { label: 'Publications', href: '/publications' },
-            ],
-        },
-        {
             label: 'Investment Access',
             href: '/investmentaccess',
             hasDropdown: false,
@@ -214,6 +205,16 @@ export const Navbar = () => {
                 { label: 'Private & Alternative Investments', href: '/investmentaccess#Private' },
             ],
         },
+        {
+            label: 'Knowledge Repository',
+            href: '#',
+            hasDropdown: true,
+            dropdownItems: [
+                { label: 'Blogs', href: '/blogs' },
+                { label: 'Publications', href: '/publications' },
+            ],
+        },
+        
     ], []);
 
     const isLoginActive = activeDropdown === 'Login';
