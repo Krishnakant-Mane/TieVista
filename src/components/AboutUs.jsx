@@ -133,13 +133,13 @@ const AboutUs = () => {
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-10 sm:mb-16 lg:mb-20">
-            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4" style={{ fontFamily: PoppinsRegular }}>
+            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4 poppins-sans">
                 OUR SERVICES
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal mb-4 sm:mb-6 text-black" style={{ fontFamily: 'PT Serif, serif' }}>
                 Investment & Wealth Management Services
             </h2>
-            <p className="text-[#4a4a4a] text-[16px] lg:text-[17px] max-w-3xl leading-relaxed" style={{ fontFamily: PoppinsRegular }}>
+            <p className="text-[#4a4a4a] text-[16px] lg:text-[17px] max-w-3xl leading-relaxed poppins-sans">
                 Wealth management solutions designed around every stage of your financial journey from first allocation to inter-generational continuity.
             </p>
         </div>
@@ -155,7 +155,7 @@ const AboutUs = () => {
                         <h3 className="text-[22px] lg:text-[28px] mt-6 mb-4 font-normal text-black leading-tight max-w-[240px]" style={{ fontFamily: 'PT Serif, serif' }}>
                             {service.title}
                         </h3>
-                        <p className="text-[#666666] text-[15px] leading-relaxed max-w-[260px]" style={{ fontFamily: PoppinsRegular }}>
+                        <p className="text-[#666666] text-[15px] leading-relaxed max-w-[260px] poppins-sans">
                             {service.description}
                         </p>
                     </div>
@@ -168,13 +168,13 @@ const AboutUs = () => {
       <div id='2' className="w-full min-h-screen bg-white flex flex-col items-center justify-center py-14 sm:py-20 lg:py-24">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-10 w-full flex flex-col items-center text-center">
             {/* Header */}
-            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4" style={{ fontFamily: PoppinsRegular }}>
+            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4 poppins-sans">
                 ENTREPRENEUR FINANCIAL SOLUTIONS
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal mb-4 sm:mb-6 text-black leading-tight" style={{ fontFamily: 'PT Serif, serif' }}>
                 Your Financial Partner at Every <br className="hidden md:block" /> Stage of Growth
             </h2>
-            <p className="text-[#4a4a4a] text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-10 sm:mb-16 lg:mb-24" style={{ fontFamily: PoppinsRegular }}>
+            <p className="text-[#4a4a4a] text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-10 sm:mb-16 lg:mb-24 poppins-sans">
                 TieVista facilitates capital raising, optimizes treasury management, executes strategic transactions, and builds long-term personal wealth through one financial partnership.
             </p>
 
@@ -188,7 +188,7 @@ const AboutUs = () => {
                         <h3 className="text-[24px] lg:text-[26px] mb-3 font-normal text-black" style={{ fontFamily: 'PT Serif, serif' }}>
                             {solution.title}
                         </h3>
-                        <p className="text-[#666666] text-[15px] leading-relaxed max-w-[240px]" style={{ fontFamily: PoppinsRegular }}>
+                        <p className="text-[#666666] text-[15px] leading-relaxed max-w-[240px] poppins-sans">
                             {solution.description}
                         </p>
                     </div>
@@ -196,7 +196,7 @@ const AboutUs = () => {
             </div>
 
             {/* Button */}
-            <Link to={"/contact"}><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-black font-medium px-8 py-3.5 text-[15px] transition-all shadow-md" style={{ fontFamily: PoppinsRegular }}>
+            <Link to={"/contact"}><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-black font-medium px-8 py-3.5 text-[15px] transition-all shadow-md poppins-sans">
                 Book a Private Consultation
             </button></Link>
         </div>
@@ -218,13 +218,13 @@ const AboutUs = () => {
         <div className="relative z-20 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 w-full flex flex-col items-center text-center">
             
             {/* Header */}
-            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/80 mb-4" style={{ fontFamily: PoppinsRegular }}>
+            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/80 mb-4 poppins-sans">
                 PARTNERS PLATFORM
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[46px] font-normal mb-4 sm:mb-6 text-white leading-tight" style={{ fontFamily: 'PT Serif, serif' }}>
                 Scale Your Practice with Institutional- <br className="hidden md:block" /> Grade Infrastructure.
             </h2>
-            <p className="text-white/90 text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-10 sm:mb-16 lg:mb-24" style={{ fontFamily: PoppinsRegular }}>
+            <p className="text-white/90 text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-10 sm:mb-16 lg:mb-24 poppins-sans">
                 TieVista empowers independent financial partners with institutional processes, technology, operational support and a broad investment universe while preserving the personal relationships that define their practice.
             </p>
 
@@ -238,7 +238,7 @@ const AboutUs = () => {
                         <h3 className="text-[22px] lg:text-[24px] mb-4 font-normal text-white max-w-[200px]" style={{ fontFamily: 'PT Serif, serif' }}>
                             {platform.title}
                         </h3>
-                        <p className="text-white/80 text-[15px] leading-relaxed max-w-[260px]" style={{ fontFamily: PoppinsRegular }}>
+                        <p className="text-white/80 text-[15px] leading-relaxed max-w-[260px] poppins-sans">
                             {platform.description}
                         </p>
                     </div>
@@ -247,7 +247,7 @@ const AboutUs = () => {
 
             {/* Footer Section */}
             <div className="flex flex-col items-center text-center">
-                <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/80 mb-4" style={{ fontFamily: PoppinsRegular }}>
+                <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/80 mb-4 poppins-sans">
                     TRUSTED PARTNERSHIP
                 </span>
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-normal mb-6 sm:mb-10 text-white leading-tight max-w-3xl" style={{ fontFamily: 'PT Serif, serif' }}>
@@ -255,10 +255,10 @@ const AboutUs = () => {
                 </h3>
                 
                 <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-                    <Link to='/partnersignup'><button className="bg-gradient-to-r from-[#e0b73c] to-[#c29b22] hover:opacity-90 text-white font-light px-8 py-3.5 text-[14px] uppercase tracking-wider transition-all">
+                    <Link to='/partnersignup'><button className="bg-gradient-to-r from-[#e0b73c] to-[#c29b22] hover:opacity-90 text-white font-light px-8 py-3.5 text-[14px] uppercase tracking-wider transition-all poppins-sans">
                         PARTNER WITH US
                     </button></Link>
-                    <Link to='/partners'><button className="bg-transparent border border-white hover:bg-white/10 text-white font-light px-8 py-3.5 text-[14px] uppercase tracking-wider transition-all">
+                    <Link to='/partners'><button className="bg-transparent border border-white hover:bg-white/10 text-white font-light px-8 py-3.5 text-[14px] uppercase tracking-wider transition-all poppins-sans">
                         LEARN MORE
                     </button></Link>
                 </div>
@@ -272,13 +272,13 @@ const AboutUs = () => {
 
             {/* Header */}
             <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
-                <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4" style={{ fontFamily: PoppinsRegular }}>
+                <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-[#333333] mb-4 poppins-sans">
                     KNOWLEDGE REPOSITORY
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal mb-4 sm:mb-6 text-black" style={{ fontFamily: 'PT Serif, serif' }}>
                     Blogs and Publications
                 </h2>
-                <p className="text-[#4a4a4a] text-[16px] lg:text-[17px] max-w-4xl leading-relaxed" style={{ fontFamily: PoppinsRegular }}>
+                <p className="text-[#4a4a4a] text-[16px] lg:text-[17px] max-w-4xl leading-relaxed poppins-sans">
                     TieVista facilitates relaying of market facts, publicly available data, wealth structuring & establishes high governance standards driven by our in house experience across jurisdictions, asset classes and generations.
                 </p>
             </div>
@@ -352,10 +352,10 @@ const AboutUs = () => {
                                         <p className="text-black font-bold text-[16px] mb-1">
                                             {latestBlog.date}
                                         </p>
-                                        <p className="text-[#4a4a4a] text-[16px] leading-relaxed mb-8" style={{ fontFamily: PoppinsRegular }}>
+                                        <p className="text-[#4a4a4a] text-[16px] leading-relaxed mb-8 poppins-sans">
                                             {latestBlog.description}
                                         </p>
-                                        <div className="flex items-center gap-2 text-black font-bold text-[15px]">
+                                        <div className="flex items-center gap-2 text-black font-bold text-[15px] poppins-sans">
                                             Read Blog
                                             <ArrowRightCircle size={20} className="text-[#D4AF37]" />
                                         </div>
@@ -400,7 +400,7 @@ const AboutUs = () => {
                                 </div>
                                 <button
                                     onClick={() => handleDownload(publication.url)}
-                                    className='ml-auto inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-black group/link mt-auto' style={{ fontFamily: 'PT Serif, serif' }}
+                                    className='ml-auto inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-black group/link mt-auto poppins-sans'
                                 >
                                     Download
                                     <ArrowRight className='size-3 transition-transform duration-300 group-hover/link:translate-x-1' />
@@ -452,7 +452,7 @@ const AboutUs = () => {
                             <span className="text-[#D4AF37] text-[42px] lg:text-[50px] leading-none mb-5" style={{ fontFamily: 'PT Serif, serif' }}>
                                 {item.num}
                             </span>
-                            <p className="text-black/90 text-[15px] lg:text-[16px] leading-relaxed max-w-[270px]" style={{ fontFamily: PoppinsRegular }}>
+                            <p className="text-black/90 text-[15px] lg:text-[16px] leading-relaxed max-w-[270px] poppins-sans">
                                 {item.text}
                             </p>
                         </div>
@@ -465,7 +465,7 @@ const AboutUs = () => {
 
       <div id='6' className="w-full bg-black flex flex-col items-center justify-center py-16 sm:py-24 lg:py-32">
         <div className="max-w-[900px] mx-auto px-5 sm:px-8 flex flex-col items-center text-center">
-            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/60 mb-6" style={{ fontFamily: PoppinsRegular }}>
+            <span className="text-[11px] sm:text-[12px] font-medium tracking-[0.2em] uppercase text-white/60 mb-6 poppins-sans">
                 BEGIN THE CONVERSATION
             </span>
             
@@ -473,16 +473,16 @@ const AboutUs = () => {
                 Let's Build Your Financial <br className="hidden sm:block" /> Legacy Together.
             </h2>
             
-            <p className="text-white/80 text-[15px] sm:text-[16px] lg:text-[17px] leading-relaxed mb-8 sm:mb-12 max-w-[800px]" style={{ fontFamily: PoppinsRegular }}>
+            <p className="text-white/80 text-[15px] sm:text-[16px] lg:text-[17px] leading-relaxed mb-8 sm:mb-12 max-w-[800px] poppins-sans">
                 Thoughtful market updates, investment frameworks, and strategic guidance to help investors navigate and build wealth across generations.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto">
-                <Link to="/contact"><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-white font-light px-10 py-3.5 text-[13px] sm:text-[14px] uppercase tracking-wider transition-all w-full sm:w-auto flex items-center justify-center gap-2">
+                <Link to="/contact"><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-white font-light px-10 py-3.5 text-[13px] sm:text-[14px] uppercase tracking-wider transition-all w-full sm:w-auto flex items-center justify-center gap-2 poppins-sans">
                     SCHEDULE CALL &rarr;
                 </button>
                 </Link>
-                <Link to="/partnersignup"><button className="bg-transparent border border-white/40 hover:bg-white/10 hover:border-white/60 text-white font-light px-10 py-3.5 text-[13px] sm:text-[14px] uppercase tracking-wider transition-all w-full sm:w-auto">
+                <Link to="/partnersignup"><button className="bg-transparent border border-white/40 hover:bg-white/10 hover:border-white/60 text-white font-light px-10 py-3.5 text-[13px] sm:text-[14px] uppercase tracking-wider transition-all w-full sm:w-auto poppins-sans">
                     PARTNER WITH US
                 </button>
                 </Link>

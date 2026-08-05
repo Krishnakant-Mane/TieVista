@@ -72,8 +72,8 @@ const Home = () => {
                     </div>
 
                     {/* Dark gradient overlay for text readability */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div> */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div>
 
                     {/* Content Container */}
                     <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-60 lg:mt-55">
@@ -93,17 +93,17 @@ const Home = () => {
                                 </h1>
                             </motion.div>
 
-                            <motion.p variants={itemVariants} className="text-white text-base sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md" style={{ fontFamily: PoppinsRegular }}>
+                            <motion.p variants={itemVariants} className="text-white text-base sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md poppins-sans" style={{ fontFamily: PoppinsRegular }}>
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
                             <motion.div variants={itemVariants} className="flex flex-col lg:flex-row items-center lg:flex-wrap lg:justify-start lg:w-200 gap-4 sm:gap-6">
                                 <Link to="/contact">
-                                    <button className="lg:w-65 bg-[#D4AF37] hover:bg-[#c29e2f] transition-all text-white px-8 py-3.5 font-light text-[16px] shadow-[0_4px_14px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)]">
+                                    <button className="lg:w-65 bg-[#D4AF37] hover:bg-[#c29e2f] transition-all text-white px-8 py-3.5 font-light text-[16px] shadow-[0_4px_14px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] poppins-sans">
                                         Schedule a Call
                                     </button></Link>
                                 <Link to="/partnersignup">
-                                    <button className="lg:w-65 bg-transparent border border-white/60 hover:bg-white/10 hover:border-white transition-all text-white px-8 py-3.5 font-light text-[16px]">
+                                    <button className="lg:w-65 bg-transparent border border-white/60 hover:bg-white/10 hover:border-white transition-all text-white px-8 py-3.5 font-light text-[16px] poppins-sans">
                                         Partner with Us
                                     </button></Link>
                             </motion.div>
@@ -121,8 +121,8 @@ const Home = () => {
                                     <ShieldCheck className='w-5 h-5' />
                                 </div>
                                 <div>
-                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>AMFI Registered</div>
-                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>APMI Registered</div>
+                                    <div className='text-white text-[13px] font-light poppins-sans'>AMFI Registered</div>
+                                    <div className='text-white text-[13px] font-light poppins-sans'>APMI Registered</div>
                                 </div>
                             </div>
                             <div className='flex-1 flex items-center gap-3 px-5 py-4'>
@@ -130,8 +130,8 @@ const Home = () => {
                                     <IdCard className='w-5 h-5' />
                                 </div>
                                 <div>
-                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>ARN-342010</div>
-                                    <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>APRN-07336</div>
+                                    <div className='text-white text-[13px] font-light poppins-sans'>ARN-342010</div>
+                                    <div className='text-white text-[13px] font-light poppins-sans'>APRN-07336</div>
                                 </div>
                             </div>
                         </div>
@@ -141,8 +141,8 @@ const Home = () => {
                                 <Globe className='w-5 h-5' />
                             </div>
                             <div>
-                                <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>Global Markets &</div>
-                                <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>IFSC Facilitations</div>
+                                <div className='text-white text-[13px] font-light poppins-sans'>Global Markets &</div>
+                                <div className='text-white text-[13px] font-light poppins-sans'>IFSC Facilitations</div>
                             </div>
                         </div>
                         {/* Row 3: NSE + BSE — full width centered */}
@@ -151,8 +151,8 @@ const Home = () => {
                                 <Landmark className='w-5 h-5' />
                             </div>
                             <div>
-                                <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>NSE AP Reg No. -AP3022007993</div>
-                                <div className='text-white text-[13px] font-light' style={{ fontFamily: PoppinsRegular }}>BSE AP Reg No. - AP01668101176514</div>
+                                <div className='text-white text-[13px] font-light poppins-sans'>NSE AP Reg No. -AP3022007993</div>
+                                <div className='text-white text-[13px] font-light poppins-sans'>BSE AP Reg No. - AP01668101176514</div>
                             </div>
                         </div>
                     </div>
@@ -166,8 +166,8 @@ const Home = () => {
                                     <ShieldCheck className='w-5 h-5' />
                                 </div>
                                 <div>
-                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>AMFI Registered</div>
-                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>APMI Registered</div>
+                                    <div className='text-white text-[13px] font-medium poppins-sans'>AMFI Registered</div>
+                                    <div className='text-white text-[13px] font-medium poppins-sans'>APMI Registered</div>
                                 </div>
                             </div>
                             <div className='flex-1 flex items-center gap-3 px-6 py-5'>
@@ -175,8 +175,8 @@ const Home = () => {
                                     <IdCard className='w-5 h-5' />
                                 </div>
                                 <div>
-                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>ARN-342010</div>
-                                    <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>APRN-07336</div>
+                                    <div className='text-white text-[13px] font-medium poppins-sans'>ARN-342010</div>
+                                    <div className='text-white text-[13px] font-medium poppins-sans'>APRN-07336</div>
                                 </div>
                             </div>
                         </div>
@@ -186,8 +186,8 @@ const Home = () => {
                                 <Globe className='w-5 h-5' />
                             </div>
                             <div>
-                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>Global Markets &</div>
-                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>IFSC Facilitations</div>
+                                <div className='text-white text-[13px] font-medium poppins-sans'>Global Markets &</div>
+                                <div className='text-white text-[13px] font-medium poppins-sans'>IFSC Facilitations</div>
                             </div>
                         </div>
                         {/* Row 3: NSE + BSE — full width centered */}
@@ -196,8 +196,8 @@ const Home = () => {
                                 <Landmark className='w-5 h-5' />
                             </div>
                             <div>
-                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>NSE AP Reg No. -AP3022007993</div>
-                                <div className='text-white text-[13px] font-medium' style={{ fontFamily: PoppinsRegular }}>BSE AP Reg No. - AP01668101176514</div>
+                                <div className='text-white text-[13px] font-medium poppins-sans'>NSE AP Reg No. -AP3022007993</div>
+                                <div className='text-white text-[13px] font-medium poppins-sans'>BSE AP Reg No. - AP01668101176514</div>
                             </div>
                         </div>
                     </div>
@@ -211,8 +211,8 @@ const Home = () => {
                                         <ShieldCheck className='w-6 h-6' />
                                     </div>
                                     <div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>AMFI Registered</div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>APMI Registered</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>AMFI Registered</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>APMI Registered</div>
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
@@ -221,8 +221,8 @@ const Home = () => {
                                         <IdCard className='w-6 h-6' />
                                     </div>
                                     <div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>ARN-342010</div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>APRN-07336</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>ARN-342010</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>APRN-07336</div>
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
@@ -231,8 +231,8 @@ const Home = () => {
                                         <Landmark className='w-6 h-6' />
                                     </div>
                                     <div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>NSE AP Reg No -AP3022007993</div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>BSE AP Reg No -AP01668101176514</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>NSE AP Reg No -AP3022007993</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>BSE AP Reg No -AP01668101176514</div>
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
@@ -241,8 +241,8 @@ const Home = () => {
                                         <Globe className='w-6 h-6' />
                                     </div>
                                     <div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>Global Markets &</div>
-                                        <div className='text-white text-[16px] font-light' style={{ fontFamily: PoppinsRegular }}>IFSC Facilitations</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>Global Markets &</div>
+                                        <div className='text-white text-[16px] font-light poppins-sans'>IFSC Facilitations</div>
                                     </div>
                                 </div>
                             </div>
