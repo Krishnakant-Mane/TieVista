@@ -76,7 +76,7 @@ const Home = () => {
                     {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div> */}
 
                     {/* Content Container */}
-                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-60 lg:mt-55">
+                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-50 lg:mt-55">
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -93,7 +93,7 @@ const Home = () => {
                                 </h1>
                             </motion.div>
 
-                            <motion.p variants={itemVariants} className="text-white text-center lg:text-start sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md poppins-sans" style={{ fontFamily: PoppinsRegular }}>
+                            <motion.p variants={itemVariants} className="text-white text-center lg:text-start sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 leading-relaxed font-medium lg:font-light drop-shadow-md poppins-sans" style={{ fontFamily: PoppinsRegular }}>
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
