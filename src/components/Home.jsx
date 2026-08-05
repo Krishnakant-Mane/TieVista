@@ -84,16 +84,16 @@ const Home = () => {
                             variants={containerVariants}
                             className="w-full max-w-4xl"
                         >
-                            <motion.div variants={itemVariants} className="mb-2 sm:mb-3">
+                            <motion.div variants={itemVariants} className=" mb-2 sm:mb-3">
                                 <h1
-                                    className="text-white font-normal text-2xl sm:text-3xl lg:text-[52px] tracking-normal leading-[1.1] drop-shadow-xl"
+                                    className="flex text-center text-white font-normal text-3xl sm:text-3xl lg:text-[52px] tracking-normal leading-[1.1] drop-shadow-xl"
                                     style={{ fontFamily: 'PT Serif, serif' }}
                                 >
                                     Beyond Wealth, Towards Legacy
                                 </h1>
                             </motion.div>
 
-                            <motion.p variants={itemVariants} className="text-white text-base sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md poppins-sans" style={{ fontFamily: PoppinsRegular }}>
+                            <motion.p variants={itemVariants} className="text-white text-center lg:text-start sm:text-2xl lg:text-[20px] max-w-[800px] mb-8 sm:mb-12 leading-relaxed font-medium lg:font-light drop-shadow-md poppins-sans" style={{ fontFamily: PoppinsRegular }}>
                                 A global private wealth management firm serving HNI, UHNI and family office client across geographies, asset classes and generations.
                             </motion.p>
 
