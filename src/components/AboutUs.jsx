@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CandlestickChart, Globe, Rocket, FileText, Layers, Handshake, Landmark, TrendingUp, Wallet, UserPlus, PieChart, Briefcase, ArrowRightCircle, Calendar, ArrowRight } from 'lucide-react'
+import { CandlestickChart, Globe, Rocket, FileChartPie , FileText, Layers, Handshake, Landmark, TrendingUp, Wallet, UserPlus, PieChart, BriefcaseBusiness, ArrowRightCircle, Calendar, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
 
@@ -104,29 +104,6 @@ const AboutUs = () => {
     }
   ]
 
-  const partnersPlatform = [
-    {
-      icon: UserPlus,
-      title: "Digital Client Onboarding",
-      description: "Seamless digital onboarding that simplifies client acquisition while ensuring speed, compliance, and a frictionless experience.",
-    },
-    {
-      icon: FileText,
-      title: "Investment Research",
-      description: "Actionable market intelligence and expert insights to support informed investment decisions.",
-    },
-    {
-      icon: PieChart,
-      title: "Portfolio Analytics",
-      description: "Comprehensive portfolio insights with real-time reporting and performance tracking.",
-    },
-    {
-      icon: Briefcase,
-      title: "Business Growth",
-      description: "Technology and operational support to help advisors scale their practice efficiently.",
-    },
-  ]
-
   return (
     <div className="w-full bg-[#fafafa] pt-16 sm:pt-20 lg:pt-32">
       <div id='1' className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10">
@@ -224,25 +201,67 @@ const AboutUs = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[46px] font-normal mb-4 sm:mb-6 text-white leading-tight" style={{ fontFamily: 'PT Serif, serif' }}>
                 Scale Your Practice with Institutional- <br className="hidden md:block" /> Grade Infrastructure.
             </h2>
-            <p className="text-white/90 text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-10 sm:mb-16 lg:mb-24 poppins-sans">
+            <p className="text-white/90 text-[15px] sm:text-[16px] lg:text-[17px] max-w-4xl leading-relaxed mb-5 sm:mb-16 lg:mb-12 poppins-sans">
                 TieVista empowers independent financial partners with institutional processes, technology, operational support and a broad investment universe while preserving the personal relationships that define their practice.
             </p>
 
             {/* Features Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 w-full mb-12 sm:mb-20 lg:mb-32">
-                {partnersPlatform.map((platform, idx) => (
-                    <div key={idx} className="flex flex-col items-center text-center px-4 sm:px-6 py-6 border-x border-white/20">
-                        <div className="text-white mb-8">
-                            <platform.icon size={36} strokeWidth={1} />
-                        </div>
-                        <h3 className="text-[22px] lg:text-[24px] mb-4 font-normal text-white max-w-[200px]" style={{ fontFamily: 'PT Serif, serif' }}>
-                            {platform.title}
-                        </h3>
-                        <p className="text-white/80 text-[15px] leading-relaxed max-w-[260px] poppins-sans">
-                            {platform.description}
-                        </p>
+            <div className="flex lg:flex-row flex-col space-y-10 mb-10 items-center lg:justify-between lg:items-center w-full lg:mb-15">
+                <div className='flex flex-col border-r border-l w-60 lg:w-65 border-white/40 bg-black/20 px-2 lg:px-5 py-5 lg:py-5 gap-5'>
+                    <div>
+                        <UserPlus className='text-white' size={26}/>
                     </div>
-                ))}
+                    <div className='text-white text-3xl lg:text-2xl' style={{fontFamily:'PT Serif, serif'}}>
+                        <h1>
+                            Digital Client Onboarding
+                        </h1>
+                    </div>
+                    <div className='text-white text-sm poppins-sans font-light'>
+                        <p>Seamless digital onboarding that simplifies client acquisition while ensuring speed, compliance, and a frictionless experience.</p>
+                    </div>
+                </div>
+                {/* 2nd */}
+                
+                <div className='flex flex-col border-r border-l w-60 lg:h-68 lg:w-65 border-white/40 bg-black/20 py-5 lg:py-4 gap-5'>
+                    <div className='lg:mb-3 lg:mt-1.5 lg:px-5 px-2'>
+                        <FileText className='text-white' size={26}/>
+                    </div>
+                    <div className='text-white lg:text-2xl lg:w-full lg:mb-5' style={{fontFamily:'PT Serif, serif'}}>
+                        <h1>
+                            Investment Research
+                        </h1>
+                    </div>
+                    <div className='text-white text-sm poppins-sans font-light lg:px-5'>
+                        <p>Actionable market intelligence and expert insights to support informed investment decisions.</p>
+                    </div>
+                </div>
+                <div className='flex flex-col border-r border-l w-60 lg:h-68 lg:w-65 border-white/40 bg-black/20 py-5 lg:py-4 gap-5'>
+                    <div className='lg:mb-3 lg:mt-1.5 lg:px-5 px-2'>
+                        <FileChartPie className='text-white' size={26}/>
+                    </div>
+                    <div className='text-white lg:text-2xl lg:w-full lg:mb-5' style={{fontFamily:'PT Serif, serif'}}>
+                        <h1>
+                            Portfolio Analytics
+                        </h1>
+                    </div>
+                    <div className='text-white text-sm poppins-sans font-light lg:px-5'>
+                        <p>Comprehensive portfolio insights with real-time reporting and performance tracking.</p>
+                    </div>
+                </div>
+                <div className='flex flex-col border-r border-l w-60 lg:h-68 lg:w-65 border-white/40 bg-black/20 px-2 lg:px-5 py-5 lg:mb-10 gap-5'>
+                    <div className='lg:mb-2 lg:mt-1.5 lg:px-1.5'>
+                        <BriefcaseBusiness className='text-white' size={26}/>
+                    </div>
+                    <div className='text-white lg:text-2xl lg:w-full lg:mb-5' style={{fontFamily:'PT Serif, serif'}}>
+                        <h1>
+                            Business Growth
+                        </h1>
+                    </div>
+                    <div className='text-white text-sm poppins-sans font-light'>
+                        <p>Technology and operational support to help advisors scale their practice efficiently.</p>
+                    </div>
+                </div>
+                
             </div>
 
             {/* Footer Section */}
