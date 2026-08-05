@@ -116,7 +116,7 @@ const Home = () => {
                     <div className='flex md:hidden relative z-10 w-full flex-col border-t border-white/30'>
                         {/* Row 1: AMFI | ARN */}
                         <div className='flex w-full border-b border-white/30'>
-                            <div className='flex-1 flex items-center gap-3 px-5 py-4 border-r border-white/30'>
+                            <div className='flex-1 flex items-center gap-3 lg:gap-5 px-5 py-4 border-r border-white/30'>
                                 <div className='text-white shrink-0'>
                                     <ShieldCheck className='w-5 h-5' />
                                 </div>
@@ -203,10 +203,10 @@ const Home = () => {
                     </div>
 
                     {/* Desktop (lg+): original fixed-width horizontal row */}
-                    <div className='hidden lg:block relative z-10 lg:w-270 lg:h-25 ml-25'>
+                    <div className='hidden lg:block relative z-10 lg:w-245 lg:h-25 ml-25'>
                         <div className='relative z-10 lg:w-full lg:h-18 border-r border-l border-white/70'>
                             <div className='flex lg:h-full lg:w-full'>
-                                <div className='flex items-center lg:w-50 justify-between px-5'>
+                                <div className='flex items-center lg:w-53 justify-between px-5 gap-3'>
                                     <div className='text-white'>
                                         <ShieldCheck className='w-6 h-6' />
                                     </div>
@@ -216,7 +216,7 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
-                                <div className='flex items-center lg:w-50 justify-between px-5'>
+                                <div className='flex items-center lg:w-46 justify-between px-5'>
                                     <div className='text-white'>
                                         <IdCard className='w-6 h-6' />
                                     </div>
@@ -226,7 +226,7 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
-                                <div className='flex items-center lg:w-90 justify-between px-5'>
+                                <div className='flex items-center lg:w-86 justify-between px-5'>
                                     <div className='text-white'>
                                         <Landmark className='w-6 h-6' />
                                     </div>
@@ -236,7 +236,7 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className='flex items-center lg:h-18'><div className='lg:h-15 border border-white/50'></div></div>
-                                <div className='flex items-center lg:w-60 justify-between px-5'>
+                                <div className='flex items-center lg:w-55 justify-between px-5'>
                                     <div className='text-white'>
                                         <Globe className='w-6 h-6' />
                                     </div>
