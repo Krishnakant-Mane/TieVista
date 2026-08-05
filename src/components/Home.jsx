@@ -76,7 +76,7 @@ const Home = () => {
                     {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0 rounded-br-4xl rounded-bl-4xl"></div> */}
 
                     {/* Content Container */}
-                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-50 lg:mt-55">
+                    <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-10 flex-1 flex flex-col justify-center mt-48 lg:mt-55">
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -84,7 +84,7 @@ const Home = () => {
                             variants={containerVariants}
                             className="w-full max-w-4xl"
                         >
-                            <motion.div variants={itemVariants} className=" mb-2 sm:mb-3">
+                            <motion.div variants={itemVariants} className="mb-2">
                                 <h1
                                     className="flex text-center text-white font-normal text-3xl sm:text-3xl lg:text-[52px] tracking-normal leading-[1.1] drop-shadow-xl"
                                     style={{ fontFamily: 'PT Serif, serif' }}
