@@ -44,6 +44,15 @@ const AboutUs = () => {
             url: "https://drive.google.com/uc?export=download&id=1raBvJHiBkgZjAyb3bWMIw5pOrONKM_s4",
             date: "June, 2026"
         },
+        {
+            id: 5,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1q_Hv7HJfagD-ETnSL8CCwQrdvthLI3Fd",
+            date: "August, 2026"
+        },
   ]
 
   const handleDownload = (url) => {
@@ -426,7 +435,7 @@ const AboutUs = () => {
                                 </button>
                             </div>
                         </div>
-                    ))}
+                    )).reverse()}
                 </div>
             )}
 
