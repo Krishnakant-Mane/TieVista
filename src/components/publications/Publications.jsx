@@ -1,12 +1,20 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Search, Calendar, ArrowRight } from 'lucide-react'
-
+import PhoneNumberPopup from '../../popups/PhoneNumberPopup';
+import { hasPopupShown, showPopupNow } from "../../utils/popupStorage.js";
 
 const Publications = () => {
 
     const [searchTerm, setSearchTerm] = useState("")
+    const [showPopup, setShowPopup] = useState(false);
+
+    useEffect(() => {
+        if (hasPopupShown()) return;
+        const timer = setTimeout(() => showPopupNow(setShowPopup), 6000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const publications = [
         {
@@ -128,16 +136,16 @@ const Publications = () => {
                                 className='flex flex-wrap justify-center gap-8 md:gap-12'
                             >
                                 {filteredPublications.map((publication, idx) => (
-                                    <a href={publication.url}>
                                         <motion.div
                                             key={publication.id}
+                                            onClick={() => handleDownload(publication.url)}
                                             initial={{ opacity: 0, y: 30 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                                             viewport={{ once: true }}
                                             whileHover={{ y: -10 }}
-                                            className='group flex flex-col bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 w-full md:w-[270px] '
-                                        > 
+                                            className='group flex flex-col bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 w-full md:w-[270px] cursor-pointer'
+                                        >
                                             {/* Header Text - Tightened */}
                                             {/* <div className='flex flex-col p-6 pb-2'>
                                                 <h3
@@ -182,17 +190,15 @@ const Publications = () => {
                                                     </span>
                                                 </div>
 
-                                                <a
-                                                    onClick={() => handleDownload(publication.url)}
+                                                <span
                                                     className='ml-auto inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-black group/link mt-auto' style={{ fontFamily: 'PT Serif, serif' }}
                                                 >
                                                     Download
                                                     <ArrowRight className='size-3 transition-transform duration-300 group-hover/link:translate-x-1' />
-                                                </a>
+                                                </span>
                                             </div>
 
                                         </motion.div>
-                                    </a>
                                 )).reverse()}
                             </motion.div>
                         ) : (
@@ -217,6 +223,9 @@ const Publications = () => {
                 </div>
 
             </div>
+            {showPopup && (
+                <PhoneNumberPopup onClose={() => setShowPopup(false)} />
+            )}
         </>
     )
 }

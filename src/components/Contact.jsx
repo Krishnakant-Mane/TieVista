@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 import { motion } from 'framer-motion';
 import { Mail, Phone, User, MessageSquare, Send, Globe, MapPin, MessageCircle } from 'lucide-react';
+import { securePost } from '../api/secureClient';
 
 const GOLD = '#D4AF37';
 
@@ -31,6 +34,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     reset,
   } = useForm({
@@ -38,51 +42,62 @@ const Contact = () => {
       firstName: '',
       lastName: '',
       email: '',
-      countryCode: '+91',
       phone: '',
       enquiry: '',
     },
   });
 
-  const onSubmit = async (data) => {
-    const fullPhone = `${data.countryCode} ${data.phone}`;
 
-    // Construct the formatted message
-    const message = `
-New Enquiry Received!
-
---------------------------
-Customer Details:
-First Name: ${data.firstName}
-Last Name: ${data.lastName}
-Email: ${data.email}
-Phone Number: ${fullPhone}
-
-Enquiry Details:
-${data.enquiry}
-
---------------------------
-Please respond to this enquiry as soon as possible.
-`.trim();
-
-    if (submitType === 'mail') {
-      const subject = "Enquiry - TieVista";
-      const email = "connect@tievista.com";
-      const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-
-      window.open(emailUrl);
-      alert('Thank you for your enquiry. Your email client will now open to send the details.');
-    } else {
-      // WhatsApp Integration
-      const whatsappNo = "917977626003"; // Standardizing the provided number
-      const whatsappUrl = `https://wa.me/${whatsappNo}?text=${encodeURIComponent(message)}`;
-
-      window.open(whatsappUrl, '_blank');
-      alert('Thank you for your enquiry. WhatsApp will now open to send the details.');
+  const onSubmit = async(data) =>{
+    console.log(data);
+    const res = await securePost('/queries/saveQuery',{emailId:data.email,firstName:data.firstName,lastName:data.lastName,phoneNumber:data.phone,message:data.enquiry})
+    if(res.success){
+      alert('Query submitted successfully');
+      reset();
+    }else{
+      alert('Failed to submit query');
     }
+  }
 
-    reset();
-  };
+//   const onSubmit = async (data) => {
+//     const fullPhone = data.phone;
+
+//     // Construct the formatted message
+//     const message = `
+// New Enquiry Received!
+
+// --------------------------
+// Customer Details:
+// First Name: ${data.firstName}
+// Last Name: ${data.lastName}
+// Email: ${data.email}
+// Phone Number: ${fullPhone}
+
+// Enquiry Details:
+// ${data.enquiry}
+
+// --------------------------
+// Please respond to this enquiry as soon as possible.
+// `.trim();
+
+//     if (submitType === 'mail') {
+//       const subject = "Enquiry - TieVista";
+//       const email = "connect@tievista.com";
+//       const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+//       window.open(emailUrl);
+//       alert('Thank you for your enquiry. Your email client will now open to send the details.');
+//     } else {
+//       // WhatsApp Integration
+//       const whatsappNo = "917977626003"; // Standardizing the provided number
+//       const whatsappUrl = `https://wa.me/${whatsappNo}?text=${encodeURIComponent(message)}`;
+
+//       window.open(whatsappUrl, '_blank');
+//       alert('Thank you for your enquiry. WhatsApp will now open to send the details.');
+//     }
+
+//     reset(); 
+//   };
 
   return (
     <div className="bg-white font-sans selection:bg-[#D4AF37] selection:text-white overflow-x-hidden">
@@ -249,42 +264,30 @@ Please respond to this enquiry as soon as possible.
                   {/* Phone with Country Code */}
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold tracking-widest uppercase text-black ml-1" style={{fontFamily:'PT Serif,serif'}}>Phone Number</label>
-                    <div className="flex gap-3">
-                      {/* Country Code Select */}
-                      <div className="relative w-25 md:w-35 shrink-0 group">
-                        <select
-                          {...register('countryCode')}
-                          className="w-full bg-gray-50 border border-gray-100 focus:border-[#D4AF37] focus:ring-0 rounded-xl pl-4 pr-10 py-4 text-gray-700 outline-none transition-all appearance-none cursor-pointer"
-                        >
-                          {countryCodes.map((item, idx) => (
-                            <option key={idx} value={item.code}>
-                              {item.label}
-                            </option>
-                          ))}
-                        </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                          <Globe size={14} />
-                        </div>
-                      </div>
-
-                      {/* Phone Input */}
-                      <div className="relative flex-1 group">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#D4AF37] transition-colors" size={18} />
-                        <input
-                          {...register('phone', {
-                            required: 'Phone number is required',
-                            pattern: {
-                              value: /^[0-9]\d{6,14}$/,
-                              message: "Invalid phone number"
-                            }
-                          })}
-                          placeholder="Phone Number"
-                          className={`w-full bg-gray-50 border ${errors.phone ? 'border-red-300' : 'border-gray-100'} focus:border-[#D4AF37] focus:ring-0 rounded-xl px-12 py-4 text-gray-700 outline-none transition-all`}
-                          type="tel"
-                          style={{fontFamily:'PT Serif,serif'}}
+                    <Controller
+                      name="phone"
+                      control={control}
+                      rules={{ required: "Phone number is required" }}
+                      render={({ field: { onChange, onBlur, value } }) => (
+                        <PhoneInput
+                          defaultCountry="in"
+                          value={value || ""}
+                          onChange={(phone) => {
+                            onChange(phone);
+                          }}
+                          onBlur={onBlur}
+                          className="flex gap-2 w-full"
+                          inputClassName={`!w-full !flex-1 !px-2 !py-3 !border !rounded !focus:border-[#d4af37] !outline-none !transition-all !placeholder:text-gray-300 !text-[16px] !text-black !h-auto ${
+                            errors.phone
+                              ? "!border-red-500"
+                              : "!border-gray-300"
+                          }`}
+                          countrySelectorStyleProps={{
+                            buttonClassName: `!w-24 !px-3 !py-3 !border !rounded !bg-white !h-auto !flex !items-center !justify-between !text-sm !text-black !border-gray-300`,
+                          }}
                         />
-                      </div>
-                    </div>
+                      )}
+                    />
                     {errors.phone && <p className="text-xs text-red-500 mt-1 ml-1">{errors.phone.message}</p>}
                   </div>
 
@@ -311,7 +314,7 @@ Please respond to this enquiry as soon as possible.
                       onClick={() => setSubmitType('mail')}
                       disabled={isSubmitting}
                       type="submit"
-                      className="w-1/2 relative overflow-hidden group py-4 rounded-xl font-bold tracking-widest text-xs uppercase text-white transition-all duration-300 disabled:bg-gray-400"
+                      className="w-full  relative overflow-hidden group py-4 rounded-xl font-bold tracking-widest text-xs uppercase text-white transition-all duration-300 disabled:bg-gray-400"
                       style={{ background: isSubmitting ? '#9ca3af' : GOLD,fontFamily:'PT Serif,serif' }}
                     >
                       <span className="relative z-10 flex items-center justify-center gap-3">
@@ -319,8 +322,7 @@ Please respond to this enquiry as soon as possible.
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         ) : (
                           <>
-                            <Mail size={14} className="" />
-                            Mail
+                            Connect
                             <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                           </>
                         )}
@@ -328,27 +330,7 @@ Please respond to this enquiry as soon as possible.
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300" />
                     </button>
 
-                    {/* WhatsApp Button */}
-                    <button
-                      onClick={() => setSubmitType('whatsapp')}
-                      disabled={isSubmitting}
-                      type="submit"
-                      className="w-1/2 relative overflow-hidden group py-4 rounded-xl font-bold tracking-widest text-xs uppercase text-white transition-all duration-300 disabled:bg-gray-400"
-                      style={{ background: isSubmitting ? '#9ca3af' : '#25D366',fontFamily:'PT Serif,serif' }} // Green for WhatsApp
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-3">
-                        {isSubmitting && submitType === 'whatsapp' ? (
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        ) : (
-                          <>
-                            <MessageCircle size={14} className="" />
-                            WhatsApp
-                            <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                          </>
-                        )}
-                      </span>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300" />
-                    </button>
+                    
                   </div>
 
                 </form>
