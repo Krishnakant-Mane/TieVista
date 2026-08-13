@@ -49,7 +49,6 @@ const Contact = () => {
 
 
   const onSubmit = async(data) =>{
-    console.log(data);
     const res = await securePost('/queries/saveQuery',{emailId:data.email,firstName:data.firstName,lastName:data.lastName,phoneNumber:data.phone,message:data.enquiry})
     if(res.success){
       alert('Query submitted successfully');
