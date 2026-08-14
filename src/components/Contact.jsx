@@ -58,51 +58,11 @@ const Contact = () => {
     }
   }
 
-//   const onSubmit = async (data) => {
-//     const fullPhone = data.phone;
-
-//     // Construct the formatted message
-//     const message = `
-// New Enquiry Received!
-
-// --------------------------
-// Customer Details:
-// First Name: ${data.firstName}
-// Last Name: ${data.lastName}
-// Email: ${data.email}
-// Phone Number: ${fullPhone}
-
-// Enquiry Details:
-// ${data.enquiry}
-
-// --------------------------
-// Please respond to this enquiry as soon as possible.
-// `.trim();
-
-//     if (submitType === 'mail') {
-//       const subject = "Enquiry - TieVista";
-//       const email = "connect@tievista.com";
-//       const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-
-//       window.open(emailUrl);
-//       alert('Thank you for your enquiry. Your email client will now open to send the details.');
-//     } else {
-//       // WhatsApp Integration
-//       const whatsappNo = "917977626003"; // Standardizing the provided number
-//       const whatsappUrl = `https://wa.me/${whatsappNo}?text=${encodeURIComponent(message)}`;
-
-//       window.open(whatsappUrl, '_blank');
-//       alert('Thank you for your enquiry. WhatsApp will now open to send the details.');
-//     }
-
-//     reset(); 
-//   };
-
   return (
     <div className="bg-white font-sans selection:bg-[#D4AF37] selection:text-white overflow-x-hidden">
       {/* ── Hero Section ── */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 ">
           <img
             src="https://res.cloudinary.com/dck5jgfix/image/upload/v1774251622/Private_Alternative_Investments_yygtg2.png"
             loading='lazy'
@@ -123,9 +83,9 @@ const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="inline-flex items-center gap-3 px-4 py-1 mb-6 border border-[#D4AF37]/50 rounded-full bg-black/20 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
-              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.3em] uppercase">Connect With Us</span>
+            <div className="inline-flex items-center gap-3 px-4 py-1 mt-10 mb-6 border border-[#D4AF37]/50 rounded-full bg-black/20 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'white' }} />
+              <span className="text-white text-xs font-bold tracking-[0.3em] uppercase">Connect With Us</span>
             </div>
           </motion.div>
           <h1
@@ -135,7 +95,7 @@ const Contact = () => {
 
             Get In Touch
           </h1>
-          <p className="text-lg md:text-xl text-white font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white font-light max-w-2xl mx-auto leading-relaxed poppins-sans">
             We are here to assist you with a structured and thoughtful approach to building your legacy.
           </p>
         </motion.div>
@@ -153,7 +113,7 @@ const Contact = () => {
                   Institutional <span className='text-black' >Excellence.</span>
                 </h2>
                 <div className="w-12 h-px mb-8" style={{ background: GOLD }} />
-                <p className="text-black font-light leading-relaxed text-lg">
+                <p className="text-black font-light leading-relaxed text-lg poppins-sans">
                   Whether you are looking for portfolio management, private wealth management, or strategic business insights, Feel free to reach out to us.
                 </p>
               </div>
@@ -168,7 +128,7 @@ const Contact = () => {
 
                     <div>
                       <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-1" style={{fontFamily:'PT Serif,serif'}}>Email Enquiry</h4>
-                      <p className="text-lg font-medium text-gray-800">connect@tievista.com</p>
+                      <p className="text-lg font-medium text-gray-800 poppins-sans">connect@tievista.com</p>
                     </div>
                   </a>
                 </div>
@@ -180,7 +140,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-1" style={{fontFamily:'PT Serif,serif'}}>Direct Call</h4>
-                      <p className="text-lg font-medium text-gray-800">+91 91679 15651</p>
+                      <p className="text-lg font-medium text-gray-800 poppins-sans">+91 91679 15651</p>
                     </div>
                   </a>
                 </div>
@@ -192,8 +152,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-1" style={{fontFamily:'PT Serif,serif'}}>Address</h4>
-                      <p className="text-lg font-medium text-gray-800">TIEVISTA GLOBAL PRIVATE WEALTH,</p>
-                      <p className="text-lg font-medium text-gray-800">4th Floor, AWFIS, VIOS Tower, Wadala, Mumbai 400037</p>
+                      <p className="text-lg font-medium text-gray-800 poppins-sans">TIEVISTA GLOBAL PRIVATE WEALTH,</p>
+                      <p className="text-lg font-medium text-gray-800 poppins-sans">4th Floor, AWFIS, VIOS Tower, Wadala, Mumbai 400037</p>
                     </div>
                   </a>
                 </div>

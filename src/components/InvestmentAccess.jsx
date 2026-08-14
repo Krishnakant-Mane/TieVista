@@ -111,7 +111,7 @@ const SectionHeader = ({ title, description, delay = 0.1 }) => (
             {title}
         </h2>
         <div className="w-16 h-0.5 mt-4 mb-6" />
-        <p className="text-lg text-black leading-relaxed font-light max-w-4xl" style={{ fontFamily: "'Poppins', sans-serif" }}>
+        <p className="text-lg text-black leading-relaxed font-light max-w-4xl poppins-sans">
             {description}
         </p>
     </motion.div>
@@ -249,21 +249,17 @@ const InvestmentAccess = () => {
         <div className="bg-white font-sans selection:bg-[#D4AF37] selection:text-white">
 
             {/* Hero Section */}
-            <section className="h-[90vh] w-full relative flex items-center justify-center overflow-hidden">
+            <section className="h-screen w-full relative flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img className="h-full w-full object-cover scale-105" src="https://res.cloudinary.com/dck5jgfix/image/upload/v1777033664/HomeBG_jbaa4u.png" alt="Hero" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
                 </div>
 
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={animationSettings.container} className="absolute bottom-28 left-6 md:left-16 lg:left-24 text-left z-10 max-w-3xl pr-6">
-                    {/* <div className="inline-flex items-center gap-3 px-4 py-1 mb-6 border border-[#D4AF37]/50  bg-black/20 ">
-                        {/* <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} /> */}
-                    {/* <span className="text-[#D4AF37] text-xs font-bold tracking-[0.3em] uppercase" style={{ fontFamily: 'PT Serif, serif' }}>We don’t just manage wealth, We future-proof it.</span> */}
-                    {/* </div> */}
                     <motion.h1 variants={animationSettings.item} className="text-6xl md:text-6xl mb-8 text-white tracking-tighter leading-[0.95]" style={{ fontFamily: "PT Serif" }}>
                         Investment Access
                     </motion.h1>
-                    <motion.p variants={animationSettings.item} className="text-lg md:text-xl text-white font-light max-w-3xl leading-relaxed mb-12">
+                    <motion.p variants={animationSettings.item} className="text-lg md:text-xl text-white font-light max-w-3xl leading-relaxed mb-12 poppins-sans">
                         Navigating the complexities of global wealth through bespoke selection, rigorous discipline, and a borderless perspective.
                     </motion.p>
                 </motion.div>
@@ -287,7 +283,7 @@ const InvestmentAccess = () => {
                         Future-proof Your <br /> <span className="text-black ">Legacy.</span>
                     </h2>
                     <Link to="/contact">
-                        <button className="bg-black text-white px-16 py-6 rounded-full font-bold uppercase text-sm hover:bg-[#D4AF37] transition-all shadow-2xl hover:shadow-[#D4AF37]/40">
+                        <button className="bg-black poppins-sans text-white px-16 py-6 rounded-full font-bold uppercase text-sm hover:bg-[#D4AF37] transition-all shadow-2xl hover:shadow-[#D4AF37]/40">
                             Connect With wealth manager
                         </button>
                     </Link>

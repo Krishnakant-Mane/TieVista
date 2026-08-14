@@ -213,7 +213,7 @@ const AboutUs = () => {
                     </div>
 
                     {/* Button */}
-                    <Link to={"/contact"}><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-black font-medium px-8 py-3.5 text-[15px] transition-all shadow-md poppins-sans">
+                    <Link to={"/contact"}><button className="bg-gradient-to-r from-[#dfb63a] to-[#c29b22] hover:opacity-90 text-white font-medium px-8 py-3.5 text-[15px] transition-all shadow-md poppins-sans">
                         Book a Private Consultation
                     </button></Link>
                 </div>
