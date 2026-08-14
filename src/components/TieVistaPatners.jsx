@@ -70,7 +70,7 @@ const TieVistaPatners = () => {
   useEffect(() => {
     if (hasPopupShown()) return;
 
-    const timer = setTimeout(() => showPopupNow(setShowPopup), 15000);
+    const timer = setTimeout(() => showPopupNow(setShowPopup), 5000);
 
     const onScroll = () => {
       const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
