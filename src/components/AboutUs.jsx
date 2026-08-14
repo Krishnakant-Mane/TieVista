@@ -165,7 +165,7 @@ const AboutUs = () => {
                 <div className="flex flex-wrap -mx-3 lg:-mx-4">
                     {services.map((service, idx) => (
                         <div key={idx} className="w-full sm:w-1/2 lg:w-1/3 px-3 lg:px-4 mb-6 lg:mb-8 flex">
-                            <div className="w-full relative bg-white border border-gray-100/60 p-8 sm:p-10 flex flex-col items-center justify-center text-center min-h-[300px] shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300 group">
+                            <div className="w-full relative bg-white border border-gray-100/60 hover:border-[#D4AF37] p-8 sm:p-10 flex flex-col items-center justify-center text-center min-h-[300px] shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300 group">
                                 <div className="absolute top-8 left-8 text-[#D4AF37] opacity-80 group-hover:opacity-100 transition-opacity">
                                     <service.icon size={26} strokeWidth={1.5} />
                                 </div>
@@ -260,8 +260,8 @@ const AboutUs = () => {
                                 <p>Seamless digital onboarding that simplifies client acquisition while ensuring speed, compliance, and a frictionless experience.</p>
                             </div>
                         </div>
-                        {/* 2nd */}
 
+                        {/* 2nd */}
                         <div className='flex flex-col border-r border-l w-60 lg:h-68 lg:w-65 border-white/40 bg-black/20 py-5 lg:py-4 gap-5'>
                             <div className='lg:mb-3 lg:mt-1.5 lg:px-5 px-2'>
                                 <FileText className='text-white' size={26} />
