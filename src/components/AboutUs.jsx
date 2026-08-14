@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { CandlestickChart, Globe, Rocket, FileChartPie, FileText, Layers, Handshake, Landmark, TrendingUp, Wallet, UserPlus, PieChart, BriefcaseBusiness, ArrowRightCircle, Calendar, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
 import PhoneNumberPopup from '../popups/PhoneNumberPopup'
 import { hasPopupShown, showPopupNow } from "../utils/popupStorage.js";
 

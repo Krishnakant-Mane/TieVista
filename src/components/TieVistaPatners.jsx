@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Target, TrendingUp, Users, BarChart3, Star, Handshake, Shield, ClipboardCheck, ArrowRight, Zap, Globe, Database, Layers, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import PhoneNumberPopup from "../popups/PhoneNumberPopup";
+import { hasPopupShown, showPopupNow } from "../utils/popupStorage.js";
+import { useState, useEffect } from "react";
 
 const GOLD = '#D4AF37';
 
@@ -58,6 +60,33 @@ const faqData = [
 ];
 
 const TieVistaPatners = () => {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  setTimeout(() => {
+    sessionStorage.removeItem('popupShown')
+  }, 600000)
+
+  useEffect(() => {
+    if (hasPopupShown()) return;
+
+    const timer = setTimeout(() => showPopupNow(setShowPopup), 15000);
+
+    const onScroll = () => {
+      const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      if (scrolled >= 60) {
+        showPopupNow(setShowPopup);
+        clearTimeout(timer);
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
   const navigate = useNavigate();
   const animationSettings = {
     container: {
@@ -117,13 +146,13 @@ const TieVistaPatners = () => {
           </motion.h1>
           <motion.p
             variants={animationSettings.item}
-            className="text-lg md:text-xl lg:text-2xl text-white font-light max-w-3xl mx-auto leading-relaxed px-4"
+            className="poppins-sans text-lg md:text-xl lg:text-2xl text-white font-light max-w-3xl mx-auto leading-relaxed px-4"
           >
             A next-generation partnership platform designed to institutionalize independent financial partnership practices globally.
           </motion.p>
         </motion.div>
 
-        
+
       </section>
 
       {/* Main Content Section */}
@@ -150,11 +179,11 @@ const TieVistaPatners = () => {
               {...fadeUp(0.2)}
               className="w-full md:w-[55%] relative pl-6 md:pl-10"
             >
-              <div 
-                className="absolute left-0 top-2 bottom-2 w-[1px]" 
+              <div
+                className="absolute left-0 top-2 bottom-2 w-[1px]"
                 style={{ background: GOLD, opacity: 0.8 }}
               />
-              <p 
+              <p
                 className="text-2xl md:text-3xl lg:text-[38px] text-gray-900 leading-[1.3]"
                 style={{ fontFamily: 'PT Serif, serif' }}
               >
@@ -251,9 +280,9 @@ const TieVistaPatners = () => {
       {/* OUR Vision */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-16 max-w-6xl text-center">
-          
+
           {/* Title with Gold Lines */}
-          <motion.div 
+          <motion.div
             {...fadeUp(0)}
             className="flex items-center justify-center gap-6 md:gap-12 mb-16"
           >
@@ -265,11 +294,11 @@ const TieVistaPatners = () => {
           </motion.div>
 
           {/* Vision Quote */}
-          <motion.div 
+          <motion.div
             {...fadeUp(0.2)}
             className="max-w-5xl mx-auto"
           >
-            <p 
+            <p
               className="text-2xl md:text-4xl lg:text-[42px] text-gray-800 italic leading-[1.4] text-justify"
               style={{ fontFamily: 'PT Serif, serif' }}
             >
@@ -279,7 +308,9 @@ const TieVistaPatners = () => {
 
         </div>
       </section>
-
+      {showPopup && (
+              <PhoneNumberPopup onClose={() => setShowPopup(false)} />
+          )}
     </div>
   );
 };
