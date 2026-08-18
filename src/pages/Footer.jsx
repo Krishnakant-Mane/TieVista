@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { Mail, Linkedin, Twitter, Instagram, MapPin,Phone  } from 'lucide-react'
 import logo from '/TieVistaLogo.png'
 import { motion } from 'framer-motion'
 
@@ -79,7 +79,7 @@ export const Footer = () => {
 
           {/* Brand Section */}
           <div className="flex-1 min-w-[280px]">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/" className="inline-block ">
               <div className="w-25 h-25 p-2 flex items-center justify-center ">
                 <img src={logo} alt="TieVista Logo" className="w-full h-full object-contain brightness-0 invert" />
               </div>
@@ -87,20 +87,34 @@ export const Footer = () => {
             <p className="text-white font-light leading-relaxed max-w-sm">
 
             </p>
-            <div className="flex gap-4 mt-8 ">
-              <a href="https://www.linkedin.com/company/tievista/" className="flex gap-2 group">
-                <div className='w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
-                  <Linkedin size={18} />
+            <div className="flex flex-col mt-8 space-y-1 "> {/*https://maps.app.goo.gl/LQztAs5qSRRrZiNq9*/}
+              <a href="https://maps.app.goo.gl/LQztAs5qSRRrZiNq9" className="flex gap-2 group">
+                <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
+                  <MapPin size={18}/>
                 </div>
-                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm' style={{ fontFamily: 'PT Serif, serif' }}> LinkedIn</h6>
+                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'> TIEVISTA GLOBAL PRIVATE WEALTH,<br />4th Floor, AWFIS, VIOS Tower, Wadala , Mumbai-400037</h6>
+
+              </a>
+              <a href="mailto:connect@tievista.com" className="flex gap-2 group">
+                <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
+                  <Mail size={18}/>
+                </div>
+                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'>connect@tievista.com </h6>
+
+              </a>
+              <a href="tel:+91 91679 15651" className="flex gap-2 group">
+                <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
+                  <Phone size={18}/>
+                </div>
+                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'>+91 91679 15651 </h6>
 
               </a>
 
-              <a href="https://mail.google.com/mail/u/0/#inbox/FMfcgzQfCDMHbJDLQnzjfQrXtpdWmsWT?compose=CllgCKCHTgqwmLnLdDGDGqZPpjWNgdMRxHRBGHFkvGNDsWlMKlbtnzLBbNqklMcpWRrjLkRQMZL" className="flex gap-2 group">
-                <div className='w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
-                  <Mail size={18} />
+              <a href="https://www.linkedin.com/company/tievista/" className="flex gap-2 group">
+                <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
+                  <Linkedin size={18} />
                 </div>
-                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm' style={{ fontFamily: 'PT Serif, serif' }}>Email</h6>
+                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'>LinkedIn</h6>
               </a>
             </div>
           </div>
@@ -108,45 +122,44 @@ export const Footer = () => {
           {/* Navigation Columns */}
           <div className="flex flex-wrap gap-12 lg:gap-24">
 
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
-                Investment Partners
-              </h4>
-              <ul className="space-y-4 font-light text-white">
-                <li><Link to="/investmentpartners/mutualfunds" className="hover:text-white transition-colors">Mutual Funds</Link></li>
-                <li><Link to="/investmentpartners/pms" className="hover:text-white transition-colors">PMS</Link></li>
-                <li><Link to="/investmentpartners/aif" className="hover:text-white transition-colors">AIF</Link></li>
-                <li><Link to="/investmentpartners/giftcity" className="hover:text-white transition-colors">GIFT City</Link></li>
-                <li><Link to="/investmentpartners/privatecredit" className="hover:text-white transition-colors">Private Credit</Link></li>
-              </ul>
-            </div>
-
             {/* Column 1 */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.3em] mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+              <h4 className="text-xs font-bold uppercase  mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
                 Quick Links
               </h4>
               <ul className="space-y-4 font-light text-white">
-                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link to="/partners" className="hover:text-white transition-colors">TieVista Partners</Link></li>
-                <li><Link to="/investmentaccess" className="hover:text-white transition-colors">Investment Access</Link></li>
-
+                <li><Link to="/" className="hover:text-white transition-colors poppins-sans">Home</Link></li>
+                <li><Link to="/partners" className="hover:text-white transition-colors poppins-sans">TieVista Partners</Link></li>
+                <li><Link to="/services" className="hover:text-white transition-colors poppins-sans">Services</Link></li>
+                <li><Link to="/b2b" className="hover:text-white transition-colors poppins-sans">Strategic Alliance</Link></li>
               </ul>
             </div>
 
-            {/* Quick Link 2 */}
-
-
-            {/* Column 2 */}
-            {/* <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.3em] mb-6" style={{ color: GOLD, fontFamily: 'PT Serif, serif' }}>
-                Solutions
+            <div>
+              <h4 className="text-xs font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+                Investment Partners
               </h4>
               <ul className="space-y-4 font-light text-white">
-                <li><Link to="/investmentaccess" className="hover:text-white transition-colors">Investment Access</Link></li>
-                <li><Link to="/insights" className="hover:text-white transition-colors">Insights</Link></li> 
+                <li><Link to="/investmentpartners/mutualfunds" className="hover:text-white transition-colors poppins-sans">Mutual Funds</Link></li>
+                <li><Link to="/investmentpartners/pms" className="hover:text-white transition-colors poppins-sans">PMS</Link></li>
+                <li><Link to="/investmentpartners/aif" className="hover:text-white transition-colors poppins-sans">AIF</Link></li>
+                <li><Link to="/investmentpartners/giftcity" className="hover:text-white transition-colors poppins-sans">GIFT City</Link></li>
+                <li><Link to="/investmentpartners/privatecredit" className="hover:text-white transition-colors poppins-sans">Private Credit</Link></li>
               </ul>
-            </div> */}
+            </div>
+
+            {/* Column 2 */}
+            <div>
+              <h4 className="text-xs font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+                LEGAL & COMPLIANCE
+              </h4>
+              <ul className="space-y-4 font-light text-white">
+                <li><Link to="/privacypolicy" className="hover:text-white transition-colors poppins-sans">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="hover:text-white transition-colors poppins-sans">Terms of Use</Link></li>
+                <li><a href="https://docs.google.com/spreadsheets/d/1WfMZxhjV2KQYqx9q458ylRMYRCnCHzKI/export?format=xlsx" className="hover:text-white transition-colors poppins-sans">Product List</a></li>
+                <li><Link to="/account-closure" className="hover:text-white transition-colors poppins-sans">Account Closure</Link></li>
+              </ul>
+            </div>
 
           </div>
         </div>
@@ -167,7 +180,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-white font-light pt-8 border-t border-gray-900" style={{ fontFamily: 'PT Serif, serif' }}>
           <p>® 2026 TieVista. All rights reserved.</p>
-          <div className='gap-2 flex flex-col' >
+          {/* <div className='gap-2 flex flex-col' >
             <div className="flex gap-8">
               <Link to="/privacypolicy" className="hover:text-white transition-colors" style={{ fontFamily: 'PT Serif, serif' }}>Privacy Policy</Link>
               <Link to="/terms" className="hover:text-white transition-colors" style={{ fontFamily: 'PT Serif, serif' }}>Terms of Use</Link>
@@ -176,7 +189,7 @@ export const Footer = () => {
               <a href="https://docs.google.com/spreadsheets/d/1WfMZxhjV2KQYqx9q458ylRMYRCnCHzKI/export?format=xlsx" className="hover:text-white transition-colors" style={{ fontFamily: 'PT Serif, serif' }}>Product List</a>
               <Link to="/account-closure" className="hover:text-white transition-colors" style={{ fontFamily: 'PT Serif, serif' }}>Account Closure</Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
