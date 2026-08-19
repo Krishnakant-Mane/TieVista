@@ -71,22 +71,20 @@ export const Footer = () => {
         </motion.div>
       </section>
 
-      <div className="py-5 mx-auto px-6 lg:px-16">
+      <div className=" mx-auto px-6 lg:px-16">
 
         {/* Main Content Area */}
-        <div className="flex flex-wrap gap-10 lg:gap-20 mb-16">
+        <div className="flex flex-wrap gap-10 lg:gap-10 mb-8">
 
           {/* Brand Section */}
           <div className="flex-1 min-w-[280px]">
             <Link to="/" className="inline-block ">
-              <div className="w-25 h-25 p-2 flex items-center justify-center ">
+              <div className="w-25 h-25 flex items-center justify-center ">
                 <img src={logo} alt="TieVista Logo" className="w-full h-full object-contain brightness-0 invert" />
               </div>
             </Link>
-            <p className="text-white font-light leading-relaxed max-w-sm">
-
-            </p>
-            <div className="flex flex-col mt-8 space-y-1 "> {/*https://maps.app.goo.gl/LQztAs5qSRRrZiNq9*/}
+            
+            <div className="flex flex-col mt-2 space-y-1 "> {/*https://maps.app.goo.gl/LQztAs5qSRRrZiNq9*/}
               <a href="https://maps.app.goo.gl/LQztAs5qSRRrZiNq9" className="flex gap-2 group">
                 <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
                   <MapPin size={18}/>
@@ -126,44 +124,44 @@ export const Footer = () => {
           </div>
 
           {/* Navigation Columns */}
-          <div className="flex flex-wrap gap-12 lg:gap-24">
+          <div className="flex flex-wrap gap-12 lg:gap-24 mt-27">
 
             {/* Column 1 */}
             <div>
-              <h4 className="text-xs font-bold uppercase  mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+              <h4 className="text-base font-bold uppercase  mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
                 Quick Links
               </h4>
-              <ul className="space-y-4 font-light text-white">
-                <li><Link to="/" className="hover:text-white transition-colors poppins-sans">Home</Link></li>
-                <li><Link to="/partners" className="hover:text-white transition-colors poppins-sans">TieVista Partners</Link></li>
-                <li><Link to="/investmentaccess" className="hover:text-white transition-colors poppins-sans">Investment Access</Link></li>
-                <li><Link to="/publications" className="hover:text-white transition-colors poppins-sans">Knowledge Repository</Link></li>
+              <ul className="space-y-2 font-light text-white">
+                <li><Link to="/" className="hover:text-white text-sm transition-colors poppins-sans">Home</Link></li>
+                <li><Link to="/partners" className="hover:text-white text-sm transition-colors poppins-sans">TieVista Partners</Link></li>
+                <li><Link to="/investmentaccess" className="hover:text-white text-sm transition-colors poppins-sans">Investment Access</Link></li>
+                <li><Link to="/publications" className="hover:text-white text-sm transition-colors poppins-sans">Knowledge Repository</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-xs font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+              <h4 className="text-base font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
                 Investment Partners
               </h4>
-              <ul className="space-y-4 font-light text-white">
-                <li><Link to="/investmentpartners/mutualfunds" className="hover:text-white transition-colors poppins-sans">Mutual Funds</Link></li>
-                <li><Link to="/investmentpartners/pms" className="hover:text-white transition-colors poppins-sans">PMS</Link></li>
-                <li><Link to="/investmentpartners/aif" className="hover:text-white transition-colors poppins-sans">AIF</Link></li>
-                <li><Link to="/investmentpartners/giftcity" className="hover:text-white transition-colors poppins-sans">GIFT City</Link></li>
-                <li><Link to="/investmentpartners/privatecredit" className="hover:text-white transition-colors poppins-sans">Private Credit</Link></li>
+              <ul className="space-y-2 font-light text-white">
+                <li><Link to="/investmentpartners/mutualfunds" className="hover:text-white text-sm transition-colors poppins-sans">Mutual Funds</Link></li>
+                <li><Link to="/investmentpartners/pms" className="hover:text-white text-sm transition-colors poppins-sans">PMS</Link></li>
+                <li><Link to="/investmentpartners/aif" className="hover:text-white text-sm transition-colors poppins-sans">AIF</Link></li>
+                <li><Link to="/investmentpartners/giftcity" className="hover:text-white text-sm transition-colors poppins-sans">GIFT City</Link></li>
+                <li><Link to="/investmentpartners/privatecredit" className="hover:text-white text-sm transition-colors poppins-sans">Private Credit</Link></li>
               </ul>
             </div>
 
             {/* Column 2 */}
             <div>
-              <h4 className="text-xs font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
+              <h4 className="text-base font-bold uppercase mb-6 text-white" style={{ fontFamily: 'PT Serif, serif' }}>
                 LEGAL & COMPLIANCE
               </h4>
-              <ul className="space-y-4 font-light text-white">
-                <li><Link to="/privacypolicy" className="hover:text-white transition-colors poppins-sans">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="hover:text-white transition-colors poppins-sans">Terms of Use</Link></li>
-                <li><a href="https://docs.google.com/spreadsheets/d/1WfMZxhjV2KQYqx9q458ylRMYRCnCHzKI/export?format=xlsx" className="hover:text-white transition-colors poppins-sans">Product List</a></li>
-                <li><Link to="/account-closure" className="hover:text-white transition-colors poppins-sans">Account Closure</Link></li>
+              <ul className="space-y-2 font-light text-white">
+                <li><Link to="/privacypolicy" className="text-sm hover:text-white transition-colors poppins-sans">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-sm hover:text-white transition-colors poppins-sans">Terms of Use</Link></li>
+                <li><a href="https://docs.google.com/spreadsheets/d/1WfMZxhjV2KQYqx9q458ylRMYRCnCHzKI/export?format=xlsx" className="text-sm hover:text-white transition-colors poppins-sans">Product List</a></li>
+                <li><Link to="/account-closure" className="text-sm hover:text-white transition-colors poppins-sans">Account Closure</Link></li>
               </ul>
             </div>
 
