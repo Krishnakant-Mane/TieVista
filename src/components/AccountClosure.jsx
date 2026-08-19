@@ -28,13 +28,13 @@ const AccountClosure = () => {
         <motion.div {...fadeUp(0)} className="mb-10">
           <h1
             className="text-3xl md:text-4xl font-bold tracking-tight text-black text-center mb-6"
-            style={{ fontFamily: PTSerif }}
+            style={{ fontFamily: 'PT Serif, serif' }}
           >
             How to close my TieVista Global trading account?
           </h1>
           <div className="w-full h-[2px] mb-8" style={{ background: GOLD }} />
           
-          <p className="text-base text-black font-medium leading-relaxed">
+          <p className="text-base text-black font-medium leading-relaxed poppins-sans">
             You can close your Global trading account by sending us an email request from registered email id to <a href="mailto:connect@tievista.com" className="underline hover:text-[#D4AF37] transition-colors">connect@tievista.com</a>,<br />
             The closure process takes 2 working days once you submit your request.
           </p>
@@ -58,7 +58,7 @@ const AccountClosure = () => {
               <span className="text-3xl md:text-4xl" style={{ color: GOLD, fontFamily: 'PT Serif, serif' }}>
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <p className="text-black text-base md:text-lg">
+              <p className="text-black text-base md:text-lg poppins-sans">
                 {step}
               </p>
             </motion.div>
@@ -71,7 +71,7 @@ const AccountClosure = () => {
           className="bg-[#FAFAFA] p-8 md:p-10 relative"
         >
           <div className="absolute left-0 top-8 bottom-8 w-1" style={{ background: GOLD }} />
-          <p className="text-black text-sm leading-relaxed pl-6">
+          <p className="text-black text-sm leading-relaxed pl-6 poppins-sans">
             *Please note that upon submission of an account closure request, the client irrevocably agrees that any residual amounts, including but not limited to dividends, corporate action proceeds, or any other entitlements arising from prior holdings and received post-closure, shall not be credited to the client’s account. The client acknowledges and accepts that such amounts may be forfeited, and that no claims shall lie against the Company in respect of the same.
           </p>
         </motion.div>

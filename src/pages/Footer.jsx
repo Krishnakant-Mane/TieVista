@@ -39,7 +39,7 @@ export const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="relative z-10 px-6 max-w-4xl mx-auto"
+          className="relative z-10 px-2 max-w-7xl mx-auto"
         >
           {/* Gold rule */}
           <motion.div
@@ -57,8 +57,7 @@ export const Footer = () => {
             className="text-sm font-light leading-relaxed tracking-tight text-white mb-10"
             style={{ fontFamily: 'PT Serif, serif' }}
           >
-            IndusArtha Financial Services Private Limited,
-            known as TieVista - designed to simplify complexity and provide clear oversight.
+            IndusArtha Financial Services Private Limited, known as TieVista Global Private Wealth designed to simplify complexity and provide clear oversight.
           </h2>
 
           <motion.div
@@ -116,6 +115,13 @@ export const Footer = () => {
                 </div>
                 <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'>LinkedIn</h6>
               </a>
+              
+              <a href="https://www.instagram.com/tievista?igsh=MThjYmx2M3RhamZmdw==&igsi=MThjYmx2M3RhamZmdw==" className="flex gap-2 group">
+                <div className='w-10 h-10 flex items-center justify-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all'>
+                  <Instagram size={18} />
+                </div>
+                <h6 className='flex justify-center items-center text-white group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all font-light text-sm poppins-sans'>Instagram</h6>
+              </a>
             </div>
           </div>
 
@@ -130,8 +136,8 @@ export const Footer = () => {
               <ul className="space-y-4 font-light text-white">
                 <li><Link to="/" className="hover:text-white transition-colors poppins-sans">Home</Link></li>
                 <li><Link to="/partners" className="hover:text-white transition-colors poppins-sans">TieVista Partners</Link></li>
-                <li><Link to="/services" className="hover:text-white transition-colors poppins-sans">Services</Link></li>
-                <li><Link to="/b2b" className="hover:text-white transition-colors poppins-sans">Strategic Alliance</Link></li>
+                <li><Link to="/investmentaccess" className="hover:text-white transition-colors poppins-sans">Investment Access</Link></li>
+                <li><Link to="/publications" className="hover:text-white transition-colors poppins-sans">Knowledge Repository</Link></li>
               </ul>
             </div>
 
@@ -169,17 +175,16 @@ export const Footer = () => {
 
         {/* Disclaimer Section */}
         <div className="mb-10">
-          <p className="text-[12px] mb-4 leading-relaxed text-white text-justify md:text-left" style={{ fontFamily: 'PT Serif, serif' }}>
-            Mutual fund investments are subject to market risks. Please read the scheme information and other related documents carefully before investing. Past performance is not indicative of future returns. Please consider your specific investment requirements before choosing a fund,or designing a portfolio that suits your needs. IndusArtha Financial Services Private Limited, (with ARN code 342010, APRN code 07336, AP Registration Number NSE - AP3022007993 AND BSE - AP01668101176514) makes no warranties or representations, express or implied, on products offered through the platform. It accepts no liability for any damages or losses, however caused, in connection with the use of, or on the reliance of its product or related services. Terms and conditions of the website are applicable.
-          </p>
-          <p className="text-[12px]  leading-relaxed text-white text-justify md:text-left" style={{ fontFamily: 'PT Serif, serif' }}>
+          <p className="text-[12px] mb-4 leading-relaxed text-white text-justify md:text-left poppins-sans">
+Mutual fund investments are subject to market risks. Please read the scheme information and other related documents carefully before investing. Past performance is not indicative of future returns. Please consider your specific investment requirements before choosing a fund ,or designing a portfolio that suits your needs. IndusArtha Financial Services Private Limited, (with ARN- 342010, APRN - 07336, AP Registration Number NSE - AP3022007993 AND BSE - AP01668101176514) makes no warranties or representations, express or implied, on products offered through the platform. It accepts no liability for any damages or losses, however caused, in connection with the use of, or on the reliance of its product or related services. Terms and conditions of the website are applicable.          </p>
+          <p className="text-[12px]  leading-relaxed text-white text-justify md:text-left poppins-sans">
             “Product Manufacturer/ Service Provider” shall mean issuer of security or the entity/ person executing the actions to offer the defined services.
           </p>
         </div>
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-white font-light pt-8 border-t border-gray-900" style={{ fontFamily: 'PT Serif, serif' }}>
-          <p>® 2026 TieVista. All rights reserved.</p>
+          <p>® 2026 TieVista Global Private Wealth .  All rights reserved.</p>
           {/* <div className='gap-2 flex flex-col' >
             <div className="flex gap-8">
               <Link to="/privacypolicy" className="hover:text-white transition-colors" style={{ fontFamily: 'PT Serif, serif' }}>Privacy Policy</Link>
