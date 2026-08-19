@@ -24,22 +24,22 @@ const faqData = [
   },
   {
     question: "How does TieVista support partners in navigating markets?",
-    answer: "TieVista follows a structured investment framework that studies evolving macro cycles, market valuations, liquidity conditions, and relative opportunities across asset classes and market capitalisation segments. Through this disciplined approach, our Partners gain access to curated investment perspectives that help inform portfolio positioning as market environments evolve.",
+    answer: "TieVista follows a structured investment discipline that studies evolving macro cycles, market valuations, liquidity conditions, and opportunities across asset classes and market capitalisation segments. Through this approach, our Partners gain access to factual investment data that assists in positioning as market environments evolve.",
     icon: TrendingUp
   },
   {
     question: "What role does TieVista play in relation to the partner’s clients?",
-    answer: "The advisor remains at the centre of the client relationship. TieVista functions as a strategic platform partner—providing the research orientation, product access, and infrastructure that enable Partners to deliver a more considered and institutional-quality investment experience.",
+    answer: "The advisor remains at the centre of the client relationship. TieVista functions as a strategic platform partner—providing access to research via partners, product access, and infrastructure that enable Partners to deliver a more considered and institutional-quality investment experience.",
     icon: Users
   },
   {
     question: "What capabilities does the platform provide to enhance client engagement?",
-    answer: "Partners on the TieVista platform benefit from sophisticated reporting and portfolio analytics that allow them to view, analyse, and present client portfolios in multiple dimensions. This enables Partners to communicate investment journeys with greater clarity, transparency, and perspective.",
+    answer: "Partners on the TieVista platform benefit from sophisticated reporting that allow them to view, and present client portfolios in multiple dimensions. This enables Partners to communicate investment journeys with greater clarity and transparency.",
     icon: BarChart3
   },
   {
     question: "What distinguishes partners who partner with TieVista?",
-    answer: "TieVista partners with Partners who believe wealth management is a long-term craft—one built on trust, disciplined thinking, and enduring client relationships. The platform attracts Partners who aspire to operate with the standards and professionalism associated with leading wealth institutions.",
+    answer: "TieVista partners with who believe wealth management is a long-term craft—one built on trust, disciplined thinking, and enduring client relationships. The platform attracts Partners who aspire to operate with the standards and professionalism associated with leading wealth institutions.",
     icon: Star
   },
   {
