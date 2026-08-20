@@ -287,11 +287,11 @@ const AboutUs = () => {
                                 </div>
                                 <div className='text-white lg:text-2xl lg:w-full lg:mb-5' style={{ fontFamily: 'PT Serif, serif' }}>
                                     <h1>
-                                        Portfolio Analytics
+                                        Portfolio Reporting
                                     </h1>
                                 </div>
                                 <div className='text-white text-sm poppins-sans font-light lg:px-5'>
-                                    <p>Comprehensive portfolio insights with real-time reporting and performance tracking.</p>
+                                    <p>In-depth portfolio reporting with seamless updates and holistic performance tracking.</p>
                                 </div>
                             </div>
 
