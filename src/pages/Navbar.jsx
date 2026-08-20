@@ -273,7 +273,7 @@ export const Navbar = () => {
                                             key={i}
                                             href={item.href}
                                             target={item.target}
-                                            className="block px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#D4AF37] transition-colors"
+                                            className="block px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#D4AF37] transition-colors poppins-sans"
                                         >
                                             {item.label}
                                         </a>
@@ -349,7 +349,7 @@ export const Navbar = () => {
                                                         href={option.href}
                                                         target={option.target}
                                                         onClick={closeMobileMenu}
-                                                        className="block px-6 py-4 text-sm font-medium text-gray-700 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors"
+                                                        className="block px-6 py-4 text-sm font-medium text-gray-700 hover:text-[#D4AF37] hover:bg-gray-100 transition-colors poppins-sans"
                                                     >
                                                         {option.label}
                                                     </a>
