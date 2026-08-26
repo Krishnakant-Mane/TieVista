@@ -248,31 +248,22 @@ const MetalsInfletionPoint = () => {
                                                     const cx = x + barW/2
                                                     return (
                                                         <g key={i}>
-                                                            <motion.rect
+                                                            <rect
                                                                 x={x}
                                                                 y={bY}
                                                                 width={barW}
                                                                 height={bH}
                                                                 fill='#F3D054'
-                                                                style={{ transformOrigin: '50% 100%' }}
-                                                                initial={{ scaleY: 0 }}
-                                                                whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
-                                                            />
+                                                                />
                                                             {/* Value label above every bar */}
-                                                            <motion.text
+                                                            <text
                                                                 x={cx}
                                                                 y={bY-4}
                                                                 textAnchor='middle'
                                                                 fontSize={7}
                                                                 fill='#374151'
                                                                 fontWeight='600'
-                                                                initial={{ opacity: 0 }}
-                                                                whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
-                                                            >{v}</motion.text>
+                                                                >{v}</text>
                                                             {/* Rotated month label */}
                                                             <text
                                                                 x={cx}
@@ -325,31 +316,22 @@ const MetalsInfletionPoint = () => {
                                                     const isLast = i===values.length-1
                                                     return (
                                                         <g key={i}>
-                                                            <motion.rect
+                                                            <rect
                                                                 x={x}
                                                                 y={bY}
                                                                 width={barW}
                                                                 height={bH}
                                                                 fill='#F3D054'
-                                                                style={{ transformOrigin: '50% 100%' }}
-                                                                initial={{ scaleY: 0 }}
-                                                                whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
-                                                            />
+                                                                />
                                                             {/* Value label above every bar */}
-                                                            <motion.text
+                                                            <text
                                                                 x={cx}
                                                                 y={bY-4}
                                                                 textAnchor='middle'
                                                                 fontSize={7}
                                                                 fill='#374151'
                                                                 fontWeight='600'
-                                                                initial={{ opacity: 0 }}
-                                                                whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
-                                                            >{v}{isLast?' +7.6%':''}</motion.text>
+                                                                >{v}{isLast?' +7.6%':''}</text>
                                                             {/* Rotated month label */}
                                                             <text
                                                                 x={cx}
@@ -498,58 +480,40 @@ const MetalsInfletionPoint = () => {
                                                 return (
                                                     <g key={d.year}>
                                                         {/* ── Coal bar (light yellow) ── */}
-                                                        <motion.rect
+                                                        <rect
                                                             x={coalX}
                                                             y={coalBarY}
                                                             width={barW}
                                                             height={coalBarH}
                                                             fill='#F3D054'
-                                                            style={{ transformOrigin: '50% 100%' }}
-                                                            initial={{ scaleY: 0 }}
-                                                            whileInView={{ scaleY: 1 }}
-                                                            viewport={{ once: true, margin: '-60px' }}
-                                                            transition={{ duration: 0.85, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                                                        />
+                                                            />
                                                         {/* Coal value label */}
-                                                        <motion.text
+                                                        <text
                                                             x={coalX + barW / 2}
                                                             y={coalBarY - 5}
                                                             textAnchor='middle'
                                                             fontSize={10}
                                                             fontWeight='600'
                                                             fill='#374151'
-                                                            initial={{ opacity: 0 }}
-                                                            whileInView={{ opacity: 1 }}
-                                                            viewport={{ once: true, margin: '-60px' }}
-                                                            transition={{ duration: 0.35, delay: 0.85 + i * 0.09 }}
-                                                        >{d.coal}</motion.text>
+                                                            >{d.coal}</text>
 
                                                         {/* ── Iron ore bar (dark gold) ── */}
-                                                        <motion.rect
+                                                        <rect
                                                             x={ironX}
                                                             y={ironBarY}
                                                             width={barW}
                                                             height={ironBarH}
                                                             fill='#CD9036'
-                                                            style={{ transformOrigin: '50% 100%' }}
-                                                            initial={{ scaleY: 0 }}
-                                                            whileInView={{ scaleY: 1 }}
-                                                            viewport={{ once: true, margin: '-60px' }}
-                                                            transition={{ duration: 0.85, delay: 0.12 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                                                        />
+                                                            />
                                                         {/* Iron value label */}
-                                                        <motion.text
+                                                        <text
                                                             x={ironX + barW / 2}
                                                             y={ironBarY - 5}
                                                             textAnchor='middle'
                                                             fontSize={10}
                                                             fontWeight='600'
                                                             fill='#374151'
-                                                            initial={{ opacity: 0 }}
-                                                            whileInView={{ opacity: 1 }}
-                                                            viewport={{ once: true, margin: '-60px' }}
-                                                            transition={{ duration: 0.35, delay: 1.0 + i * 0.09 }}
-                                                        >{d.iron}</motion.text>
+                                                            >{d.iron}</text>
 
                                                         {/* X-axis year label */}
                                                         <text
@@ -708,18 +672,14 @@ const MetalsInfletionPoint = () => {
                                             })}
                                             
                                             {/* Smooth Line Path */}
-                                            <motion.path
+                                            <path
                                                 d={pathD}
                                                 fill='none'
                                                 stroke='#F3D054'
                                                 strokeWidth={3}
                                                 strokeLinecap='round'
                                                 strokeDasharray={2000}
-                                                initial={{ strokeDashoffset: 2000 }}
-                                                whileInView={{ strokeDashoffset: 0 }}
-                                                viewport={{ once: true, margin: '-60px' }}
-                                                transition={{ duration: 1.5, ease: 'easeInOut' }}
-                                            />
+                                                />
                                         </svg>
                                     )
                                 })()}
@@ -817,30 +777,21 @@ const MetalsInfletionPoint = () => {
                                                     const cx = x + barW / 2
                                                     return (
                                                         <g key={i}>
-                                                            <motion.rect
+                                                            <rect
                                                                 x={x}
                                                                 y={bY}
                                                                 width={barW}
                                                                 height={bH}
                                                                 fill='#F3D054'
-                                                                style={{ transformOrigin: '50% 100%' }}
-                                                                initial={{ scaleY: 0 }}
-                                                                whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
-                                                            />
+                                                                />
                                                             {/* Value label above every bar */}
-                                                            <motion.text
+                                                            <text
                                                                 x={cx}
                                                                 y={bY - 4}
                                                                 textAnchor='middle'
                                                                 fontSize={8}
                                                                 fill='#000'
-                                                                initial={{ opacity: 0 }}
-                                                                whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '-40px' }}
-                                                                transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
-                                                            >{v}</motion.text>
+                                                                >{v}</text>
                                                             {/* Rotated month label */}
                                                             <text
                                                                 x={cx+3}
@@ -953,30 +904,21 @@ const MetalsInfletionPoint = () => {
                                                         const cx = x + barW / 2;
                                                         return (
                                                             <g key={i}>
-                                                                <motion.rect
+                                                                <rect
                                                                     x={x}
                                                                     y={bY}
                                                                     width={barW}
                                                                     height={bH}
                                                                     fill='#F3D054'
                                                                     rx={4}
-                                                                    style={{ transformOrigin: '50% 100%' }}
-                                                                    initial={{ scaleY: 0 }}
-                                                                    whileInView={{ scaleY: 1 }}
-                                                                    viewport={{ once: true, margin: '-40px' }}
-                                                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                />
-                                                                <motion.text
+                                                                    />
+                                                                <text
                                                                     x={cx}
                                                                     y={bY - 4}
                                                                     textAnchor='middle'
                                                                     fontSize={10}
                                                                     fill='#000'
-                                                                    initial={{ opacity: 0 }}
-                                                                    whileInView={{ opacity: 1 }}
-                                                                    viewport={{ once: true, margin: '-40px' }}
-                                                                    transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                >{v}</motion.text>
+                                                                    >{v}</text>
                                                                 <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
                                                             </g>
                                                         )
@@ -1011,7 +953,7 @@ const MetalsInfletionPoint = () => {
                                                                 const offset = (currentPct / 100) * C;
                                                                 currentPct += d.pct;
                                                                 return (
-                                                                    <motion.circle
+                                                                    <circle
                                                                         key={i}
                                                                         cx={cx}
                                                                         cy={cy}
@@ -1021,11 +963,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeWidth={strokeWidth}
                                                                         strokeDasharray={`${len} ${C}`}
                                                                         strokeDashoffset={-offset}
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '-40px' }}
-                                                                        transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
-                                                                    />
+                                                                        />
                                                                 )
                                                             })}
                                                         </g>
@@ -1077,7 +1015,7 @@ const MetalsInfletionPoint = () => {
                                                                 const offset = (currentPct / 100) * C;
                                                                 currentPct += d.pct;
                                                                 return (
-                                                                    <motion.circle
+                                                                    <circle
                                                                         key={i}
                                                                         cx={cx}
                                                                         cy={cy}
@@ -1087,11 +1025,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeWidth={strokeWidth}
                                                                         strokeDasharray={`${len} ${C}`}
                                                                         strokeDashoffset={-offset}
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '-40px' }}
-                                                                        transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
-                                                                    />
+                                                                        />
                                                                 )
                                                             })}
                                                         </g>
@@ -1220,30 +1154,21 @@ const MetalsInfletionPoint = () => {
                                                         const cx = x + barW / 2;
                                                         return (
                                                             <g key={i}>
-                                                                <motion.rect
+                                                                <rect
                                                                     x={x}
                                                                     y={bY}
                                                                     width={barW}
                                                                     height={bH}
                                                                     fill='#F3D054'
                                                                     rx={4}
-                                                                    style={{ transformOrigin: '50% 100%' }}
-                                                                    initial={{ scaleY: 0 }}
-                                                                    whileInView={{ scaleY: 1 }}
-                                                                    viewport={{ once: true, margin: '-40px' }}
-                                                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                />
-                                                                <motion.text
+                                                                    />
+                                                                <text
                                                                     x={cx}
                                                                     y={bY - 4}
                                                                     textAnchor='middle'
                                                                     fontSize={10}
                                                                     fill='#000'
-                                                                    initial={{ opacity: 0 }}
-                                                                    whileInView={{ opacity: 1 }}
-                                                                    viewport={{ once: true, margin: '-40px' }}
-                                                                    transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                >{displayValues[i]}</motion.text>
+                                                                    >{displayValues[i]}</text>
                                                                 <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
                                                             </g>
                                                         )
@@ -1278,7 +1203,7 @@ const MetalsInfletionPoint = () => {
                                                                 const offset = (currentPct / 100) * C;
                                                                 currentPct += d.pct;
                                                                 return (
-                                                                    <motion.circle
+                                                                    <circle
                                                                         key={i}
                                                                         cx={cx}
                                                                         cy={cy}
@@ -1288,11 +1213,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeWidth={strokeWidth}
                                                                         strokeDasharray={`${len} ${C}`}
                                                                         strokeDashoffset={-offset}
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '-40px' }}
-                                                                        transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
-                                                                    />
+                                                                        />
                                                                 )
                                                             })}
                                                         </g>
@@ -1362,30 +1283,21 @@ const MetalsInfletionPoint = () => {
                                                             const cx = x + barW / 2;
                                                             return (
                                                                 <g key={i}>
-                                                                    <motion.rect
+                                                                    <rect
                                                                         x={x}
                                                                         y={bY}
                                                                         width={barW}
                                                                         height={bH}
                                                                         fill='#F3D054'
                                                                         rx={4}
-                                                                        style={{ transformOrigin: '50% 100%' }}
-                                                                        initial={{ scaleY: 0 }}
-                                                                        whileInView={{ scaleY: 1 }}
-                                                                        viewport={{ once: true, margin: '-40px' }}
-                                                                        transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                    />
-                                                                    <motion.text
+                                                                        />
+                                                                    <text
                                                                         x={cx}
                                                                         y={bY - 3}
                                                                         textAnchor='middle'
                                                                         fontSize={7}
                                                                         fill='#000'
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '-40px' }}
-                                                                        transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                    >{v}</motion.text>
+                                                                        >{v}</text>
                                                                     <text x={cx} y={baseline + 9} textAnchor='middle' fontSize={6} fill='#000'>{labels[i]}</text>
                                                                 </g>
                                                             )
@@ -1533,7 +1445,7 @@ const MetalsInfletionPoint = () => {
                                                                     negBaseline += val; // val is negative, so it moves down
                                                                 }
                                                                 return (
-                                                                    <motion.rect 
+                                                                    <rect 
                                                                         key={q}
                                                                         x={x}
                                                                         y={bY}
@@ -1703,39 +1615,27 @@ const MetalsInfletionPoint = () => {
                                                 })()}
                                             
                                                 {/* Lines */}
-                                                <motion.path
+                                                <path
                                                     d={linePath(ma50)}
                                                     fill="none"
                                                     stroke="#F59E0B"
                                                     strokeWidth="1.5"
                                                     strokeDasharray="4 4"
-                                                    initial={{ opacity: 0 }}
-                                                    whileInView={{ opacity: 1 }}
-                                                    viewport={{ once: true, margin: '-40px' }}
-                                                    transition={{ duration: 2, ease: "easeInOut" }}
-                                                />
-                                                <motion.path
+                                                    />
+                                                <path
                                                     d={linePath(ma20)}
                                                     fill="none"
                                                     stroke="#3B82F6"
                                                     strokeWidth="1.5"
                                                     strokeDasharray="4 4"
-                                                    initial={{ opacity: 0 }}
-                                                    whileInView={{ opacity: 1 }}
-                                                    viewport={{ once: true, margin: '-40px' }}
-                                                    transition={{ duration: 2, ease: "easeInOut" }}
-                                                />
-                                                <motion.path
+                                                    />
+                                                <path
                                                     d={linePath(closePrices)}
                                                     fill="none"
                                                     stroke="#EF4444"
                                                     strokeWidth="1.5"
                                                     strokeDasharray={2000}
-                                                    initial={{ strokeDashoffset: 2000 }}
-                                                    whileInView={{ strokeDashoffset: 0 }}
-                                                    viewport={{ once: true, margin: '-40px' }}
-                                                    transition={{ duration: 2, ease: "easeInOut" }}
-                                                />
+                                                    />
                                             
                                                 {/* Legend */}
                                                 <g transform={`translate(${W/2 - 100}, ${H - 25})`}>
