@@ -93,17 +93,24 @@ const MetalsInfletionPoint = () => {
 
                         {/* Metals List */}
                         <div className='flex flex-wrap items-center gap-4 text-[#D4AF37] font-bold tracking-[0.15em] text-xs md:text-sm uppercase mb-6 poppins-sans'>
-                            <span>STEEL</span>
-                            <span>·</span>
-                            <span>IRON ORE</span>
-                            <span>·</span>
-                            <span>COPPER</span>
-                            <span>·</span>
-                            <span>ALUMINIUM</span>
-                            <span>·</span>
-                            <span>GOLD</span>
-                            <span>·</span>
-                            <span>SILVER</span>
+
+                            <div className='flex items-center gap-4'>
+                                <span>STEEL</span>
+                                <span>·</span>
+                                <span>IRON ORE</span>
+                                <span>·</span>
+                                <span>COPPER</span>
+                            </div>
+
+
+                            <div className='flex items-center gap-4'>
+                                <span>·</span>
+                                <span>ALUMINIUM</span>
+                                <span>·</span>
+                                <span>GOLD</span>
+                                <span>·</span>
+                                <span>SILVER</span>
+                            </div>
                         </div>
 
                         {/* Date */}
