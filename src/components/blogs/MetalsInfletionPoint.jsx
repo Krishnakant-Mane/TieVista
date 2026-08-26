@@ -249,7 +249,7 @@ const MetalsInfletionPoint = () => {
                                                     return (
                                                         <g key={i}>
                                                             <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054'
-                                                                style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                                style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                 initial={{scaleY:0}}
                                                                 whileInView={{scaleY:1}}
                                                                 viewport={{once:true,margin:'-40px'}}
@@ -311,7 +311,7 @@ const MetalsInfletionPoint = () => {
                                                     return (
                                                         <g key={i}>
                                                             <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054'
-                                                                style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                                style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                 initial={{scaleY:0}}
                                                                 whileInView={{scaleY:1}}
                                                                 viewport={{once:true,margin:'-40px'}}
@@ -475,7 +475,7 @@ const MetalsInfletionPoint = () => {
                                                             width={barW}
                                                             height={coalBarH}
                                                             fill='#F3D054'
-                                                            style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                            style={{ transformOrigin: `0px ${coalBarY + coalBarH}px` }}
                                                             initial={{ scaleY: 0 }}
                                                             whileInView={{ scaleY: 1 }}
                                                             viewport={{ once: true, margin: '-60px' }}
@@ -502,7 +502,7 @@ const MetalsInfletionPoint = () => {
                                                             width={barW}
                                                             height={ironBarH}
                                                             fill='#CD9036'
-                                                            style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                            style={{ transformOrigin: `0px ${ironBarY + ironBarH}px` }}
                                                             initial={{ scaleY: 0 }}
                                                             whileInView={{ scaleY: 1 }}
                                                             viewport={{ once: true, margin: '-60px' }}
@@ -789,7 +789,7 @@ const MetalsInfletionPoint = () => {
                                                     return (
                                                         <g key={i}>
                                                             <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054'
-                                                                style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                                style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                 initial={{ scaleY: 0 }}
                                                                 whileInView={{ scaleY: 1 }}
                                                                 viewport={{ once: true, margin: '-40px' }}
@@ -911,7 +911,7 @@ const MetalsInfletionPoint = () => {
                                                         return (
                                                             <g key={i}>
                                                                 <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054' rx={4}
-                                                                    style={{transformBox:'fill-box',transformOrigin:'bottom'}}
+                                                                    style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                     initial={{ scaleY: 0 }}
                                                                     whileInView={{ scaleY: 1 }}
                                                                     viewport={{ once: true, margin: '-40px' }}
@@ -1146,7 +1146,7 @@ const MetalsInfletionPoint = () => {
                                                         return (
                                                             <g key={i}>
                                                                 <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054' rx={4}
-                                                                    style={{ transformBox: 'fill-box', transformOrigin: 'bottom' }}
+                                                                    style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                     initial={{ scaleY: 0 }}
                                                                     whileInView={{ scaleY: 1 }}
                                                                     viewport={{ once: true, margin: '-40px' }}
@@ -1266,7 +1266,7 @@ const MetalsInfletionPoint = () => {
                                                             return (
                                                                 <g key={i}>
                                                                     <motion.rect x={x} y={bY} width={barW} height={bH} fill='#F3D054' rx={4}
-                                                                        style={{ transformBox: 'fill-box', transformOrigin: 'bottom' }}
+                                                                        style={{ transformOrigin: `0px ${bY + bH}px` }}
                                                                         initial={{ scaleY: 0 }}
                                                                         whileInView={{ scaleY: 1 }}
                                                                         viewport={{ once: true, margin: '-40px' }}
@@ -1427,7 +1427,7 @@ const MetalsInfletionPoint = () => {
                                                                     <motion.rect 
                                                                         key={q}
                                                                         x={x} y={bY} width={barW} height={bH} fill={colors[q]}
-                                                                        style={{ transformBox: 'fill-box', transformOrigin: val > 0 ? 'bottom' : 'top' }}
+                                                                        style={{ transformOrigin: val > 0 ? `0px ${bY + bH}px` : `0px ${bY}px` }}
                                                                         initial={{ scaleY: 0 }}
                                                                         whileInView={{ scaleY: 1 }}
                                                                         viewport={{ once: true, margin: '-40px' }}
