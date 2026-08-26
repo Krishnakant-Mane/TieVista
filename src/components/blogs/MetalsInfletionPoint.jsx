@@ -228,7 +228,7 @@ const MetalsInfletionPoint = () => {
                                     const toH=(v)=>(v/yMax)*chartH
                                     const baseline=toY(0)
                                     return (
-                                        <div style={{ width: '100%', minHeight: '280px' }}>
+                                        <div>
                                             <p className='text-xs text-black mb-1' style={{ fontFamily: 'Poppins, sans-serif' }}>India Crude Steel Production (mnt): India's crude steel output stood flat MoM at 14.1 mnt in Jun'26. On a YoY basis, production increased by 4.5%.</p>
                                             <p className='text-sm font-semibold text-black mb-2 text-center' style={{ fontFamily: 'PT Serif, serif' }}>Crude Steel Production</p>
                                             <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'Poppins, sans-serif', overflow: 'visible' }}>
@@ -257,7 +257,7 @@ const MetalsInfletionPoint = () => {
                                                                 style={{ transformOrigin: '50% 100%' }}
                                                                 initial={{ scaleY: 0 }}
                                                                 whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
                                                             />
                                                             {/* Value label above every bar */}
@@ -270,7 +270,7 @@ const MetalsInfletionPoint = () => {
                                                                 fontWeight='600'
                                                                 initial={{ opacity: 0 }}
                                                                 whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
                                                             >{v}</motion.text>
                                                             {/* Rotated month label */}
@@ -304,7 +304,7 @@ const MetalsInfletionPoint = () => {
                                     const toH=(v)=>(v/yMax)*chartH
                                     const baseline=toY(0)
                                     return (
-                                        <div style={{ width: '100%', minHeight: '280px' }}>
+                                        <div>
                                             <p className='text-xs text-black mb-1' style={{ fontFamily: 'Poppins, sans-serif' }}>India Finished Steel Consumption (mnt): Consumption was down by 1.2% MoM in Jun'26 at 14.2 mnt, largely due to seasonal buying moderation (early monsoon period). On a YoY basis, consumption was higher by 7.6%.</p>
                                             <p className='text-sm font-semibold text-black mb-2 text-center' style={{ fontFamily: 'PT Serif, serif' }}>Finished Steel Consumption</p>
                                             <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'Poppins, sans-serif', overflow: 'visible' }}>
@@ -334,7 +334,7 @@ const MetalsInfletionPoint = () => {
                                                                 style={{ transformOrigin: '50% 100%' }}
                                                                 initial={{ scaleY: 0 }}
                                                                 whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
                                                             />
                                                             {/* Value label above every bar */}
@@ -347,7 +347,7 @@ const MetalsInfletionPoint = () => {
                                                                 fontWeight='600'
                                                                 initial={{ opacity: 0 }}
                                                                 whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
                                                             >{v}{isLast?' +7.6%':''}</motion.text>
                                                             {/* Rotated month label */}
@@ -463,108 +463,106 @@ const MetalsInfletionPoint = () => {
                                     const toH = (v) => (v / yMax) * chartH
 
                                     return (
-                                        <div style={{ width: '100%', minHeight: '350px' }}>
-                                            <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'Poppins, sans-serif', overflow: 'visible' }}>
-                                                {/* Y-axis rotated label */}
-                                                <text
-                                                    x={10} y={mt + chartH / 2}
-                                                    textAnchor='middle' fontSize={10} fill='#4B5563'
-                                                    transform={`rotate(-90, 10, ${mt + chartH / 2})`}
-                                                >Million Tonnes</text>
+                                        <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'Poppins, sans-serif', overflow: 'visible' }}>
+                                            {/* Y-axis rotated label */}
+                                            <text
+                                                x={10} y={mt + chartH / 2}
+                                                textAnchor='middle' fontSize={10} fill='#4B5563'
+                                                transform={`rotate(-90, 10, ${mt + chartH / 2})`}
+                                            >Million Tonnes</text>
 
-                                                {/* Horizontal grid lines + Y tick labels */}
-                                                {yTicks.map(v => {
-                                                    const yy = toY(v)
-                                                    return (
-                                                        <g key={v}>
-                                                            <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1.5 : 1} />
-                                                            <text x={ml - 5} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#6B7280'>{v}</text>
-                                                        </g>
-                                                    )
-                                                })}
+                                            {/* Horizontal grid lines + Y tick labels */}
+                                            {yTicks.map(v => {
+                                                const yy = toY(v)
+                                                return (
+                                                    <g key={v}>
+                                                        <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1.5 : 1} />
+                                                        <text x={ml - 5} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#6B7280'>{v}</text>
+                                                    </g>
+                                                )
+                                            })}
 
-                                                {/* Bars + labels + year labels */}
-                                                {data.map((d, i) => {
-                                                    const groupStart = ml + i * groupW + groupPad
-                                                    const coalX = groupStart
-                                                    const ironX = groupStart + barW + innerGap
-                                                    const cx = ml + i * groupW + groupW / 2  // center of group for year label
+                                            {/* Bars + labels + year labels */}
+                                            {data.map((d, i) => {
+                                                const groupStart = ml + i * groupW + groupPad
+                                                const coalX = groupStart
+                                                const ironX = groupStart + barW + innerGap
+                                                const cx = ml + i * groupW + groupW / 2  // center of group for year label
 
-                                                    const coalBarH = toH(d.coal)
-                                                    const ironBarH = toH(d.iron)
-                                                    const coalBarY = toY(d.coal)
-                                                    const ironBarY = toY(d.iron)
-                                                    const baseline = toY(0)
+                                                const coalBarH = toH(d.coal)
+                                                const ironBarH = toH(d.iron)
+                                                const coalBarY = toY(d.coal)
+                                                const ironBarY = toY(d.iron)
+                                                const baseline = toY(0)
 
-                                                    return (
-                                                        <g key={d.year}>
-                                                            {/* ── Coal bar (light yellow) ── */}
-                                                            <motion.rect
-                                                                x={coalX}
-                                                                y={coalBarY}
-                                                                width={barW}
-                                                                height={coalBarH}
-                                                                fill='#F3D054'
-                                                                style={{ transformOrigin: '50% 100%' }}
-                                                                initial={{ scaleY: 0 }}
-                                                                whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                transition={{ duration: 0.85, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                                                            />
-                                                            {/* Coal value label */}
-                                                            <motion.text
-                                                                x={coalX + barW / 2}
-                                                                y={coalBarY - 5}
-                                                                textAnchor='middle'
-                                                                fontSize={10}
-                                                                fontWeight='600'
-                                                                fill='#374151'
-                                                                initial={{ opacity: 0 }}
-                                                                whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                transition={{ duration: 0.35, delay: 0.85 + i * 0.09 }}
-                                                            >{d.coal}</motion.text>
+                                                return (
+                                                    <g key={d.year}>
+                                                        {/* ── Coal bar (light yellow) ── */}
+                                                        <motion.rect
+                                                            x={coalX}
+                                                            y={coalBarY}
+                                                            width={barW}
+                                                            height={coalBarH}
+                                                            fill='#F3D054'
+                                                            style={{ transformOrigin: '50% 100%' }}
+                                                            initial={{ scaleY: 0 }}
+                                                            whileInView={{ scaleY: 1 }}
+                                                            viewport={{ once: true, margin: '-60px' }}
+                                                            transition={{ duration: 0.85, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                                                        />
+                                                        {/* Coal value label */}
+                                                        <motion.text
+                                                            x={coalX + barW / 2}
+                                                            y={coalBarY - 5}
+                                                            textAnchor='middle'
+                                                            fontSize={10}
+                                                            fontWeight='600'
+                                                            fill='#374151'
+                                                            initial={{ opacity: 0 }}
+                                                            whileInView={{ opacity: 1 }}
+                                                            viewport={{ once: true, margin: '-60px' }}
+                                                            transition={{ duration: 0.35, delay: 0.85 + i * 0.09 }}
+                                                        >{d.coal}</motion.text>
 
-                                                            {/* ── Iron ore bar (dark gold) ── */}
-                                                            <motion.rect
-                                                                x={ironX}
-                                                                y={ironBarY}
-                                                                width={barW}
-                                                                height={ironBarH}
-                                                                fill='#CD9036'
-                                                                style={{ transformOrigin: '50% 100%' }}
-                                                                initial={{ scaleY: 0 }}
-                                                                whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                transition={{ duration: 0.85, delay: 0.12 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                                                            />
-                                                            {/* Iron value label */}
-                                                            <motion.text
-                                                                x={ironX + barW / 2}
-                                                                y={ironBarY - 5}
-                                                                textAnchor='middle'
-                                                                fontSize={10}
-                                                                fontWeight='600'
-                                                                fill='#374151'
-                                                                initial={{ opacity: 0 }}
-                                                                whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                transition={{ duration: 0.35, delay: 1.0 + i * 0.09 }}
-                                                            >{d.iron}</motion.text>
+                                                        {/* ── Iron ore bar (dark gold) ── */}
+                                                        <motion.rect
+                                                            x={ironX}
+                                                            y={ironBarY}
+                                                            width={barW}
+                                                            height={ironBarH}
+                                                            fill='#CD9036'
+                                                            style={{ transformOrigin: '50% 100%' }}
+                                                            initial={{ scaleY: 0 }}
+                                                            whileInView={{ scaleY: 1 }}
+                                                            viewport={{ once: true, margin: '-60px' }}
+                                                            transition={{ duration: 0.85, delay: 0.12 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                                                        />
+                                                        {/* Iron value label */}
+                                                        <motion.text
+                                                            x={ironX + barW / 2}
+                                                            y={ironBarY - 5}
+                                                            textAnchor='middle'
+                                                            fontSize={10}
+                                                            fontWeight='600'
+                                                            fill='#374151'
+                                                            initial={{ opacity: 0 }}
+                                                            whileInView={{ opacity: 1 }}
+                                                            viewport={{ once: true, margin: '-60px' }}
+                                                            transition={{ duration: 0.35, delay: 1.0 + i * 0.09 }}
+                                                        >{d.iron}</motion.text>
 
-                                                            {/* X-axis year label */}
-                                                            <text
-                                                                x={cx}
-                                                                y={baseline + 18}
-                                                                textAnchor='middle'
-                                                                fontSize={10}
-                                                                fill='#374151'
-                                                            >{d.year}</text>
-                                                        </g>
-                                                    )
-                                                })}
-                                            </svg>
-                                        </div>
+                                                        {/* X-axis year label */}
+                                                        <text
+                                                            x={cx}
+                                                            y={baseline + 18}
+                                                            textAnchor='middle'
+                                                            fontSize={10}
+                                                            fill='#374151'
+                                                        >{d.year}</text>
+                                                    </g>
+                                                )
+                                            })}
+                                        </svg>
                                     )
                                 })()}
 
@@ -682,49 +680,47 @@ const MetalsInfletionPoint = () => {
                                     }, '');
 
                                     return (
-                                        <div style={{ width: '100%', minHeight: '350px' }}>
-                                            <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'PT Serif, serif', overflow: 'visible' }}>
-                                                {/* Y-axis label */}
-                                                <text x={16} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 16, ${mt + chartH / 2})`}>Price (USD/t)</text>
-                                                
-                                                {/* Grid + Y ticks */}
-                                                {yTicks.map(v => {
-                                                    const yy = toY(v);
-                                                    return (
-                                                        <g key={v}>
-                                                            <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke='#E5E7EB' strokeWidth={1} />
-                                                            <text x={ml - 10} y={yy + 4} textAnchor='end' fontSize={11} fill='#000'>
-                                                                {v.toLocaleString()}
-                                                            </text>
-                                                        </g>
-                                                    )
-                                                })}
-                                                
-                                                {/* X-axis labels */}
-                                                {xLabels.map(tick => {
-                                                    const xx = toX(tick.index);
-                                                    return (
-                                                        <text key={tick.label} x={xx} y={mt + chartH + 24} textAnchor='middle' fontSize={11} fill='#000'>
-                                                            {tick.label}
+                                        <svg viewBox={`0 0 ${W} ${H}`} className='w-full' style={{ fontFamily: 'PT Serif, serif', overflow: 'visible' }}>
+                                            {/* Y-axis label */}
+                                            <text x={16} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 16, ${mt + chartH / 2})`}>Price (USD/t)</text>
+                                            
+                                            {/* Grid + Y ticks */}
+                                            {yTicks.map(v => {
+                                                const yy = toY(v);
+                                                return (
+                                                    <g key={v}>
+                                                        <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke='#E5E7EB' strokeWidth={1} />
+                                                        <text x={ml - 10} y={yy + 4} textAnchor='end' fontSize={11} fill='#000'>
+                                                            {v.toLocaleString()}
                                                         </text>
-                                                    )
-                                                })}
-                                                
-                                                {/* Smooth Line Path */}
-                                                <motion.path
-                                                    d={pathD}
-                                                    fill='none'
-                                                    stroke='#F3D054'
-                                                    strokeWidth={3}
-                                                    strokeLinecap='round'
-                                                    strokeDasharray={2000}
-                                                    initial={{ strokeDashoffset: 2000 }}
-                                                    whileInView={{ strokeDashoffset: 0 }}
-                                                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                    transition={{ duration: 1.5, ease: 'easeInOut' }}
-                                                />
-                                            </svg>
-                                        </div>
+                                                    </g>
+                                                )
+                                            })}
+                                            
+                                            {/* X-axis labels */}
+                                            {xLabels.map(tick => {
+                                                const xx = toX(tick.index);
+                                                return (
+                                                    <text key={tick.label} x={xx} y={mt + chartH + 24} textAnchor='middle' fontSize={11} fill='#000'>
+                                                        {tick.label}
+                                                    </text>
+                                                )
+                                            })}
+                                            
+                                            {/* Smooth Line Path */}
+                                            <motion.path
+                                                d={pathD}
+                                                fill='none'
+                                                stroke='#F3D054'
+                                                strokeWidth={3}
+                                                strokeLinecap='round'
+                                                strokeDasharray={2000}
+                                                initial={{ strokeDashoffset: 2000 }}
+                                                whileInView={{ strokeDashoffset: 0 }}
+                                                viewport={{ once: true, margin: '-60px' }}
+                                                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                                            />
+                                        </svg>
                                     )
                                 })()}
                                 
@@ -798,7 +794,7 @@ const MetalsInfletionPoint = () => {
                                     const toH = (v) => (v / yMax) * chartH
                                     const baseline = toY(0)
                                     return (
-                                        <div style={{ width: '100%', minHeight: '410px' }}>
+                                        <div>
                                             <p className='text-xs text-black mb-6 poppins-sans leading-relaxed'>LME Copper Inventory (mnt): LME inventories <strong>dropped 24.1% MoM during Jul'26</strong>, highlighting tightening physical supply. In case the US government decides to impose import tariffs on refined copper, inventories may see further decline.</p>
                                             <p className='text-lg font-semibold text-black mb-8 text-center pt-serif'>LME Copper Inventory</p>
                                             <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
@@ -830,7 +826,7 @@ const MetalsInfletionPoint = () => {
                                                                 style={{ transformOrigin: '50% 100%' }}
                                                                 initial={{ scaleY: 0 }}
                                                                 whileInView={{ scaleY: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.65, delay: i * 0.022, ease: [0.22, 1, 0.36, 1] }}
                                                             />
                                                             {/* Value label above every bar */}
@@ -842,7 +838,7 @@ const MetalsInfletionPoint = () => {
                                                                 fill='#000'
                                                                 initial={{ opacity: 0 }}
                                                                 whileInView={{ opacity: 1 }}
-                                                                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                viewport={{ once: true, margin: '-40px' }}
                                                                 transition={{ duration: 0.28, delay: 0.65 + i * 0.022 }}
                                                             >{v}</motion.text>
                                                             {/* Rotated month label */}
@@ -940,54 +936,52 @@ const MetalsInfletionPoint = () => {
                                             const baseline = toY(0);
 
                                             return (
-                                                <div style={{ width: '100%', minHeight: '350px' }}>
-                                                    <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
-                                                        <text x={9} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 9, ${mt + chartH / 2})`}>Demand (Mt)</text>
-                                                        {yTicks.map(v => {
-                                                            const yy = toY(v);
-                                                            return (
-                                                                <g key={v}>
-                                                                    <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
-                                                                    <text x={ml - 6} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#000'>{v}</text>
-                                                                </g>
-                                                            )
-                                                        })}
-                                                        {values.map((v, i) => {
-                                                            const x = ml + i * slotW + (slotW - barW) / 2;
-                                                            const bH = toH(v), bY = toY(v);
-                                                            const cx = x + barW / 2;
-                                                            return (
-                                                                <g key={i}>
-                                                                    <motion.rect
-                                                                        x={x}
-                                                                        y={bY}
-                                                                        width={barW}
-                                                                        height={bH}
-                                                                        fill='#F3D054'
-                                                                        rx={4}
-                                                                        style={{ transformOrigin: '50% 100%' }}
-                                                                        initial={{ scaleY: 0 }}
-                                                                        whileInView={{ scaleY: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                        transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                    />
-                                                                    <motion.text
-                                                                        x={cx}
-                                                                        y={bY - 4}
-                                                                        textAnchor='middle'
-                                                                        fontSize={10}
-                                                                        fill='#000'
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                        transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                    >{v}</motion.text>
-                                                                    <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
-                                                                </g>
-                                                            )
-                                                        })}
-                                                    </svg>
-                                                </div>
+                                                <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
+                                                    <text x={9} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 9, ${mt + chartH / 2})`}>Demand (Mt)</text>
+                                                    {yTicks.map(v => {
+                                                        const yy = toY(v);
+                                                        return (
+                                                            <g key={v}>
+                                                                <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
+                                                                <text x={ml - 6} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#000'>{v}</text>
+                                                            </g>
+                                                        )
+                                                    })}
+                                                    {values.map((v, i) => {
+                                                        const x = ml + i * slotW + (slotW - barW) / 2;
+                                                        const bH = toH(v), bY = toY(v);
+                                                        const cx = x + barW / 2;
+                                                        return (
+                                                            <g key={i}>
+                                                                <motion.rect
+                                                                    x={x}
+                                                                    y={bY}
+                                                                    width={barW}
+                                                                    height={bH}
+                                                                    fill='#F3D054'
+                                                                    rx={4}
+                                                                    style={{ transformOrigin: '50% 100%' }}
+                                                                    initial={{ scaleY: 0 }}
+                                                                    whileInView={{ scaleY: 1 }}
+                                                                    viewport={{ once: true, margin: '-40px' }}
+                                                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                                                />
+                                                                <motion.text
+                                                                    x={cx}
+                                                                    y={bY - 4}
+                                                                    textAnchor='middle'
+                                                                    fontSize={10}
+                                                                    fill='#000'
+                                                                    initial={{ opacity: 0 }}
+                                                                    whileInView={{ opacity: 1 }}
+                                                                    viewport={{ once: true, margin: '-40px' }}
+                                                                    transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
+                                                                >{v}</motion.text>
+                                                                <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
+                                                            </g>
+                                                        )
+                                                    })}
+                                                </svg>
                                             )
                                         })()}
                                     </div>
@@ -1029,7 +1023,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeDashoffset={-offset}
                                                                         initial={{ opacity: 0 }}
                                                                         whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
                                                                         transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
                                                                     />
                                                                 )
@@ -1095,7 +1089,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeDashoffset={-offset}
                                                                         initial={{ opacity: 0 }}
                                                                         whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
                                                                         transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
                                                                     />
                                                                 )
@@ -1208,55 +1202,53 @@ const MetalsInfletionPoint = () => {
                                             const baseline = toY(0);
 
                                             return (
-                                                <div style={{ width: '100%', minHeight: '350px' }}>
-                                                    <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
-                                                        <text x={10} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 10, ${mt + chartH / 2})`}>Tonnes</text>
-                                                        {yTicks.map(v => {
-                                                            const yy = toY(v);
-                                                            const label = v === 0 ? '0' : v.toLocaleString();
-                                                            return (
-                                                                <g key={v}>
-                                                                    <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
-                                                                    <text x={ml - 6} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#000'>{label}</text>
-                                                                </g>
-                                                            )
-                                                        })}
-                                                        {values.map((v, i) => {
-                                                            const x = ml + i * slotW + (slotW - barW) / 2;
-                                                            const bH = toH(v), bY = toY(v);
-                                                            const cx = x + barW / 2;
-                                                            return (
-                                                                <g key={i}>
-                                                                    <motion.rect
-                                                                        x={x}
-                                                                        y={bY}
-                                                                        width={barW}
-                                                                        height={bH}
-                                                                        fill='#F3D054'
-                                                                        rx={4}
-                                                                        style={{ transformOrigin: '50% 100%' }}
-                                                                        initial={{ scaleY: 0 }}
-                                                                        whileInView={{ scaleY: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                        transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                    />
-                                                                    <motion.text
-                                                                        x={cx}
-                                                                        y={bY - 4}
-                                                                        textAnchor='middle'
-                                                                        fontSize={10}
-                                                                        fill='#000'
-                                                                        initial={{ opacity: 0 }}
-                                                                        whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                        transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                    >{displayValues[i]}</motion.text>
-                                                                    <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
-                                                                </g>
-                                                            )
-                                                        })}
-                                                    </svg>
-                                                </div>
+                                                <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
+                                                    <text x={10} y={mt + chartH / 2} textAnchor='middle' fontSize={11} fill='#000' transform={`rotate(-90, 10, ${mt + chartH / 2})`}>Tonnes</text>
+                                                    {yTicks.map(v => {
+                                                        const yy = toY(v);
+                                                        const label = v === 0 ? '0' : v.toLocaleString();
+                                                        return (
+                                                            <g key={v}>
+                                                                <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
+                                                                <text x={ml - 6} y={yy + 3.5} textAnchor='end' fontSize={10} fill='#000'>{label}</text>
+                                                            </g>
+                                                        )
+                                                    })}
+                                                    {values.map((v, i) => {
+                                                        const x = ml + i * slotW + (slotW - barW) / 2;
+                                                        const bH = toH(v), bY = toY(v);
+                                                        const cx = x + barW / 2;
+                                                        return (
+                                                            <g key={i}>
+                                                                <motion.rect
+                                                                    x={x}
+                                                                    y={bY}
+                                                                    width={barW}
+                                                                    height={bH}
+                                                                    fill='#F3D054'
+                                                                    rx={4}
+                                                                    style={{ transformOrigin: '50% 100%' }}
+                                                                    initial={{ scaleY: 0 }}
+                                                                    whileInView={{ scaleY: 1 }}
+                                                                    viewport={{ once: true, margin: '-40px' }}
+                                                                    transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                                                />
+                                                                <motion.text
+                                                                    x={cx}
+                                                                    y={bY - 4}
+                                                                    textAnchor='middle'
+                                                                    fontSize={10}
+                                                                    fill='#000'
+                                                                    initial={{ opacity: 0 }}
+                                                                    whileInView={{ opacity: 1 }}
+                                                                    viewport={{ once: true, margin: '-40px' }}
+                                                                    transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
+                                                                >{displayValues[i]}</motion.text>
+                                                                <text x={cx} y={baseline + 16} textAnchor='middle' fontSize={10} fill='#000'>{labels[i]}</text>
+                                                            </g>
+                                                        )
+                                                    })}
+                                                </svg>
                                             )
                                         })()}
                                     </div>
@@ -1298,7 +1290,7 @@ const MetalsInfletionPoint = () => {
                                                                         strokeDashoffset={-offset}
                                                                         initial={{ opacity: 0 }}
                                                                         whileInView={{ opacity: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
                                                                         transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
                                                                     />
                                                                 )
@@ -1353,54 +1345,52 @@ const MetalsInfletionPoint = () => {
                                                 const baseline = toY(0);
 
                                                 return (
-                                                    <div style={{ width: '100%', minHeight: '170px' }}>
-                                                        <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
-                                                            <text x={8} y={mt + chartH / 2} textAnchor='middle' fontSize={5.5} fill='#000' transform={`rotate(-90, 8, ${mt + chartH / 2})`}>Million tonnes</text>
-                                                            {yTicks.map(v => {
-                                                                const yy = toY(v);
-                                                                return (
-                                                                    <g key={v}>
-                                                                        <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
-                                                                        <text x={ml - 4} y={yy + 2} textAnchor='end' fontSize={6} fill='#000'>{v.toFixed(1)}</text>
-                                                                    </g>
-                                                                )
-                                                            })}
-                                                            {values.map((v, i) => {
-                                                                const x = ml + i * slotW + (slotW - barW) / 2;
-                                                                const bH = toH(v), bY = toY(v);
-                                                                const cx = x + barW / 2;
-                                                                return (
-                                                                    <g key={i}>
-                                                                        <motion.rect
-                                                                            x={x}
-                                                                            y={bY}
-                                                                            width={barW}
-                                                                            height={bH}
-                                                                            fill='#F3D054'
-                                                                            rx={4}
-                                                                            style={{ transformOrigin: '50% 100%' }}
-                                                                            initial={{ scaleY: 0 }}
-                                                                            whileInView={{ scaleY: 1 }}
-                                                                            viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                                                        />
-                                                                        <motion.text
-                                                                            x={cx}
-                                                                            y={bY - 3}
-                                                                            textAnchor='middle'
-                                                                            fontSize={7}
-                                                                            fill='#000'
-                                                                            initial={{ opacity: 0 }}
-                                                                            whileInView={{ opacity: 1 }}
-                                                                            viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                                                                            transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
-                                                                        >{v}</motion.text>
-                                                                        <text x={cx} y={baseline + 9} textAnchor='middle' fontSize={6} fill='#000'>{labels[i]}</text>
-                                                                    </g>
-                                                                )
-                                                            })}
-                                                        </svg>
-                                                    </div>
+                                                    <svg viewBox={`0 0 ${W} ${H}`} className='w-full poppins-sans' style={{ overflow: 'visible' }}>
+                                                        <text x={8} y={mt + chartH / 2} textAnchor='middle' fontSize={5.5} fill='#000' transform={`rotate(-90, 8, ${mt + chartH / 2})`}>Million tonnes</text>
+                                                        {yTicks.map(v => {
+                                                            const yy = toY(v);
+                                                            return (
+                                                                <g key={v}>
+                                                                    <line x1={ml} x2={W - mr} y1={yy} y2={yy} stroke={v === 0 ? '#9CA3AF' : '#E5E7EB'} strokeWidth={v === 0 ? 1 : 0.5} />
+                                                                    <text x={ml - 4} y={yy + 2} textAnchor='end' fontSize={6} fill='#000'>{v.toFixed(1)}</text>
+                                                                </g>
+                                                            )
+                                                        })}
+                                                        {values.map((v, i) => {
+                                                            const x = ml + i * slotW + (slotW - barW) / 2;
+                                                            const bH = toH(v), bY = toY(v);
+                                                            const cx = x + barW / 2;
+                                                            return (
+                                                                <g key={i}>
+                                                                    <motion.rect
+                                                                        x={x}
+                                                                        y={bY}
+                                                                        width={barW}
+                                                                        height={bH}
+                                                                        fill='#F3D054'
+                                                                        rx={4}
+                                                                        style={{ transformOrigin: '50% 100%' }}
+                                                                        initial={{ scaleY: 0 }}
+                                                                        whileInView={{ scaleY: 1 }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
+                                                                        transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                                                    />
+                                                                    <motion.text
+                                                                        x={cx}
+                                                                        y={bY - 3}
+                                                                        textAnchor='middle'
+                                                                        fontSize={7}
+                                                                        fill='#000'
+                                                                        initial={{ opacity: 0 }}
+                                                                        whileInView={{ opacity: 1 }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
+                                                                        transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
+                                                                    >{v}</motion.text>
+                                                                    <text x={cx} y={baseline + 9} textAnchor='middle' fontSize={6} fill='#000'>{labels[i]}</text>
+                                                                </g>
+                                                            )
+                                                        })}
+                                                    </svg>
                                                 )
                                             })()}
                                         </div>
@@ -1467,7 +1457,7 @@ const MetalsInfletionPoint = () => {
                                     World central bank net purchases of gold, 2010–2026.
                                 </p>
 
-                                <div className='w-full border border-gray-300 p-2 sm:p-4 mt-2' style={{ minHeight: '420px' }}>
+                                <div className='w-full border border-gray-300 p-2 sm:p-4 mt-2'>
                                     {(() => {
                                         const goldData = [
                                             { year: '2010', q1: 60, q2: -25, q3: 30, q4: 0 },
@@ -1553,7 +1543,7 @@ const MetalsInfletionPoint = () => {
                                                                         style={{ transformOrigin: val > 0 ? '50% 100%' : '50% 0%' }}
                                                                         initial={{ scaleY: 0 }}
                                                                         whileInView={{ scaleY: 1 }}
-                                                                        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                                        viewport={{ once: true, margin: '-40px' }}
                                                                         transition={{ duration: 0.6, delay: i * 0.05 + j * 0.1, ease: "easeOut" }}
                                                                     />
                                                                 )
@@ -1642,7 +1632,7 @@ const MetalsInfletionPoint = () => {
                                     XAG/USD year-to-date price chart
                                 </p>
 
-                                <div className='w-full bg-[#0B132B] rounded-sm p-4 mt-2 overflow-hidden relative shadow-lg' style={{ minHeight: '460px' }}>
+                                <div className='w-full bg-[#0B132B] rounded-sm p-4 mt-2 overflow-hidden relative shadow-lg'>
                                     {(() => {
                                         const closePrices = [
                                             71.3, 72, 74, 82, 75, 78, 83, 90, 88, 92, 91, 95, 93, 102, 104, 106, 118, 121.57, // High
@@ -1721,7 +1711,7 @@ const MetalsInfletionPoint = () => {
                                                     strokeDasharray="4 4"
                                                     initial={{ opacity: 0 }}
                                                     whileInView={{ opacity: 1 }}
-                                                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                    viewport={{ once: true, margin: '-40px' }}
                                                     transition={{ duration: 2, ease: "easeInOut" }}
                                                 />
                                                 <motion.path
@@ -1732,7 +1722,7 @@ const MetalsInfletionPoint = () => {
                                                     strokeDasharray="4 4"
                                                     initial={{ opacity: 0 }}
                                                     whileInView={{ opacity: 1 }}
-                                                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                    viewport={{ once: true, margin: '-40px' }}
                                                     transition={{ duration: 2, ease: "easeInOut" }}
                                                 />
                                                 <motion.path
@@ -1743,7 +1733,7 @@ const MetalsInfletionPoint = () => {
                                                     strokeDasharray={2000}
                                                     initial={{ strokeDashoffset: 2000 }}
                                                     whileInView={{ strokeDashoffset: 0 }}
-                                                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                                    viewport={{ once: true, margin: '-40px' }}
                                                     transition={{ duration: 2, ease: "easeInOut" }}
                                                 />
                                             
@@ -1845,7 +1835,7 @@ const MetalsInfletionPoint = () => {
                                             className={i % 2 === 1 ? 'bg-[#F9EFE3]' : 'bg-white'}
                                             initial={{ opacity: 0, y: 15 }}
                                             whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                                            viewport={{ once: true, margin: '-40px' }}
                                             transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
                                         >
                                             <td className='p-5 font-bold text-black'>{row.metal}</td>
