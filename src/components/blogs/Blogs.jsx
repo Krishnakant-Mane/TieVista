@@ -25,6 +25,15 @@ const Blogs = () => {
             url: "/blogs/the-rupees-longest-fall",
             date: "May 15, 2026"
         },
+        {
+            id: 3,
+            title: "Metals at an Inflection Point",
+            goldtitle: "Clean energy and AI infrastructure",
+            description: "Global metals markets are being reshaped by three converging forces: the energy transition's build-out of renewables, grids...",
+            img: "https://res.cloudinary.com/dr1u4plse/image/upload/v1774960590/US_CRISIS_bpyyrp.png",
+            url: "/blogs/metals-at-an-inflection-point",
+            date: "Aug 26, 2026"
+        },
 
     ]
 
