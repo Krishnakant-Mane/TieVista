@@ -36,33 +36,7 @@ const AboutUs = () => {
 
 
     const publications = [
-        {
-            id: 1,
-            title: "",
-            goldtitle: "",
-            description: "MONTHLY UPDATE",
-            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
-            url: "https://drive.google.com/uc?export=download&id=1sBlq8NylKUpYCLFdZRVvalqO5CY2WKFi",
-            date: "March, 2026"
-        },
-        {
-            id: 2,
-            title: "",
-            goldtitle: "",
-            description: "MONTHLY UPDATE",
-            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
-            url: "https://drive.google.com/uc?export=download&id=1THnT4o4rO41n7Z_txoYJA9uPO8JTL9Pq",
-            date: "April, 2026"
-        },
-        {
-            id: 3,
-            title: "",
-            goldtitle: "",
-            description: "MONTHLY UPDATE",
-            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
-            url: "https://drive.google.com/uc?export=download&id=1NvBRTvJkPHLfUvO4frcJgSW7gI86qxbi",
-            date: "May, 2026"
-        },
+        
         {
             id: 4,
             title: "",
@@ -80,6 +54,15 @@ const AboutUs = () => {
             img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
             url: "https://drive.google.com/uc?export=download&id=1q_Hv7HJfagD-ETnSL8CCwQrdvthLI3Fd",
             date: "August, 2026"
+        },
+         {
+            id: 6,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1qOuv2975NSPijMvyl2ZEvZ-9c53MZA7V",
+            date: "September, 2026"
         },
     ]
 

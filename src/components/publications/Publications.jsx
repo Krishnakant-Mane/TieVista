@@ -62,6 +62,15 @@ const Publications = () => {
             url: "https://drive.google.com/uc?export=download&id=1q_Hv7HJfagD-ETnSL8CCwQrdvthLI3Fd",
             date: "August, 2026"
         },
+        {
+            id: 6,
+            title: "",
+            goldtitle: "",
+            description: "MONTHLY UPDATE",
+            img: "https://res.cloudinary.com/dck5jgfix/image/upload/v1775732548/March_2026_foixjy.png",
+            url: "https://drive.google.com/uc?export=download&id=1qOuv2975NSPijMvyl2ZEvZ-9c53MZA7V",
+            date: "September, 2026"
+        },
     ]
 
     const filteredPublications = useMemo(() => {
